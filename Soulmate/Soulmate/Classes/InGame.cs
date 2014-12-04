@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace Soulmate.Classes
 {
@@ -14,6 +15,7 @@ namespace Soulmate.Classes
         View view;
         Texture backGroundTex;
         Sprite backGround;
+        Map map;
 
         public void initialize()
         {
@@ -29,6 +31,8 @@ namespace Soulmate.Classes
         public void loadContent()
         {
             backGroundTex = new Texture("Pictures/Hintergrund.png");
+
+            map = new Map(new Bitmap("Pictures/Map.bmp"));
         }
 
         public EGameStates update(GameTime gameTime)

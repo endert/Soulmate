@@ -22,7 +22,10 @@ namespace Soulmate.Classes
             sprite.Position = pos;
         }
 
-        public void update(GameTime time);
+        public void update(GameTime time)
+        {
+
+        }
 
         public void move(Vector2f move)
         {
