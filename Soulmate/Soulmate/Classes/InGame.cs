@@ -33,18 +33,19 @@ namespace Soulmate.Classes
         {
             backGroundTex = new Texture("Pictures/Hintergrund.png");
 
-            map = new Map(new Bitmap("Pictures/Map.bmp"));
+            map = new Map(new Bitmap("Pictures/Map/Map2.bmp"));
             player = new Player(new Vector2f(32 * 5, 32 * 10-219), map);
         }
 
-        public EGameStates update(GameTime gameTime)
+        public EnumGameStates update(GameTime gameTime)
         {
             time.Update();
             backGround.Position = new Vector2f(view.Center.X - 640, view.Center.Y - 360);
+            //view.Move(new Vector2f((player.getSprite().Position.X + (player.getWeidth()/2)), (player.getSprite().Position.Y + (player.getHeight()/2))) - view.Center);
 
             player.update(gameTime);
 
-            return EGameStates.inGame;
+            return EnumGameStates.inGame;
         }
 
         public void draw(RenderWindow window)

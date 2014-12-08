@@ -11,15 +11,24 @@ namespace Soulmate.Classes
     class Player
     {
         Sprite playerSprite;
-        Texture playerTexture = new Texture("Pictures/SpielerSeiteRechtsKompremiert.png");
-        //Texture playerTexture = new Texture("Pictures/SpielerSeiteRechts.png");
+        Texture playerTexture = new Texture("Pictures/SpielerSeiteRechts.png");
         Map map;
-        float movementSpeed = 1;
         Vector2f movement;
+        float movementSpeed;
 
         public Sprite getSprite()
         {
             return playerSprite;
+        }
+
+        public float getWeidth()
+        {
+            return playerSprite.Texture.Size.X;
+        }
+
+        public float getHeight()
+        {
+            return playerSprite.Texture.Size.Y;
         }
 
         public void setSpritePosition(Vector2f pos)
@@ -37,6 +46,7 @@ namespace Soulmate.Classes
 
         public void update(GameTime time)
         {
+            movementSpeed = 0.3f * time.EllapsedTime.Milliseconds;
             movement = new Vector2f(0, 0);
             movement = getKeyPressed();
             move(movement);

@@ -14,8 +14,8 @@ namespace Soulmate
         public static uint windowSizeX = 1280;
         public static uint windowSizeY = 720;
 
-        EGameStates currentGameState = EGameStates.inGame;
-        EGameStates prevGameState;
+        EnumGameStates currentGameState = EnumGameStates.inGame;
+        EnumGameStates prevGameState;
 
         GameStates gameState;
 
@@ -41,13 +41,13 @@ namespace Soulmate
         {
             switch (currentGameState)
             {
-                case EGameStates.none:
+                case EnumGameStates.none:
                     window.Close();
                     break;
                 //case EGameStates.mainMenu:
                 //    gameState = new MainMenu();
                 //    break;
-                case EGameStates.inGame:
+                case EnumGameStates.inGame:
                     gameState = new InGame();
                     break;
                 //case EGameStates.gameWon:
@@ -56,6 +56,8 @@ namespace Soulmate
                 //case EGameStates.controls:
                 //    gameState = new Controls();
                 //    break;
+                default:
+                    throw new NotFiniteNumberException();
             }
 
             gameState.loadContent();

@@ -36,7 +36,7 @@ namespace Soulmate.Classes
                     }
                 case 1://Wald
                     {
-                        this.blockSprite = new Sprite(new Texture("Pictures/Wald.png"));
+                        this.blockSprite = new Sprite(new Texture("Pictures/Map/Wald.png"));
                         this.blockSprite.Position = position;
                         this.walkable = false;
                         break;

@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using SFML.Window;
 
-namespace Soulmate
+namespace Soulmate.Classes
 {
-    public enum EGameStates
+    public enum EnumGameStates
     {
         none,
         mainMenu,
@@ -25,7 +25,7 @@ namespace Soulmate
 
         void loadContent();
 
-        EGameStates update(GameTime time);
+        EnumGameStates update(GameTime time);
 
         void draw(RenderWindow window);
     }

@@ -53,7 +53,7 @@ namespace Soulmate.Classes
             {
                 for(int j=0;j<map.GetLength(1);j++)
                 {
-                    blockTex = new Texture("Pictures/Sand.png");
+                    blockTex = new Texture("Pictures/Map/Sand.png");
                     if (mask.GetPixel(i, j).Name == white)
                         map[i, j] = new Blocks(0, new Vector2f(i * objectSize, j * objectSize), blockTex);
                     if (mask.GetPixel(i, j).Name == black)
