@@ -29,13 +29,15 @@ namespace Soulmate.Classes
             {
                 case 0://Boden
                     {
-                        this.blockSprite = new Sprite(new Texture("Pictures/Boden"));
+                        this.blockSprite = new Sprite(bodenTex);
+                        this.blockSprite.Position = position;
                         this.walkable = true;
                         break;
                     }
                 case 1://Wald
                     {
-                        this.blockSprite = new Sprite(new Texture("Pictures/Wald"));
+                        this.blockSprite = new Sprite(new Texture("Pictures/Wald.png"));
+                        this.blockSprite.Position = position;
                         this.walkable = false;
                         break;
                     }
