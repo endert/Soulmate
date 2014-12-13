@@ -19,7 +19,7 @@ namespace Soulmate
         {
             window = new RenderWindow(new VideoMode(width, height), title);
             window.Closed += window_Close;
-            //window.SetFramerateLimit(25);
+            window.SetFramerateLimit(45);
 
             gameTime = new GameTime();
         }

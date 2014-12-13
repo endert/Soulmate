@@ -28,3 +28,10 @@ C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulma
 C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Map\Map2.bmp
 C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Map\Sand.png
 C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Map\Wald.png
+C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\MainMenu\EndNotSelected.png
+C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\MainMenu\EndSelected.png
+C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\MainMenu\StartNotSelected.png
+C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\MainMenu\StartSelected.png
+C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\MainMenu\TestNotSelected.png
+C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\MainMenu\TestSelected.png
+C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Inventory.png

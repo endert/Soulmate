@@ -58,6 +58,8 @@
     <Compile Include="Classes\Blocks.cs" />
     <Compile Include="Classes\Game.cs" />
     <Compile Include="Classes\GameStates.cs" />
+    <Compile Include="Classes\InGameMenu.cs" />
+    <Compile Include="Classes\Inventory.cs" />
     <Compile Include="Classes\MainMenu.cs" />
     <Compile Include="Classes\GameTime.cs" />
     <Compile Include="Classes\InGame.cs" />
@@ -81,6 +83,21 @@
     </Content>
     <Content Include="libsndfile-1.dll" />
     <Content Include="openal32.dll" />
+    <Content Include="Pictures\Inventory.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\MainMenu\EndNotSelected.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\MainMenu\EndSelected.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\MainMenu\TestNotSelected.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\MainMenu\TestSelected.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Pictures\Map\Boden.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -106,6 +123,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Pictures\Map\Wald.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\MainMenu\StartNotSelected.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\MainMenu\StartSelected.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

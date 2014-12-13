@@ -7,14 +7,14 @@ using SFML.Graphics;
 using SFML.Window;
 using Soulmate.Classes;
 
-namespace Soulmate
+namespace Soulmate.Classes
 {
     class Game : Soulmate.AbstractGame
     {
         public static uint windowSizeX = 1280;
         public static uint windowSizeY = 720;
 
-        EnumGameStates currentGameState = EnumGameStates.inGame;
+        EnumGameStates currentGameState = EnumGameStates.mainMenu;
         EnumGameStates prevGameState;
 
         GameStates gameState;
@@ -44,9 +44,9 @@ namespace Soulmate
                 case EnumGameStates.none:
                     window.Close();
                     break;
-                //case EGameStates.mainMenu:
-                //    gameState = new MainMenu();
-                //    break;
+                case EnumGameStates.mainMenu:
+                    gameState = new MainMenu();
+                    break;
                 case EnumGameStates.inGame:
                     gameState = new InGame();
                     break;

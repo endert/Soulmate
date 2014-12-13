@@ -39,14 +39,13 @@ namespace Soulmate.Classes
         public Player(Vector2f spawnPosition, Map levelMap)
         {
             playerSprite = new Sprite(playerTexture);
-            //playerSprite.Scale = new Vector2f(0.05f, 0.05f);
             playerSprite.Position = spawnPosition;
             map = levelMap;
         }
 
         public void update(GameTime time)
         {
-            movementSpeed = 0.3f * time.EllapsedTime.Milliseconds;
+            movementSpeed = 0.1f * time.EllapsedTime.Milliseconds;
             movement = new Vector2f(0, 0);
             movement = getKeyPressed();
             move(movement);
@@ -59,14 +58,14 @@ namespace Soulmate.Classes
             if (Keyboard.IsKeyPressed(Keyboard.Key.A))
                 result.X -= movementSpeed;
 
+            if (Keyboard.IsKeyPressed(Keyboard.Key.W))
+                result.Y -= movementSpeed;
+
             if (Keyboard.IsKeyPressed(Keyboard.Key.S))
                 result.Y += movementSpeed;
 
             if (Keyboard.IsKeyPressed(Keyboard.Key.D))
                 result.X += movementSpeed;
-
-            if (Keyboard.IsKeyPressed(Keyboard.Key.W))
-                result.Y -= movementSpeed;
 
             return result;
         }
