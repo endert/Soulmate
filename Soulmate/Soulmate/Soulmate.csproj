@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\AbstractEnemy.cs" />
     <Compile Include="Classes\AbstractGame.cs" />
     <Compile Include="Classes\Blocks.cs" />
     <Compile Include="Classes\Game.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Classes\GameTime.cs" />
     <Compile Include="Classes\InGame.cs" />
     <Compile Include="Classes\Map.cs" />
+    <Compile Include="Classes\NormalEnemy.cs" />
     <Compile Include="Classes\Player.cs" />
     <Compile Include="Classes\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
