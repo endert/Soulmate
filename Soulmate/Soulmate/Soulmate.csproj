@@ -66,7 +66,7 @@
     <Compile Include="Classes\GameTime.cs" />
     <Compile Include="Classes\InGame.cs" />
     <Compile Include="Classes\Map.cs" />
-    <Compile Include="Classes\NormalEnemy.cs" />
+    <Compile Include="Classes\TestEnemy.cs" />
     <Compile Include="Classes\Player.cs" />
     <Compile Include="Classes\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -49,9 +49,12 @@ namespace Soulmate.Classes
             return movementSpeed;
         }
 
-        public void move(Vector2f move)
+        public void move(Vector2f[] path)
         {
-
+            for (int i = 0; i < path.Length; i++)
+            {
+                 enemySprite.Position = new Vector2f(enemySprite.Position.X + path[i].X,enemySprite.Position.Y + path[i].Y);
+            }
         }
 
         public void draw(RenderWindow window)
@@ -61,19 +64,23 @@ namespace Soulmate.Classes
 
         public void update(GameTime gameTime, Vector2f midP)
         {
+            movementSpeed *= gameTime.EllapsedTime.Milliseconds;
+
             if (sensePlayer(midP))
             {
                 react();
             }
             else
             {
-                move(new Vector2f(0, 0));
+                notReact();
             }
         }
 
         public abstract void attack();
 
         public abstract void react();
+
+        public abstract void notReact();
 
         public float distancePlayer(Vector2f midP)
         {

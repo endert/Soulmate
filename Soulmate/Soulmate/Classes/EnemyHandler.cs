@@ -29,7 +29,7 @@ namespace Soulmate.Classes
                         float rX = 130 + random.Next(1000);
                         float rY = 50 + random.Next(1000);
 
-                        enemies.Add(new NormalEnemy(new Vector2f(rX, rY), 1));    
+                        enemies.Add(new TestEnemy(new Vector2f(rX, rY), 1));    
                     }
                     break;
                 default:
