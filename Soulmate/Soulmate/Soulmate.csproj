@@ -57,6 +57,7 @@
     <Compile Include="Classes\AbstractEnemy.cs" />
     <Compile Include="Classes\AbstractGame.cs" />
     <Compile Include="Classes\Blocks.cs" />
+    <Compile Include="Classes\EnemyHandler.cs" />
     <Compile Include="Classes\Game.cs" />
     <Compile Include="Classes\GameStates.cs" />
     <Compile Include="Classes\InGameMenu.cs" />
