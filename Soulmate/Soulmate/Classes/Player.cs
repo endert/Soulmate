@@ -31,11 +31,6 @@ namespace Soulmate.Classes
             return playerSprite.Texture.Size.Y;
         }
 
-        public void setSpritePosition(Vector2f pos)
-        {
-            playerSprite.Position = pos;
-        }
-
         public Player(Vector2f spawnPosition, Map levelMap)
         {
             playerSprite = new Sprite(playerTexture);
@@ -45,13 +40,15 @@ namespace Soulmate.Classes
 
         public void update(GameTime time)
         {
-            movementSpeed = 0.1f * time.EllapsedTime.Milliseconds;
+            movementSpeed = 10f /* (float)time.EllapsedTime.Milliseconds*/;
+            Console.Clear();
+            Console.WriteLine(movementSpeed);
             movement = new Vector2f(0, 0);
-            movement = getKeyPressed();
+            movement = getKeyPressed(movementSpeed);
             move(movement);
         }
 
-        public Vector2f getKeyPressed()
+        public Vector2f getKeyPressed(float movementSpeed)
         {
             Vector2f result = new Vector2f(0, 0);
 
@@ -72,7 +69,7 @@ namespace Soulmate.Classes
 
         public void move(Vector2f move)
         {
-            if (map.getWalkable(playerSprite, new Vector2f(move.X, move.Y)))
+         if (map.getWalkable(playerSprite, new Vector2f(move.X, move.Y)))
                 playerSprite.Position = new Vector2f(playerSprite.Position.X + move.X, playerSprite.Position.Y + move.Y);
         }
 

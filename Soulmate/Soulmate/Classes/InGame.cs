@@ -18,9 +18,13 @@ namespace Soulmate.Classes
         Sprite backGround;
         Map map;
         Player player;
+        Enemy enemy1;
+
         Inventory inventory;
         bool inventoryOpen;
         bool isKlickedInventory = false;
+
+        Particle part;
         
         public void initialize()
         {
@@ -38,7 +42,8 @@ namespace Soulmate.Classes
             backGroundTex = new Texture("Pictures/Hintergrund.png");
 
             map = new Map(new Bitmap("Pictures/Map/Map2.bmp"));
-            player = new Player(new Vector2f(32 * 5, 32 * 10-219), map);
+            player = new Player(new Vector2f(32 * 5, 32 * 10 - 219), map);
+            enemy1 = new Enemy(new Vector2f(32 * 5, 32 * 10 - 219), map);
 
             inventory = new Inventory();
         }
@@ -73,6 +78,7 @@ namespace Soulmate.Classes
                 view.Move(new Vector2f((player.getSprite().Position.X + (player.getWeidth() / 2)), (player.getSprite().Position.Y + (player.getHeight() / 2))) - view.Center);
 
                 player.update(gameTime);
+                enemy1.update(gameTime);
 
                 if (Keyboard.IsKeyPressed(Keyboard.Key.Escape))
                     return EnumGameStates.mainMenu;
@@ -86,6 +92,7 @@ namespace Soulmate.Classes
             window.SetView(view);
             map.draw(window);
             player.draw(window);
+            enemy1.draw(window);
             
             if(inventoryOpen==true)
             {

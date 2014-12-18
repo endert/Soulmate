@@ -22,7 +22,6 @@ C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulma
 C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Hintergrund.png
 C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\SpielerSeiteRechts.png
 C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Player.png
-C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\SpielerSeiteRechtsKompremiert.png
 C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Map\Boden.png
 C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Map\Map.bmp
 C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Map\Map2.bmp
@@ -35,3 +34,8 @@ C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulma
 C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\MainMenu\TestNotSelected.png
 C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\MainMenu\TestSelected.png
 C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Inventory.png
+C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Snow\flake.png
+C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Enemy\Enemy1Front.png
+C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Enemy\Enemy1Rueck.png
+C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Enemy\Enemy1SeiteLinks.png
+C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Enemy\Enemy1SeiteRechts.png

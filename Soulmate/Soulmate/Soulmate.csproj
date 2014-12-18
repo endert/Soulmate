@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="Classes\AbstractGame.cs" />
     <Compile Include="Classes\Blocks.cs" />
+    <Compile Include="Classes\Enemy.cs" />
     <Compile Include="Classes\Game.cs" />
     <Compile Include="Classes\GameStates.cs" />
     <Compile Include="Classes\InGameMenu.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Classes\GameTime.cs" />
     <Compile Include="Classes\InGame.cs" />
     <Compile Include="Classes\Map.cs" />
+    <Compile Include="Classes\Particle.cs" />
     <Compile Include="Classes\Player.cs" />
     <Compile Include="Classes\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,6 +85,24 @@
     </Content>
     <Content Include="libsndfile-1.dll" />
     <Content Include="openal32.dll" />
+    <Content Include="Pictures\Enemy\Enemy1Front.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Enemy\Enemy1Rueck.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Enemy\Enemy1SeiteLinks.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Enemy\Enemy1SeiteRechts.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Snow\flake.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Snow\flake2.png" />
+    <Content Include="Pictures\Snow\flake3.png" />
+    <Content Include="Pictures\Snow\flake4.png" />
     <Content Include="Pictures\Inventory.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -117,9 +137,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Pictures\SpielerSeiteRechts.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pictures\SpielerSeiteRechtsKompremiert.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Pictures\Map\Wald.png">
