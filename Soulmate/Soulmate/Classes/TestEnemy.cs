@@ -31,13 +31,15 @@ namespace Soulmate.Classes
 
         public override void react()
         {
-            notReact();
+
+            //still not working
+            //move(EnemyHandler.player.getSprite().Position);
         }
 
         public override void notReact()
         {
-            //int t = 500;
-            //int c = 10;
+            //int t = 0;
+            //int c = 1000;
 
             //if (!isWaiting())
             //{
@@ -47,49 +49,49 @@ namespace Soulmate.Classes
             //            //move up
             //            Vector2f up = new Vector2f(0, -movementSpeed);
 
-            //            moveRand(up, c, t);
+            //            moveTimes(up, c, t+100);
             //            break;
             //        case 1:
             //            //move up right
             //            Vector2f upR = new Vector2f(movementSpeed, -movementSpeed);
 
-            //            moveRand(upR, c, t);
+            //            moveTimes(upR, c, t+200);
             //            break;
             //        case 2:
             //            //move right
             //            Vector2f right = new Vector2f(movementSpeed, 0);
 
-            //            moveRand(right, c, t);
+            //            moveTimes(right, c, t+300);
             //            break;
             //        case 3:
             //            //move down right
             //            Vector2f downR = new Vector2f(movementSpeed, movementSpeed);
 
-            //            moveRand(downR, c, t);
+            //            moveTimes(downR, c, t+400);
             //            break;
             //        case 4:
             //            //move down
             //            Vector2f down = new Vector2f(0, movementSpeed);
 
-            //            moveRand(down, c, t);
+            //            moveTimes(down, c, t+500);
             //            break;
             //        case 5:
             //            //move down left
             //            Vector2f downL = new Vector2f(-movementSpeed, movementSpeed);
 
-            //            moveRand(downL, c, t);
+            //            moveTimes(downL, c, t+1000);
             //            break;
             //        case 6:
             //            //move left
             //            Vector2f left = new Vector2f(-movementSpeed, 0);
 
-            //            moveRand(left, c, t);
+            //            moveTimes(left, c, t-200);
             //            break;
             //        case 7:
             //            //move up left
             //            Vector2f upL = new Vector2f(-movementSpeed, -movementSpeed);
 
-            //            moveRand(upL, c, t);
+            //            moveTimes(upL, c, t);
             //            break;
             //        default:
             //            break;
@@ -97,9 +99,10 @@ namespace Soulmate.Classes
             //}
         }
 
-        private void moveRand(Vector2f direction, int count, int wTime)
+        private void moveTimes(Vector2f direction, int count, int wTime)
         {
-            int c = EnemyHandler.random.Next(count);
+            //warks but its odd
+            int c = count;
             Vector2f[] path = new Vector2f[c];
             for (int i = 0; i < c; i++)
             {
