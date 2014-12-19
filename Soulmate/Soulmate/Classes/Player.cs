@@ -16,6 +16,11 @@ namespace Soulmate.Classes
         Vector2f movement;
         float movementSpeed;
 
+        float life = 4;
+        float att = 1;
+        float def = 1;
+
+
         public Sprite getSprite()
         {
             return playerSprite;
