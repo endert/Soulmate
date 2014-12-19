@@ -24,6 +24,13 @@ namespace Soulmate.Classes
             bool walkable = true;
             Vector2f newPosition = new Vector2f(sprite.Position.X + vector.X, sprite.Position.Y + vector.Y);
 
+            //Map-Grenzen ;; muss auch abbrechen wenn die newPosition + Vector außerhalb liegt
+            //Entschulidgung für die Änderung, aber anders hat es ständig exceptions geworfen ;(
+            if (newPosition.X < 0 || newPosition.Y < 0 || newPosition.X >= map.GetLength(0) * objectSize || newPosition.Y >= map.GetLength(1) * objectSize 
+                || newPosition.X + vector.X >= map.GetLength(0) * objectSize|| newPosition.Y + vector.Y >= map.GetLength(1) * objectSize)
+            {
+                return false;
+            }
             //Kollision
             if (!(map[(int)(newPosition.X / objectSize), (int)(newPosition.Y / objectSize)].getWalkable()/*links oben*/
                 && map[(int)(newPosition.X / objectSize), (int)((newPosition.Y + sprite.Texture.Size.Y) / objectSize)].getWalkable()/*links unten*/
@@ -36,11 +43,9 @@ namespace Soulmate.Classes
                 && map[(int)((newPosition.X + sprite.Texture.Size.X / 2) / objectSize), (int)(newPosition.Y / objectSize)].getWalkable()/*oben mitte*/
                 && map[(int)((newPosition.X + sprite.Texture.Size.X / 2) / objectSize), (int)((newPosition.Y + sprite.Texture.Size.Y) / objectSize)].getWalkable()/*unten mitte*/
                 ))
-                walkable = false;
+                return false;
 
-            //Map-Grenzen
-            if (newPosition.X < 0 || newPosition.Y < 0 || newPosition.X > map.GetLength(0) * objectSize || newPosition.Y > map.GetLength(1) * objectSize)
-                walkable = false;
+           
 
             return walkable;
         }

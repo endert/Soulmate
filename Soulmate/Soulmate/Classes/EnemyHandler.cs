@@ -12,19 +12,21 @@ namespace Soulmate.Classes
     class EnemyHandler
     {
         public List<AbstractEnemy> enemies = new List<AbstractEnemy>();
-        Player player;
+        public static Player player;
         int lvlCount;
+        public static Random random = new Random();
+        public static Map map;
 
-        public EnemyHandler(Player p, int _lvlCount)
+        public EnemyHandler(Player p, int _lvlCount, Map _map)
         {
-            Random random = new Random();
             player = p;
             lvlCount = _lvlCount;
+            map = _map;
 
             switch (lvlCount)
             {
                 case 1:
-                    for (int i = 0; i < 5; i++)
+                    for (int i = 0; i < 2; i++)
                     {
                         float rX = 130 + random.Next(1000);
                         float rY = 50 + random.Next(1000);

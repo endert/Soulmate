@@ -45,6 +45,7 @@ namespace Soulmate.Classes
 
         public void update(GameTime time)
         {
+
             movementSpeed = 10f /* (float)time.EllapsedTime.Milliseconds*/;
             Console.Clear();
             Console.WriteLine(movementSpeed);
@@ -52,6 +53,7 @@ namespace Soulmate.Classes
             movement = getKeyPressed(movementSpeed);
             move(movement);
         }
+
 
         public Vector2f getKeyPressed(float movementSpeed)
         {

@@ -5,11 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Soulmate.Classes
 {
     public abstract class AbstractEnemy
     {
+        protected Stopwatch watch = new Stopwatch();
         protected Sprite enemySprite;
         protected int hp;
         protected int mp;
@@ -17,6 +19,9 @@ namespace Soulmate.Classes
         protected float attackRange;
         protected float aggroRange;
         protected float movementSpeed;
+        protected float _movementSpeed;
+        protected bool waiting = false;
+        protected int isWaitingFor;
 
         //getter
         public Sprite getEnemySprite()
@@ -53,18 +58,59 @@ namespace Soulmate.Classes
         {
             for (int i = 0; i < path.Length; i++)
             {
-                 enemySprite.Position = new Vector2f(enemySprite.Position.X + path[i].X,enemySprite.Position.Y + path[i].Y);
+                move(path[i]);
             }
         }
+
+        public void move(Vector2f move)
+        {
+            enemySprite.Position = new Vector2f(enemySprite.Position.X + move.X, enemySprite.Position.Y + move.Y);
+        }
+
+        //Its an idea but it doesnt work just like I want it to
+        //public void move(Vector2f move)
+        //{
+        //    int moveCountX = (int)(move.X / movementSpeed);
+        //    int moveCountY = (int)(move.Y / movementSpeed);
+
+        //    //normaly I write comments in english but im tiered and its easier to explain in german:
+        //    //entschuldigung für den ()?():() aber es wird sonst viiiieeeeel umständlicher, es über
+        //    //prüft lediglich ob man öfters nach X gehen muss oder nach Y, es wählt dann das größere
+        //    for (int i = 0; i < ((moveCountX >= moveCountY) ? (moveCountX) : (moveCountY)); i++)
+        //    {
+        //        //hier ist es einfach das wenn noch in x/y richtung gegangen werden muss wird dies getan, ansonsten wird um 0 erhöht in die jeweilige richtung
+        //        enemySprite.Position = new Vector2f(enemySprite.Position.X + ((i < moveCountX) ? (movementSpeed) : (0)), enemySprite.Position.Y + ((i < moveCountY) ? (movementSpeed) : (0)));
+        //    }
+
+        //}
 
         public void draw(RenderWindow window)
         {
             window.Draw(enemySprite);
         }
 
+        public void wait(int t)
+        {
+            waiting = true;
+            isWaitingFor = t;
+            watch.Start();
+            isWaiting();
+        }
+
+        public bool isWaiting()
+        {
+            if (watch.ElapsedMilliseconds>=isWaitingFor)
+            {
+                waiting = false;
+                watch.Reset();
+                watch.Stop();
+            }
+            return waiting;
+        }
+
         public void update(GameTime gameTime, Vector2f midP)
         {
-            movementSpeed *= gameTime.EllapsedTime.Milliseconds;
+            movementSpeed = _movementSpeed * gameTime.EllapsedTime.Milliseconds;
 
             if (sensePlayer(midP))
             {
