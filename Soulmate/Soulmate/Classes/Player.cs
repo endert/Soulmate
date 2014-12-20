@@ -16,7 +16,10 @@ namespace Soulmate.Classes
         Vector2f movement;
         float movementSpeed;
 
-        float life = 4;
+        float startLife = 4;
+        Sprite lifeSprite;
+        Texture lifeTexture = new Texture("Pictures/LifeFull.png");
+
         float att = 1;
         float def = 1;
 
@@ -36,6 +39,11 @@ namespace Soulmate.Classes
             return playerSprite.Texture.Size.Y;
         }
 
+        public float getLife()
+        {
+            return startLife;
+        }
+
         public Player(Vector2f spawnPosition, Map levelMap)
         {
             playerSprite = new Sprite(playerTexture);
@@ -45,13 +53,17 @@ namespace Soulmate.Classes
 
         public void update(GameTime time)
         {
+            movementSpeed = 0.2f * (float)time.EllapsedTime.TotalMilliseconds;
 
-            movementSpeed = 10f /* (float)time.EllapsedTime.Milliseconds*/;
-            Console.Clear();
-            Console.WriteLine(movementSpeed);
+            //Console.Clear();
+            //Console.WriteLine(movementSpeed);
+            //Console.WriteLine((float)time.EllapsedTime.TotalMilliseconds);
+
             movement = new Vector2f(0, 0);
             movement = getKeyPressed(movementSpeed);
             move(movement);
+
+            life(startLife);
         }
 
 
@@ -79,15 +91,26 @@ namespace Soulmate.Classes
          if (map.getWalkable(playerSprite, new Vector2f(move.X, move.Y)))
                 playerSprite.Position = new Vector2f(playerSprite.Position.X + move.X, playerSprite.Position.Y + move.Y);
         }
-
-        public Vector2f getMovemnet()
+        
+        public void life(float currentLife)
         {
-            return movement;
+            lifeSprite = new Sprite(lifeTexture);
+            lifeSprite.Position = new Vector2f(10, (720 - lifeTexture.Size.Y));
+            
+            if(/*Collision with Enemy true*/false)
+                currentLife -= 0.25f;
+
+            if (currentLife == this.startLife)
+                lifeSprite = new Sprite(lifeTexture);
         }
 
         public void draw(RenderWindow window)
         {
+            lifeSprite.Position = new Vector2f(((getSprite().Position.X + (getWeidth() / 2)) - 620), (getSprite().Position.Y + (getHeight() / 2)) + 320);
             window.Draw(playerSprite);
+            window.Draw(lifeSprite);
+            Console.Clear();
+            Console.WriteLine(lifeSprite.Position);
         }
     }
 }
