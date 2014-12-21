@@ -10,12 +10,34 @@ using System.Drawing;
 namespace Soulmate.Classes
 {
     class EnemyHandler
-    {
-        public List<AbstractEnemy> enemies = new List<AbstractEnemy>();
-        public static Player player;
+    {   
         int lvlCount;
-        public static Random random = new Random();
-        public static Map map;
+        //static so other classes can access this Variables without constructing an object
+        private static List<AbstractEnemy> enemies = new List<AbstractEnemy>();
+        private static Player player;
+        private static Random random = new Random();
+        private static Map map;
+
+        public static List<AbstractEnemy> getEnemies()
+        {
+            return enemies;
+        }
+
+        public static Player getPlayer()
+        {
+            return player;
+        }
+
+        public static Random getRandom()
+        {
+            return random;
+        }
+
+        public static Map getMap()
+        {
+            return map;
+        }
+
 
         public EnemyHandler(Player p, int _lvlCount, Map _map)
         {
@@ -28,12 +50,12 @@ namespace Soulmate.Classes
                 case 1:
                     for (int i = 0; i < 10; i++)
                     {
-                        float rX = 130 + random.Next(1000);
-                        float rY = 50 + random.Next(1000);
+                        float rX = 100 + random.Next(1000);
+                        float rY = 100 + random.Next(1000);
                         Vector2f spawnPos = new Vector2f(rX, rY);
 
                         TestEnemy test = new TestEnemy(spawnPos, 1);
-                        if (test.distancePlayer(PosPlayer()) > 100)
+                        if (test.distancePlayer() > 100 && map.getWalkable(test.getEnemySprite(), spawnPos))
                             enemies.Add(test);
                         else
                             i--;
@@ -42,6 +64,16 @@ namespace Soulmate.Classes
                 default:
                     break;
             }
+        }
+
+        public static Vector2f[] getHitBoxPlayer()
+        {
+            Vector2f[] hitBox = new Vector2f[2];
+
+            hitBox[0] = new Vector2f(player.getSprite().Position.X, player.getSprite().Position.Y); // upponLeft
+            hitBox[1] = new Vector2f(player.getSprite().Position.X + player.getWeidth(), player.getSprite().Position.Y + player.getHeight()); //bottomRight
+
+            return hitBox;
         }
 
         public static Vector2f PosPlayer()
@@ -61,7 +93,7 @@ namespace Soulmate.Classes
         {
             for (int i = 0; i < enemies.Count; i++)
             {
-                enemies[i].update(gameTime,PosPlayer());
+                enemies[i].update(gameTime);
             }
         }
     }

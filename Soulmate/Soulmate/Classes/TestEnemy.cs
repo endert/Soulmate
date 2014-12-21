@@ -19,7 +19,7 @@ namespace Soulmate.Classes
             lvl = _lvl;
             hp = 1 + 1 * (lvl - 1);
             mp = 1 + 1 * (lvl - 1);
-            attackRange = 50f;
+            attackRange = 75f;
             aggroRange = 300f;
             movementSpeed = 1f;
         }
@@ -27,18 +27,19 @@ namespace Soulmate.Classes
         public override void attack()
         {
             Console.WriteLine("ATTACK THE TITAN!!");
+            //EnemyHandler.player.setHealth(EnemyHandler.player.getHealth()-attackDamage);
         }
 
         public override void react()
         {
-            if (distancePlayer(EnemyHandler.PosPlayer())<= attackRange)
+            if (distancePlayer()<= attackRange)
             {
                 attack();
             }
 
             //  player direction(to the mid of the sprite)
-            Vector2f playerDirection = new Vector2f((EnemyHandler.player.getSprite().Position.X+(EnemyHandler.player.getWeidth()/2)) - getPosition().X, 
-                (EnemyHandler.player.getSprite().Position.Y+(EnemyHandler.player.getHeight()/2)) - getPosition().Y);
+            Vector2f playerDirection = new Vector2f((EnemyHandler.getPlayer().getSprite().Position.X+(EnemyHandler.getPlayer().getWeidth()/2)) - getPosition().X, 
+                (EnemyHandler.getPlayer().getSprite().Position.Y+(EnemyHandler.getPlayer().getHeight()/2)) - getPosition().Y);
 
             move(playerDirection);
         }
