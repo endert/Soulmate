@@ -26,7 +26,10 @@ namespace Soulmate.Classes
 
         public override void attack()
         {
-            Console.WriteLine("ATTACK THE TITAN!!");
+            if (touchedPlayer())
+            {
+                Console.WriteLine("ATTACK THE TITAN!!");
+            }
             //EnemyHandler.player.setHealth(EnemyHandler.player.getHealth()-attackDamage);
         }
 
@@ -41,7 +44,10 @@ namespace Soulmate.Classes
             Vector2f playerDirection = new Vector2f((EnemyHandler.getPlayer().getSprite().Position.X+(EnemyHandler.getPlayer().getWeidth()/2)) - getPosition().X, 
                 (EnemyHandler.getPlayer().getSprite().Position.Y+(EnemyHandler.getPlayer().getHeight()/2)) - getPosition().Y);
 
-            move(playerDirection);
+            if (!touchedPlayer())
+                move(playerDirection);
+            else
+                move(new Vector2f(0, 0));
         }
 
         public override void notReact()

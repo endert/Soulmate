@@ -27,6 +27,9 @@ namespace Soulmate.Classes
         protected int movingFor = 0;    //moving for millisek in one direction
         protected int randomMovingDirection;
 
+        Vector2f unionUpperLeft;
+        Vector2f unionBottomRight;
+
         //Getter**************************************************************************************
         public Sprite getEnemySprite()
         {
@@ -99,6 +102,16 @@ namespace Soulmate.Classes
             window.Draw(enemySprite);
         }
 
+        public bool touchedPlayer()
+        {
+            union();
+            if (((unionBottomRight.X - unionUpperLeft.X) <= ((EnemyHandler.getHitBoxPlayer()[1].X - EnemyHandler.getHitBoxPlayer()[0].X) + (getHitBox()[1].X - getHitBox()[0].X))) &&
+                ((unionBottomRight.Y - unionUpperLeft.Y) <= ((EnemyHandler.getHitBoxPlayer()[1].Y - EnemyHandler.getHitBoxPlayer()[0].Y) + (getHitBox()[1].Y - getHitBox()[0].Y))))
+                return true;
+            else
+                return false;
+        }
+
         public void move(Vector2f direction)    //get a direction, and move to it with the enemys' movementspeed 
         {
             Vector2f move = new Vector2f(0, 0);
@@ -127,6 +140,16 @@ namespace Soulmate.Classes
             
             if (EnemyHandler.getMap().getWalkable(enemySprite, move))    // only move if it's walkable
                 enemySprite.Position = new Vector2f(enemySprite.Position.X + move.X, enemySprite.Position.Y + move.Y);
+
+        }
+
+        private void union()
+        {
+            unionUpperLeft = new Vector2f(((EnemyHandler.getHitBoxPlayer()[0].X <= getHitBox()[0].X) ? (EnemyHandler.getHitBoxPlayer()[0].X) : (getHitBox()[0].X)), 
+                ((EnemyHandler.getHitBoxPlayer()[0].Y <= getHitBox()[0].Y) ? (EnemyHandler.getHitBoxPlayer()[0].Y) : (getHitBox()[0].Y)));
+
+            unionBottomRight = new Vector2f(((EnemyHandler.getHitBoxPlayer()[1].X >= getHitBox()[1].X) ? (EnemyHandler.getHitBoxPlayer()[1].X) : (getHitBox()[1].X)),
+                ((EnemyHandler.getHitBoxPlayer()[1].Y >= getHitBox()[1].Y) ? (EnemyHandler.getHitBoxPlayer()[1].Y) : (getHitBox()[1].Y)));
 
         }
 
