@@ -26,12 +26,17 @@ namespace Soulmate.Classes
             switch (lvlCount)
             {
                 case 1:
-                    for (int i = 0; i < 2; i++)
+                    for (int i = 0; i < 10; i++)
                     {
                         float rX = 130 + random.Next(1000);
                         float rY = 50 + random.Next(1000);
+                        Vector2f spawnPos = new Vector2f(rX, rY);
 
-                        enemies.Add(new TestEnemy(new Vector2f(rX, rY), 1));    
+                        TestEnemy test = new TestEnemy(spawnPos, 1);
+                        if (test.distancePlayer(PosPlayer()) > 100)
+                            enemies.Add(test);
+                        else
+                            i--;
                     }
                     break;
                 default:
@@ -39,7 +44,7 @@ namespace Soulmate.Classes
             }
         }
 
-        public Vector2f PosPlayer()
+        public static Vector2f PosPlayer()
         {
             return new Vector2f(player.getSprite().Position.X + (player.getWeidth() / 2), player.getSprite().Position.Y + (player.getHeight() / 2));
         }
