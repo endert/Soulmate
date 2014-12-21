@@ -68,6 +68,46 @@ namespace Soulmate.Classes
         {
             return movementSpeed;
         }
+
+        public float[,] getHitBox()     
+        {   //return an 2dimensional array which has the Coordianates of every corner in it [i,{0,1}]
+            //i stands for wich corner (0 == upLeft; 1==upRight; 2==bottomLeft; 3==bottomRight) the 2nd dimension is for x/y
+            // 0 for x 1 for y
+            // ---> [2,0] is the x coordinate of the BottomLeft Corner
+        
+            float[,] hitBox = new float[4, 2];
+            int count = 0;
+            Vector2f enemyHitBox = new Vector2f(enemySprite.Position.X, enemySprite.Position.Y);
+
+            for (int i = 0; i < hitBox.GetLength(0); i++)
+            {
+                hitBox[i, 0] = enemyHitBox.X;
+                hitBox[i, 1] = enemyHitBox.Y;
+                switch (count)
+                {
+                    case 0:
+                        enemyHitBox.X = enemySprite.Position.X + enemySprite.Texture.Size.X;
+                        enemyHitBox.Y = enemySprite.Position.Y;
+                        count++;
+                        break;
+                    case 1:
+                        enemyHitBox.X = enemySprite.Position.X;
+                        enemyHitBox.Y = enemySprite.Position.Y + enemySprite.Texture.Size.Y;
+                        count++;
+                        break;
+                    case 2:
+                        enemyHitBox.X = enemySprite.Position.X + enemySprite.Texture.Size.X;
+                        enemyHitBox.Y = enemySprite.Position.Y + enemySprite.Texture.Size.Y;
+                        count++;
+                        break;
+                    default:
+                        count = 0;
+                        break;
+                }
+            } 
+            
+            return hitBox;
+        }
         //********************************************************************************************
 
         //Methods*************************************************************************************
@@ -142,54 +182,54 @@ namespace Soulmate.Classes
                     if (EnemyHandler.map.getWalkable(enemySprite, up))
                         move(up);
                     watch.Start();
-                    movingFor = 1000;
+                    movingFor = (int) (1000*EnemyHandler.random.NextDouble()) + 500;
                     break;
                 case 1:
                     if (EnemyHandler.map.getWalkable(enemySprite, upRight))
                         move(upRight);
                     watch.Start();
-                    movingFor = 1000;
+                    movingFor = (int)(1000 * EnemyHandler.random.NextDouble()) + 500;
                     break;
                 case 2:
                     if (EnemyHandler.map.getWalkable(enemySprite, right))
                         move(right);
                     watch.Start();
-                    movingFor = 1000;
+                    movingFor = (int)(1000 * EnemyHandler.random.NextDouble()) + 500;
                     break;
                 case 3:
                     if (EnemyHandler.map.getWalkable(enemySprite, downRight))
                         move(downRight);
                     watch.Start();
-                    movingFor = 1000;
+                    movingFor = (int)(1000 * EnemyHandler.random.NextDouble()) + 500;
                     break;
                 case 4:
                     if (EnemyHandler.map.getWalkable(enemySprite, down))
                         move(down);
                     watch.Start();
-                    movingFor = 1000;
+                    movingFor = (int)(1000 * EnemyHandler.random.NextDouble()) + 500;
                     break;
                 case 5:
                     if (EnemyHandler.map.getWalkable(enemySprite, downLeft))
                         move(downLeft);
                     watch.Start();
-                    movingFor = 1000;
+                    movingFor = (int)(1000 * EnemyHandler.random.NextDouble()) + 500;
                     break;
                 case 6:
                     if (EnemyHandler.map.getWalkable(enemySprite, left))
                         move(left);
                     watch.Start();
-                    movingFor = 1000;
+                    movingFor = (int)(1000 * EnemyHandler.random.NextDouble()) + 500;
                     break;
                 case 7:
                     if (EnemyHandler.map.getWalkable(enemySprite, upLeft))
                         move(upLeft);
                     watch.Start();
-                    movingFor = 1000;
+                    movingFor = (int)(1000 * EnemyHandler.random.NextDouble()) + 500;
                     break;
                 default:    //stand still for one sek
                     move(new Vector2f(0, 0));
                     watch.Start();
-                    movingFor = 1000;
+                    movingFor = (int)(1000 * EnemyHandler.random.NextDouble()) + 500;
                     break;
             }
         }
