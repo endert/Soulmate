@@ -15,6 +15,8 @@ namespace Soulmate.Classes
         protected Sprite enemySprite;
         protected Random random = new Random();
 
+        protected bool hitPlayer = false;
+
         protected int lvl;
         protected float hp;
         protected float mp;
@@ -38,6 +40,11 @@ namespace Soulmate.Classes
         public Vector2f getPosition()
         {
             return new Vector2f(enemySprite.Position.X+(enemySprite.Texture.Size.X/2), enemySprite.Position.Y+(enemySprite.Texture.Size.Y/2));
+        }
+
+        public bool getTochedPlayer()
+        {
+            return hitPlayer;
         }
 
         public int getLvl()
@@ -107,9 +114,15 @@ namespace Soulmate.Classes
             union();
             if (((unionBottomRight.X - unionUpperLeft.X) <= ((EnemyHandler.getHitBoxPlayer()[1].X - EnemyHandler.getHitBoxPlayer()[0].X) + (getHitBox()[1].X - getHitBox()[0].X))) &&
                 ((unionBottomRight.Y - unionUpperLeft.Y) <= ((EnemyHandler.getHitBoxPlayer()[1].Y - EnemyHandler.getHitBoxPlayer()[0].Y) + (getHitBox()[1].Y - getHitBox()[0].Y))))
-                return true;
+            {
+                hitPlayer = true;
+                return hitPlayer;
+            }
             else
-                return false;
+            {
+                hitPlayer = false;
+                return hitPlayer;
+            }
         }
 
         public void move(Vector2f direction)    //get a direction, and move to it with the enemys' movementspeed 
