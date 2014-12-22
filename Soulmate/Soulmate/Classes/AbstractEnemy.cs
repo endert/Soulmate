@@ -54,35 +54,43 @@ namespace Soulmate.Classes
             return movementSpeed;
         }
 
-        public void move(Vector2f[] path)
-        {
-            for (int i = 0; i < path.Length; i++)
-            {
-                move(path[i]);
-            }
-        }
+        //public void move(List<Vector2f> path)
+        //{
+        //    for (int i = 0; i < path.Count; i++)
+        //    {
+        //        move(path[i]);
+        //    }
+        //}
 
-        public void move(Vector2f move)
+        public void move(Vector2f direction)    //get a direction, and move to it with the enemys' movementspeed 
         {
+          
+            Vector2f move = new Vector2f(0, 0);
+
+            if (direction.X > 0)
+                move.X += movementSpeed;
+            else
+            {
+                if (direction.X < 0)
+                    move.X -= movementSpeed;
+                else
+                    move.X += 0;
+            }
+            if (direction.Y > 0)
+                move.Y += movementSpeed;
+            else
+            {
+                if (direction.Y < 0)
+                    move.Y -= movementSpeed;
+                else
+                    move.Y += 0;
+            }
+            // this would do the same:
+
+            // Vector2f move = new Vector2f(((direction.X > 0) ? (movementSpeed) : ((direction.X < 0) ? (-movementSpeed) : (0))), ((direction.Y > 0) ? (movementSpeed) : ((direction.Y < 0) ? (-movementSpeed) : (0))));
+
             enemySprite.Position = new Vector2f(enemySprite.Position.X + move.X, enemySprite.Position.Y + move.Y);
         }
-
-        //Its an idea but it doesnt work just like I want it to
-        //public void move(Vector2f move)
-        //{
-        //    int moveCountX = (int)(move.X / movementSpeed);
-        //    int moveCountY = (int)(move.Y / movementSpeed);
-
-        //    //normaly I write comments in english but im tiered and its easier to explain in german:
-        //    //entschuldigung für den ()?():() aber es wird sonst viiiieeeeel umständlicher, es über
-        //    //prüft lediglich ob man öfters nach X gehen muss oder nach Y, es wählt dann das größere
-        //    for (int i = 0; i < ((moveCountX >= moveCountY) ? (moveCountX) : (moveCountY)); i++)
-        //    {
-        //        //hier ist es einfach das wenn noch in x/y richtung gegangen werden muss wird dies getan, ansonsten wird um 0 erhöht in die jeweilige richtung
-        //        enemySprite.Position = new Vector2f(enemySprite.Position.X + ((i < moveCountX) ? (movementSpeed) : (0)), enemySprite.Position.Y + ((i < moveCountY) ? (movementSpeed) : (0)));
-        //    }
-
-        //}
 
         public void draw(RenderWindow window)
         {
@@ -110,7 +118,7 @@ namespace Soulmate.Classes
 
         public void update(GameTime gameTime, Vector2f midP)
         {
-            movementSpeed = _movementSpeed * gameTime.EllapsedTime.Milliseconds;
+            movementSpeed = _movementSpeed;
 
             if (sensePlayer(midP))
             {

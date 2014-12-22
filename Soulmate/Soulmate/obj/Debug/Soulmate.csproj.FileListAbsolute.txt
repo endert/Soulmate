@@ -53,7 +53,6 @@ C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Player.png
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Map\Sand.png
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\SpielerSeiteRechts.png
-C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\SpielerSeiteRechtsKompremiert.png
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Map\Wald.png
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\MainMenu\StartNotSelected.png
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\MainMenu\StartSelected.png
