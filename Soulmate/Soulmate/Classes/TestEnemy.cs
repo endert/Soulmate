@@ -17,47 +17,42 @@ namespace Soulmate.Classes
             enemySprite = new Sprite(enemyTexture);
             enemySprite.Position = spawnPos;
             lvl = _lvl;
-            hp = 100 + 10 * (lvl - 1);
-            mp = 100 + 10 * (lvl - 1);
-            attackRange = 10f;
-            aggroRange = 560f;
-            _movementSpeed = 1f;
+            hp = 1 + 1 * (lvl - 1);
+            mp = 1 + 1 * (lvl - 1);
+            attackRange = 75f;
+            aggroRange = 300f;
+            movementSpeed = 1f;
         }
 
         public override void attack()
         {
-
+            if (touchedPlayer())
+            {
+                Console.WriteLine("ATTACK THE TITAN!!");
+            }
+            //EnemyHandler.player.setHealth(EnemyHandler.player.getHealth()-attackDamage);
         }
 
         public override void react()
         {
-            if (EnemyHandler.map.getWalkable(enemySprite, new Vector2f(1, 1)))
+            if (distancePlayer()<= attackRange)
             {
-                move(new Vector2f(10, 10));
+                attack();
             }
 
-            //notReact();
+            //  player direction(to the mid of the sprite)
+            Vector2f playerDirection = new Vector2f((EnemyHandler.getPlayer().getSprite().Position.X+(EnemyHandler.getPlayer().getWeidth()/2)) - getPosition().X, 
+                (EnemyHandler.getPlayer().getSprite().Position.Y+(EnemyHandler.getPlayer().getHeight()/2)) - getPosition().Y);
 
+            if (!touchedPlayer())
+                move(playerDirection);
+            else
+                move(new Vector2f(0, 0));
         }
 
         public override void notReact()
         {
-            //List<Vector2f> path = new List<Vector2f>();
-
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    path.Add(new Vector2f(1, 0));
-            //}
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    path.Add(new Vector2f(0, 1));
-            //}
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    path.Add(new Vector2f(-1, -1));
-            //}
-
-            //move(path);
+            moveRandom();
         }
     }
 }
