@@ -81,6 +81,18 @@ namespace Soulmate.Classes
             return new Vector2f(player.getSprite().Position.X + (player.getWeidth() / 2), player.getSprite().Position.Y + (player.getHeight() / 2));
         }
 
+        public static bool getHitPlayer()
+        {
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                if (enemies[i].getTochedPlayer())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public void draw(RenderWindow window)
         {
             for (int i = 0; i < enemies.Count; i++)
