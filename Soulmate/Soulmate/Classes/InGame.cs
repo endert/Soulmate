@@ -41,6 +41,7 @@ namespace Soulmate.Classes
             backGroundTex = new Texture("Pictures/Hintergrund.png");
 
             map = new Map(new Bitmap("Pictures/Map/Map2.bmp"));
+            
             player = new Player(new Vector2f(32 * 5, 32 * 10 - 219), map);
 
             enemies = new EnemyHandler(player, 1, map);
@@ -68,7 +69,7 @@ namespace Soulmate.Classes
                 isKlickedInventory = true;
             }
 
-            if(inventoryOpen==true)
+            if (inventoryOpen==true)
             {
 
             }

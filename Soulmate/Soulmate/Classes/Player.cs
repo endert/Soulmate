@@ -23,8 +23,7 @@ namespace Soulmate.Classes
         float att = 1;
         float def = 1;
 
-        TestEnemy testEnemy;
-
+        
 
         public Sprite getSprite()
         {
@@ -90,12 +89,10 @@ namespace Soulmate.Classes
 
         public void move(Vector2f move)
         {
-            //Console.WriteLine(testEnemy.touchedPlayer());
-            //defekt
-            if (map.getWalkable(playerSprite, new Vector2f(move.X, move.Y)) /*&& !abstractEnemy.touchedPlayer()*/)
+          if (map.getWalkable(playerSprite, new Vector2f(move.X, move.Y)))
                 playerSprite.Position = new Vector2f(playerSprite.Position.X + move.X, playerSprite.Position.Y + move.Y);
         }
-        
+
         public void life(float currentLife)
         {
             lifeSprite = new Sprite(lifeTexture);

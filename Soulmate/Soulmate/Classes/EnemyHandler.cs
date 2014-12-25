@@ -9,7 +9,7 @@ using System.Drawing;
 
 namespace Soulmate.Classes
 {
-    class EnemyHandler
+    class EnemyHandler 
     {   
         int lvlCount;
         //static so other classes can access this Variables without constructing an object

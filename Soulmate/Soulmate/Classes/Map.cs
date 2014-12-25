@@ -13,6 +13,7 @@ namespace Soulmate.Classes
     {
         Blocks[,] map;
         Texture blockTex;
+        //List<EnemyHandler> EnemyList;
 
         public int objectSize = 32;
         
@@ -45,7 +46,13 @@ namespace Soulmate.Classes
                 ))
                 return false;
 
-           
+            //foreach (EnemyHandler h in enemyList)
+            //{
+            //    bool enemyCollision = h.getWalkable(sprite, vector);
+
+            //    if (!enemyCollision)
+            //        walkable = false;
+            //}
 
             return walkable;
         }
