@@ -14,8 +14,10 @@ namespace Soulmate.Classes
         protected Stopwatch watch = new Stopwatch();    //for animations and the random movement
         protected Sprite enemySprite;
         protected Random random = new Random();
+        protected List<Vector2f> hitFromDirections = new List<Vector2f>();
 
         protected bool hitPlayer = false;
+        protected bool isAlive;
 
         protected int lvl;
         protected float hp;
@@ -29,8 +31,11 @@ namespace Soulmate.Classes
         protected int movingFor = 0;    //moving for millisek in one direction
         protected int randomMovingDirection;
 
-        Vector2f unionUpperLeft;
-        Vector2f unionBottomRight;
+        protected HitBox hitBox;
+
+        protected int index;
+
+        private bool moveAwayFromEnemy = false;
 
         //Getter**************************************************************************************
         public Sprite getEnemySprite()
@@ -40,6 +45,11 @@ namespace Soulmate.Classes
         public Vector2f getPosition()
         {
             return new Vector2f(enemySprite.Position.X+(enemySprite.Texture.Size.X/2), enemySprite.Position.Y+(enemySprite.Texture.Size.Y/2));
+        }
+
+        public bool getIsAlive()
+        {
+            return isAlive;
         }
 
         public bool getTochedPlayer()
@@ -80,13 +90,8 @@ namespace Soulmate.Classes
             return movementSpeed;
         }
 
-        public Vector2f[] getHitBox()     
+        public HitBox getHitBox()
         {
-            Vector2f[] hitBox = new Vector2f[2];
-            //more isn't necessary
-            hitBox[0] = new Vector2f(enemySprite.Position.X, enemySprite.Position.Y); //upponLeft
-            hitBox[1] = new Vector2f(enemySprite.Position.X + enemySprite.Texture.Size.X, enemySprite.Position.Y + enemySprite.Texture.Size.Y);//bottomRight
-
             return hitBox;
         }
         //********************************************************************************************
@@ -94,14 +99,19 @@ namespace Soulmate.Classes
         //Methods*************************************************************************************
         public void update(GameTime gameTime)
         {
-            if (sensePlayer())  //if a player is sensed (is in aggroRange) react else not ;)
+            if (isAlive)
             {
-                react();
+                hitBox.setPosition(enemySprite.Position);
+                if (sensePlayer())  //if a player is sensed (is in aggroRange) react else not ;)
+                {
+                    react();
+                }
+                else
+                {
+                    notReact();
+                }
             }
-            else
-            {
-                notReact();
-            }
+            hitFromDirections.Clear();
         }
 
         public void draw(RenderWindow window)
@@ -111,9 +121,7 @@ namespace Soulmate.Classes
 
         public bool touchedPlayer()
         {
-            union();
-            if (((unionBottomRight.X - unionUpperLeft.X) <= ((EnemyHandler.getHitBoxPlayer()[1].X - EnemyHandler.getHitBoxPlayer()[0].X) + (getHitBox()[1].X - getHitBox()[0].X))) &&
-                ((unionBottomRight.Y - unionUpperLeft.Y) <= ((EnemyHandler.getHitBoxPlayer()[1].Y - EnemyHandler.getHitBoxPlayer()[0].Y) + (getHitBox()[1].Y - getHitBox()[0].Y))))
+            if (hitBox.hit(EnemyHandler.getHitBoxPlayer()))
             {
                 hitPlayer = true;
                 return hitPlayer;
@@ -125,45 +133,83 @@ namespace Soulmate.Classes
             }
         }
 
-        public void move(Vector2f direction)    //get a direction, and move to it with the enemys' movementspeed 
+        public void move(Vector2f direction)    //get a direction, and move to it with the enemys' movementspeed only left,right,up,down and diagonal don't wanna implements sin/cos just now
         {
-            Vector2f move = new Vector2f(0, 0);
+            if (hitAnotherEnemy() && !moveAwayFromEnemy)
+            {
+                moveAwayFromEnemy = true;
 
-            if (direction.X > 0)
-                move.X += movementSpeed;
+                for (int i = 0; i < hitFromDirections.Count; i++)
+                {
+                    if (Math.Abs((direction.X>=hitFromDirections[i].X)?(direction.X):(hitFromDirections[i].X))<Math.Abs(direction.X-hitFromDirections[i].X))//if they have the same sign otherwise it doesn't matter
+                    {
+                        direction.X = -hitFromDirections[i].X;
+                    }
+
+                    if (Math.Abs((direction.Y>=hitFromDirections[i].Y)?(direction.Y):(hitFromDirections[i].Y))<Math.Abs(direction.Y-hitFromDirections[i].Y))
+                    {
+                        direction.Y = -hitFromDirections[i].Y;
+                    }
+                }
+                move(direction);
+            }
             else
             {
-                if (direction.X < 0)
-                    move.X -= movementSpeed;
-                else
-                    move.X += 0;
-            }
-            if (direction.Y > 0)
-                move.Y += movementSpeed;
-            else
-            {
-                if (direction.Y < 0)
-                    move.Y -= movementSpeed;
-                else
-                    move.Y += 0;
-            }
-            // this would do the same:
+                moveAwayFromEnemy = false;
+                Vector2f move = new Vector2f(0, 0);
 
-            // Vector2f move = new Vector2f(((direction.X > 0) ? (movementSpeed) : ((direction.X < 0) ? (-movementSpeed) : (0))), ((direction.Y > 0) ? (movementSpeed) : ((direction.Y < 0) ? (-movementSpeed) : (0))));
-            
-            if (EnemyHandler.getMap().getWalkable(enemySprite, move))    // only move if it's walkable
-                enemySprite.Position = new Vector2f(enemySprite.Position.X + move.X, enemySprite.Position.Y + move.Y);
+                if (direction.X > 0)
+                    move.X += movementSpeed;
+                else
+                {
+                    if (direction.X < 0)
+                        move.X -= movementSpeed;
+                    else
+                        move.X += 0;
+                }
+                if (direction.Y > 0)
+                    move.Y += movementSpeed;
+                else
+                {
+                    if (direction.Y < 0)
+                        move.Y -= movementSpeed;
+                    else
+                        move.Y += 0;
+                }
+                // this would do the same:
 
+                // Vector2f move = new Vector2f(((direction.X > 0) ? (movementSpeed) : ((direction.X < 0) ? (-movementSpeed) : (0))), ((direction.Y > 0) ? (movementSpeed) : ((direction.Y < 0) ? (-movementSpeed) : (0))));
+
+                if (EnemyHandler.getMap().getWalkable(enemySprite, move))    // only move if it's walkable
+                    enemySprite.Position = new Vector2f(enemySprite.Position.X + move.X, enemySprite.Position.Y + move.Y);
+
+            }
         }
 
-        private void union()
+        private bool hitAnotherEnemy()
         {
-            unionUpperLeft = new Vector2f(((EnemyHandler.getHitBoxPlayer()[0].X <= getHitBox()[0].X) ? (EnemyHandler.getHitBoxPlayer()[0].X) : (getHitBox()[0].X)), 
-                ((EnemyHandler.getHitBoxPlayer()[0].Y <= getHitBox()[0].Y) ? (EnemyHandler.getHitBoxPlayer()[0].Y) : (getHitBox()[0].Y)));
-
-            unionBottomRight = new Vector2f(((EnemyHandler.getHitBoxPlayer()[1].X >= getHitBox()[1].X) ? (EnemyHandler.getHitBoxPlayer()[1].X) : (getHitBox()[1].X)),
-                ((EnemyHandler.getHitBoxPlayer()[1].Y >= getHitBox()[1].Y) ? (EnemyHandler.getHitBoxPlayer()[1].Y) : (getHitBox()[1].Y)));
-
+            for (int i = 0; i < EnemyHandler.getEnemies().Count; i++)
+            {
+                if ((i!=index)&&(hitBox.hit(EnemyHandler.getEnemies()[i].getHitBox())))
+                {
+                    bool notFound = true;
+                    for (int j = 0; j < hitFromDirections.Count; j++)
+                    {
+                        if (hitFromDirections[j].Equals(hitBox.hitFrom(EnemyHandler.getEnemies()[i].getHitBox())))
+                        {
+                            notFound = false;
+                        }
+                    }
+                    if (notFound)
+                        hitFromDirections.Add(hitBox.hitFrom(EnemyHandler.getEnemies()[i].getHitBox()));
+                }
+            }
+            if (hitFromDirections.Count > 0)
+            {
+                return true;
+            }
+            else
+                return false;
         }
 
         public void moveRandom()
@@ -241,25 +287,16 @@ namespace Soulmate.Classes
             }
         }
 
-        public float distancePlayer(Vector2f midP)  //evaluating the distance between the mid of the Player and the enemy
-        {
-            Vector2f midE = new Vector2f(enemySprite.Position.X + (enemySprite.Texture.Size.X / 2), enemySprite.Position.Y + (enemySprite.Texture.Size.Y / 2));
-
-            float distance = (float)Math.Sqrt(Math.Pow(Math.Abs(midE.X - midP.X), 2) + Math.Pow(Math.Abs(midE.Y - midP.Y), 2));
-
-            return distance;
-        }
-
         public float distancePlayer()
         {
             float distanceX = 0;
             float distanceY = 0;
 
-            distanceX += Math.Min(Math.Min(Math.Abs(getHitBox()[0].X - EnemyHandler.getHitBoxPlayer()[0].X), Math.Abs(getHitBox()[0].X - EnemyHandler.getHitBoxPlayer()[1].X)), 
-                Math.Min(Math.Abs(getHitBox()[1].X - EnemyHandler.getHitBoxPlayer()[0].X), Math.Abs(getHitBox()[1].X - EnemyHandler.getHitBoxPlayer()[1].X)));
+            distanceX += Math.Min(Math.Abs((hitBox.getPosition().X + hitBox.getWidth()) - EnemyHandler.getHitBoxPlayer().getPosition().X),  //if the enemy is left of the player it checks the distance from the enemy's right side to the player's left 
+                Math.Abs(hitBox.getPosition().X - (EnemyHandler.getHitBoxPlayer().getPosition().X + EnemyHandler.getHitBoxPlayer().getWidth())));
 
-            distanceY += Math.Min(Math.Min(Math.Abs(getHitBox()[0].Y - EnemyHandler.getHitBoxPlayer()[0].Y), Math.Abs(getHitBox()[0].Y - EnemyHandler.getHitBoxPlayer()[1].Y)),
-                Math.Min(Math.Abs(getHitBox()[1].Y - EnemyHandler.getHitBoxPlayer()[0].Y), Math.Abs(getHitBox()[1].Y - EnemyHandler.getHitBoxPlayer()[1].Y)));
+            distanceY += Math.Min(Math.Abs((hitBox.getPosition().Y + hitBox.getHeight()) - EnemyHandler.getHitBoxPlayer().getPosition().Y),
+                Math.Abs(hitBox.getPosition().Y - (EnemyHandler.getHitBoxPlayer().getPosition().Y + EnemyHandler.getHitBoxPlayer().getHeight())));
 
             float distance = (float)Math.Sqrt(Math.Pow(distanceX, 2) + Math.Pow(distanceY, 2));
 
