@@ -29,9 +29,8 @@ namespace Soulmate.Classes
             //Entschulidgung für die Änderung, aber anders hat es ständig exceptions geworfen ;(
             if (newPosition.X < 0 || newPosition.Y < 0 || newPosition.X >= map.GetLength(0) * objectSize || newPosition.Y >= map.GetLength(1) * objectSize 
                 || newPosition.X + vector.X >= map.GetLength(0) * objectSize|| newPosition.Y + vector.Y >= map.GetLength(1) * objectSize)
-            {
                 return false;
-            }
+
             //Kollision
             if (!(map[(int)(newPosition.X / objectSize), (int)(newPosition.Y / objectSize)].getWalkable()/*links oben*/
                 && map[(int)(newPosition.X / objectSize), (int)((newPosition.Y + sprite.Texture.Size.Y) / objectSize)].getWalkable()/*links unten*/
@@ -46,9 +45,9 @@ namespace Soulmate.Classes
                 ))
                 return false;
 
-            //foreach (EnemyHandler h in enemyList)
+            //foreach (EnemyHandler h in EnemyHandler.getEnemies())
             //{
-            //    bool enemyCollision = h.getWalkable(sprite, vector);
+            //    bool enemyCollision = h(sprite, vector);
 
             //    if (!enemyCollision)
             //        walkable = false;

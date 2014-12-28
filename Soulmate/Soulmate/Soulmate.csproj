@@ -55,7 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\AbstractEnemy.cs" />
-    <Compile Include="Classes\HelpEnemyCollision.cs" />
     <Compile Include="Classes\AbstractGame.cs" />
     <Compile Include="Classes\Blocks.cs" />
     <Compile Include="Classes\EnemyHandler.cs" />
