@@ -135,25 +135,27 @@ namespace Soulmate.Classes
 
         public void move(Vector2f direction)    //get a direction, and move to it with the enemys' movementspeed only left,right,up,down and diagonal don't wanna implements sin/cos just now
         {
-            if (hitAnotherEnemy() && !moveAwayFromEnemy)
+            if (hitAnotherEnemy() && !moveAwayFromEnemy && !hitPlayer)
             {
                 moveAwayFromEnemy = true;
 
                 for (int i = 0; i < hitFromDirections.Count; i++)
                 {
-                    if (Math.Abs((direction.X>=hitFromDirections[i].X)?(direction.X):(hitFromDirections[i].X))<Math.Abs(direction.X-hitFromDirections[i].X))//if they have the same sign otherwise it doesn't matter
+                    if (Math.Abs((direction.X >= hitFromDirections[i].X) ? (direction.X) : (hitFromDirections[i].X)) > Math.Abs(direction.X - hitFromDirections[i].X) || 
+                        Math.Abs((direction.X >= hitFromDirections[i].X) ? (direction.X) : (hitFromDirections[i].X)) < Math.Abs(direction.X - hitFromDirections[i].X))//if they have the same sign otherwise it doesn't matter
                     {
                         direction.X = -hitFromDirections[i].X;
                     }
 
-                    if (Math.Abs((direction.Y>=hitFromDirections[i].Y)?(direction.Y):(hitFromDirections[i].Y))<Math.Abs(direction.Y-hitFromDirections[i].Y))
+                    if (Math.Abs((direction.Y >= hitFromDirections[i].Y) ? (direction.Y) : (hitFromDirections[i].Y)) > Math.Abs(direction.Y - hitFromDirections[i].Y) || 
+                        Math.Abs((direction.Y >= hitFromDirections[i].Y) ? (direction.Y) : (hitFromDirections[i].Y)) < Math.Abs(direction.Y - hitFromDirections[i].Y))
                     {
                         direction.Y = -hitFromDirections[i].Y;
                     }
                 }
                 move(direction);
             }
-            else
+            else if(!hitPlayer)
             {
                 moveAwayFromEnemy = false;
                 Vector2f move = new Vector2f(0, 0);

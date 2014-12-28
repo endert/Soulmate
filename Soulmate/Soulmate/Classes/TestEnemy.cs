@@ -31,7 +31,6 @@ namespace Soulmate.Classes
         {
             if (touchedPlayer())
             {
-                Console.WriteLine(this.index);
             }
             //EnemyHandler.player.setHealth(EnemyHandler.player.getHealth()-attackDamage);
         }
