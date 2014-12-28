@@ -15,8 +15,9 @@ namespace Soulmate.Classes
         //static so other classes can access this Variables without constructing an object
         private static List<AbstractEnemy> enemies = new List<AbstractEnemy>();
         private static Player player;
-        private static Random random = new Random();
         private static Map map;
+
+        private Random random = new Random();
 
         public static List<AbstractEnemy> getEnemies()
         {
@@ -26,11 +27,6 @@ namespace Soulmate.Classes
         public static Player getPlayer()
         {
             return player;
-        }
-
-        public static Random getRandom()
-        {
-            return random;
         }
 
         public static Map getMap()
@@ -54,8 +50,8 @@ namespace Soulmate.Classes
                         float rY = 100 + random.Next(1000);
                         Vector2f spawnPos = new Vector2f(rX, rY);
 
-                        TestEnemy test = new TestEnemy(spawnPos, 1);
-                        if (test.distancePlayer() > 100 && map.getWalkable(test.getEnemySprite(), spawnPos))
+                        TestEnemy test = new TestEnemy(spawnPos, 1, i);
+                        if (test.distancePlayer() > 200 && map.getWalkable(test.getEnemySprite(), spawnPos))
                             enemies.Add(test);
                         else
                             i--;
@@ -66,14 +62,9 @@ namespace Soulmate.Classes
             }
         }
 
-        public static Vector2f[] getHitBoxPlayer()
+        public static HitBox getHitBoxPlayer()
         {
-            Vector2f[] hitBox = new Vector2f[2];
-
-            hitBox[0] = new Vector2f(player.getSprite().Position.X, player.getSprite().Position.Y); // upponLeft
-            hitBox[1] = new Vector2f(player.getSprite().Position.X + player.getWeidth(), player.getSprite().Position.Y + player.getHeight()); //bottomRight
-
-            return hitBox;
+            return new HitBox(player.getSprite().Position, player.getWeidth(), player.getHeight());
         }
 
         public static Vector2f PosPlayer()
@@ -105,7 +96,15 @@ namespace Soulmate.Classes
         {
             for (int i = 0; i < enemies.Count; i++)
             {
-                enemies[i].update(gameTime);
+                if (enemies[i].getIsAlive())
+                {
+                    enemies[i].update(gameTime);
+                }
+                else
+                {
+                    enemies.RemoveAt(i);
+                    i--;
+                }
             }
         }
     }
