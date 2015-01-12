@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Soulmate.Classes
 {
-    class Player
+    class Player : GameObjects
     {
         Sprite playerSprite;
         Texture playerTexture = new Texture("Pictures/SpielerSeiteRechts.png");
@@ -23,22 +23,7 @@ namespace Soulmate.Classes
         float att = 1;
         float def = 1;
 
-        
-
-        public Sprite getSprite()
-        {
-            return playerSprite;
-        }
-
-        public float getWeidth()
-        {
-            return playerSprite.Texture.Size.X;
-        }
-
-        public float getHeight()
-        {
-            return playerSprite.Texture.Size.Y;
-        }
+        Texture[] playerTextures;
 
         public float getLife()
         {
@@ -66,7 +51,6 @@ namespace Soulmate.Classes
 
             life(startLife);
         }
-
 
         public Vector2f getKeyPressed(float movementSpeed)
         {
@@ -105,7 +89,7 @@ namespace Soulmate.Classes
                 lifeSprite = new Sprite(lifeTexture);
         }
 
-        public void draw(RenderWindow window)
+        override public void draw(RenderWindow window)
         {
             lifeSprite.Position = new Vector2f(((getSprite().Position.X + (getWeidth() / 2)) - 620), (getSprite().Position.Y + (getHeight() / 2)) + 320);
             window.Draw(playerSprite);

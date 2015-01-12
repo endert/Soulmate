@@ -45,14 +45,6 @@ namespace Soulmate.Classes
                 ))
                 return false;
 
-            //foreach (EnemyHandler h in EnemyHandler.getEnemies())
-            //{
-            //    bool enemyCollision = h(sprite, vector);
-
-            //    if (!enemyCollision)
-            //        walkable = false;
-            //}
-
             return walkable;
         }
 
