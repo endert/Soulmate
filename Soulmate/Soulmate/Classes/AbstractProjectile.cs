@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Soulmate.Classes
 {
-    class Item
+    abstract class AbstractProjectile
     {
     }
 }
