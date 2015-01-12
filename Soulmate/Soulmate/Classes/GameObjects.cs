@@ -12,7 +12,7 @@ namespace Soulmate.Classes
     {
         protected Vector2f position;
         protected Sprite sprite;
-        protected HitBox hitbox;
+        protected HitBox hitBox;
 
         public Sprite getSprite()
         {
