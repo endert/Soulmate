@@ -32,7 +32,6 @@ namespace Soulmate.Classes
         protected int randomMovingDirection;
 
         protected HitBox hitBox;
-
         protected int index;
 
         private bool moveAwayFromEnemy = false;

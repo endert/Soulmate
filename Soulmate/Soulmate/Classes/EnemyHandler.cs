@@ -44,7 +44,7 @@ namespace Soulmate.Classes
             switch (lvlCount)
             {
                 case 1:
-                    for (int i = 0; i < 10; i++)
+                    for (int i = 0; i < 2; i++)
                     {
                         float rX = 100 + random.Next(1000);
                         float rY = 100 + random.Next(1000);
@@ -61,6 +61,8 @@ namespace Soulmate.Classes
                     break;
             }
         }
+
+
 
         public static HitBox getHitBoxPlayer()
         {
