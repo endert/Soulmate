@@ -10,7 +10,6 @@ namespace Soulmate.Classes
 {
     class Player : GameObjects
     {
-        Sprite playerSprite;
         Texture playerTexture = new Texture("Pictures/SpielerSeiteRechts.png");
         Map map;
         Vector2f movement;
@@ -32,8 +31,8 @@ namespace Soulmate.Classes
 
         public Player(Vector2f spawnPosition, Map levelMap)
         {
-            playerSprite = new Sprite(playerTexture);
-            playerSprite.Position = spawnPosition;
+            sprite = new Sprite(playerTexture);
+            sprite.Position = spawnPosition;
             map = levelMap;
         }
 
@@ -73,8 +72,8 @@ namespace Soulmate.Classes
 
         public void move(Vector2f move)
         {
-          if (map.getWalkable(playerSprite, new Vector2f(move.X, move.Y)))
-                playerSprite.Position = new Vector2f(playerSprite.Position.X + move.X, playerSprite.Position.Y + move.Y);
+            if (map.getWalkable(sprite, new Vector2f(move.X, move.Y)))
+                sprite.Position = new Vector2f(sprite.Position.X + move.X, sprite.Position.Y + move.Y);
         }
 
         public void life(float currentLife)
@@ -92,10 +91,8 @@ namespace Soulmate.Classes
         override public void draw(RenderWindow window)
         {
             lifeSprite.Position = new Vector2f(((getSprite().Position.X + (getWeidth() / 2)) - 620), (getSprite().Position.Y + (getHeight() / 2)) + 320);
-            window.Draw(playerSprite);
+            window.Draw(sprite);
             window.Draw(lifeSprite);
-            Console.Clear();
-            Console.WriteLine(lifeSprite.Position);
         }
     }
 }

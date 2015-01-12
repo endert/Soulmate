@@ -58,7 +58,6 @@
     <Compile Include="Classes\AbstractGame.cs" />
     <Compile Include="Classes\GameObjects.cs" />
     <Compile Include="Classes\HitBox.cs" />
-    <Compile Include="Classes\Item.cs" />
     <Compile Include="Classes\Blocks.cs" />
     <Compile Include="Classes\EnemyHandler.cs" />
     <Compile Include="Classes\Game.cs" />
