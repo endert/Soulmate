@@ -10,7 +10,7 @@ namespace Soulmate.Classes
 {
     class TestEnemy : AbstractEnemy
     {
-        Texture enemyTexture = new Texture("Pictures/Player.png");
+        Texture enemyTexture = new Texture("Pictures/Enemy/Enemy1Front.png");
 
         public TestEnemy(Vector2f spawnPos, int _lvl)
         {
@@ -44,13 +44,18 @@ namespace Soulmate.Classes
             }
 
             //  player direction(to the mid of the sprite)
-            Vector2f playerDirection = new Vector2f((EnemyHandler.getPlayer().getSprite().Position.X + (EnemyHandler.getPlayer().getWeidth() / 2)) - getPosition().X,
+            Vector2f playerDirection = new Vector2f((EnemyHandler.getPlayer().getPosition().X + (EnemyHandler.getPlayer().getWeidth() / 2)) - getPosition().X,
                 (EnemyHandler.getPlayer().getSprite().Position.Y + (EnemyHandler.getPlayer().getHeight() / 2)) - getPosition().Y);
 
             if (!touchedPlayer())
                 move(playerDirection);
             else
                 move(new Vector2f(0, 0));
+            foreach (Vector2f v in hitFromDirections)
+            {
+                Console.WriteLine(v.ToString());    
+            }
+            
         }
 
         public override void notReact()

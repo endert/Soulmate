@@ -72,8 +72,6 @@ namespace Soulmate.Classes
             }
         }
 
-
-
         public static HitBox getHitBoxPlayer()
         {
             return player.getHitBox();
@@ -94,14 +92,6 @@ namespace Soulmate.Classes
                 }
             }
             return false;
-        }
-
-        public void draw(RenderWindow window)
-        {
-            for (int i = 0; i < enemies.Count; i++)
-            {
-                enemies[i].draw(window);
-            }
         }
 
         public void update(GameTime gameTime)
