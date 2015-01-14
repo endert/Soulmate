@@ -14,7 +14,6 @@ namespace Soulmate.Classes
         int lvlCount;
         //static so other classes can access this Variables without constructing an object
         private static List<AbstractEnemy> enemies = new List<AbstractEnemy>();
-        private static Player player;
         private static Map map;
 
         private Random random = new Random();
@@ -34,11 +33,6 @@ namespace Soulmate.Classes
             return _enemies;
         }
 
-        public static Player getPlayer()
-        {
-            return player;
-        }
-
         public static Map getMap()
         {
             return map;
@@ -47,7 +41,6 @@ namespace Soulmate.Classes
 
         public EnemyHandler(Player p, int _lvlCount, Map _map)
         {
-            player = p;
             lvlCount = _lvlCount;
             map = _map;
 
@@ -74,24 +67,7 @@ namespace Soulmate.Classes
 
         public static HitBox getHitBoxPlayer()
         {
-            return player.getHitBox();
-        }
-
-        public static Vector2f PosPlayer()
-        {
-            return new Vector2f(player.getSprite().Position.X + (player.getWeidth() / 2), player.getSprite().Position.Y + (player.getHeight() / 2));
-        }
-
-        public bool getHitPlayer()
-        {
-            for (int i = 0; i < enemies.Count; i++)
-            {
-                if (enemies[i].getTochedPlayer())
-                {
-                    return true;
-                }
-            }
-            return false;
+            return ObjectHandler.player.getHitBox();
         }
 
         public void update(GameTime gameTime)

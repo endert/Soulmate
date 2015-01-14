@@ -11,11 +11,13 @@ namespace Soulmate.Classes
     {
         public static List<GameObjects> gObjs { get; set; }
         public static Map lvlMap { get; set; }
+        public static Player player { get; set; }
 
-        public ObjectHandler(Map _lvlMap)
+        public ObjectHandler(Map _lvlMap,Player _player)
         {
             lvlMap = _lvlMap;
             gObjs = new List<GameObjects>();
+            player = _player;
         }
 
         public void add(GameObjects obj)
@@ -36,6 +38,7 @@ namespace Soulmate.Classes
             for (int i = 0; i < gObjs.Count; i++)
             {
                 gObjs[i].setIndexEntityList(i);
+                gObjs[i].update(gameTime);
             }
         }
 

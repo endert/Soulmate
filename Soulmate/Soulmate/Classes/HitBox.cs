@@ -11,9 +11,9 @@ namespace Soulmate.Classes
 {
     public class HitBox
     {
-        private Vector2f position;
-        private float width;
-        private float height;
+        private Vector2f position { get; set; }
+        private float width { get; set; }
+        private float height { get;set; }
 
         Vector2f unionPos;
         float unionWidth;

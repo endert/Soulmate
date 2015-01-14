@@ -21,6 +21,7 @@ namespace Soulmate.Classes
 
         public Player(Vector2f spawnPosition, Map levelMap)
         {
+            type = "player";
             sprite = new Sprite(playerTexture);
             sprite.Position = spawnPosition;
             position = spawnPosition;
