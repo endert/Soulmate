@@ -13,7 +13,6 @@ namespace Soulmate.Classes
         Texture playerTexture = new Texture("Pictures/SpielerSeiteRechts.png");
         Map map;
         Vector2f movement;
-        float movementSpeed;
 
         bool moveAwayFromEnemy = false;
         List<Vector2f> hitFromDirections = new List<Vector2f>();
@@ -41,7 +40,7 @@ namespace Soulmate.Classes
             map = levelMap;
         }
 
-        public void update(GameTime time)
+        override public void update(GameTime time)
         {
             movementSpeed = 0.2f * (float)time.EllapsedTime.TotalMilliseconds;
 
@@ -54,92 +53,12 @@ namespace Soulmate.Classes
 
             movement = new Vector2f(0, 0);
             movement = getKeyPressed(movementSpeed);
-            move2(movement);
+            move(movement);
 
             life(startLife);
 
             hitFromDirections.Clear();
         }
-
-        public void move2(Vector2f direction)    //get a direction, and move to it with the enemys' movementspeed only left,right,up,down and diagonal don't wanna implements sin/cos just now
-        {
-           //noch nicht "ganz" korrekt besser gesagt sehr weit entfernt, aber es klappt
-            if (hitAnotherEnemy() && !moveAwayFromEnemy)
-            {
-                moveAwayFromEnemy = true;
-
-                for (int i = 0; i < hitFromDirections.Count; i++)
-                {
-                    if (Math.Abs((direction.X >= hitFromDirections[i].X) ? (direction.X) : (hitFromDirections[i].X)) > Math.Abs(direction.X - hitFromDirections[i].X) ||
-                        Math.Abs((direction.X >= hitFromDirections[i].X) ? (direction.X) : (hitFromDirections[i].X)) < Math.Abs(direction.X - hitFromDirections[i].X))//if they have the same sign otherwise it doesn't matter
-                    {
-                        direction.X = 0;
-                    }
-
-                    if (Math.Abs((direction.Y >= hitFromDirections[i].Y) ? (direction.Y) : (hitFromDirections[i].Y)) > Math.Abs(direction.Y - hitFromDirections[i].Y) ||
-                        Math.Abs((direction.Y >= hitFromDirections[i].Y) ? (direction.Y) : (hitFromDirections[i].Y)) < Math.Abs(direction.Y - hitFromDirections[i].Y))
-                    {
-                        direction.Y = 0;
-                    }
-                }
-                move2(direction);
-            }
-
-            else
-            {
-                moveAwayFromEnemy = false;
-                Vector2f movement = new Vector2f(0, 0);
-
-                if (direction.X > 0)
-                    movement.X += movementSpeed;
-                else
-                {
-                    if (direction.X < 0)
-                        movement.X -= movementSpeed;
-                    else
-                        movement.X += 0;
-                }
-                if (direction.Y > 0)
-                    movement.Y += movementSpeed;
-                else
-                {
-                    if (direction.Y < 0)
-                        movement.Y -= movementSpeed;
-                    else
-                        movement.Y += 0;
-                }
-                
-                move(movement);
-            }
-        }
-
-        private bool hitAnotherEnemy()
-        {
-            for (int i = 0; i < EnemyHandler.getEnemies().Count; i++)
-            {
-                if ((hitBox.hit(EnemyHandler.getEnemies()[i].getHitBox())))
-                {
-                    bool notFound = true;
-                    for (int j = 0; j < hitFromDirections.Count; j++)
-                    {
-                        if (hitFromDirections[j].Equals(hitBox.hitFrom(EnemyHandler.getEnemies()[i].getHitBox())))
-                        {
-                            notFound = false;
-                        }
-                    }
-                    if (notFound)
-                        hitFromDirections.Add(hitBox.hitFrom(EnemyHandler.getEnemies()[i].getHitBox()));
-                }
-            }
-            if (hitFromDirections.Count > 0)
-            {
-                return true;
-            }
-            else
-                return false;
-        }
-
-
 
         public Vector2f getKeyPressed(float movementSpeed)
         {
@@ -158,12 +77,6 @@ namespace Soulmate.Classes
                     result.X = movementSpeed;
 
             return result;
-        }
-
-        public void move(Vector2f move)
-        {
-            if (map.getWalkable(sprite, new Vector2f(move.X, move.Y)))
-                position = new Vector2f(position.X + move.X, position.Y + move.Y);
         }
 
         public void life(float currentLife)

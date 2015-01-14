@@ -17,6 +17,7 @@ namespace Soulmate.Classes
         Texture backGroundTex;
         Sprite backGround;
         Map map;
+        ObjectHandler objcs;
         Player player;
         EnemyHandler enemies;
         Inventory inventory;
@@ -41,10 +42,15 @@ namespace Soulmate.Classes
             backGroundTex = new Texture("Pictures/Hintergrund.png");
 
             map = new Map(new Bitmap("Pictures/Map/Map2.bmp"));
-            
+
+            objcs = new ObjectHandler(map);
+
             player = new Player(new Vector2f(32 * 5, 32 * 10 - 219), map);
 
             enemies = new EnemyHandler(player, 1, map);
+
+            objcs.add(player);
+            objcs.add(enemies.getEnemiesGameObjects());
 
             inventory = new Inventory();
         }
@@ -78,6 +84,8 @@ namespace Soulmate.Classes
             {
                 backGround.Position = new Vector2f(view.Center.X - 640, view.Center.Y - 360);
                 view.Move(new Vector2f((player.getSprite().Position.X + (player.getWeidth() / 2)), (player.getSprite().Position.Y + (player.getHeight() / 2))) - view.Center);
+
+                objcs.update(gameTime);
 
                 player.update(gameTime);
                

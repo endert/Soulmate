@@ -9,15 +9,15 @@ using System.Diagnostics;
 
 namespace Soulmate.Classes
 {
-    public abstract class AbstractEnemy
+    abstract class AbstractEnemy : GameObjects
     {
         protected Stopwatch watch = new Stopwatch();    //for animations and the random movement
-        protected Sprite enemySprite;
+        //protected Sprite enemySprite;
         protected Random random = new Random();
-        protected List<Vector2f> hitFromDirections = new List<Vector2f>();
+        //protected List<Vector2f> hitFromDirections = new List<Vector2f>();
 
         protected bool hitPlayer = false;
-        protected bool isAlive;
+        //protected bool isAlive;
 
         protected int lvl;
         protected float hp;
@@ -31,19 +31,19 @@ namespace Soulmate.Classes
         protected int movingFor = 0;    //moving for millisek in one direction
         protected int randomMovingDirection;
 
-        protected HitBox hitBox;
+        //protected HitBox hitBox;
         protected int index;
 
-        private bool moveAwayFromEnemy = false;
+        protected bool moveAwayFromEnemy = false;
 
         //Getter**************************************************************************************
         public Sprite getEnemySprite()
         {
-            return enemySprite;
+            return sprite;
         }
-        public Vector2f getPosition()
+        override public Vector2f getPosition()
         {
-            return new Vector2f(enemySprite.Position.X+(enemySprite.Texture.Size.X/2), enemySprite.Position.Y+(enemySprite.Texture.Size.Y/2));
+            return new Vector2f(sprite.Position.X+(sprite.Texture.Size.X/2), sprite.Position.Y+(sprite.Texture.Size.Y/2));
         }
 
         public bool getIsAlive()
@@ -96,11 +96,12 @@ namespace Soulmate.Classes
         //********************************************************************************************
 
         //Methods*************************************************************************************
-        public void update(GameTime gameTime)
+        override public void update(GameTime gameTime)
         {
+            sprite.Position = position;
             if (isAlive)
             {
-                hitBox.setPosition(enemySprite.Position);
+                hitBox.setPosition(sprite.Position);
                 if (sensePlayer())  //if a player is sensed (is in aggroRange) react else not ;)
                 {
                     react();
@@ -113,14 +114,9 @@ namespace Soulmate.Classes
             hitFromDirections.Clear();
         }
 
-        public void draw(RenderWindow window)
-        {
-            window.Draw(enemySprite);
-        }
-
         public bool touchedPlayer()
         {
-            if (hitBox.hit(EnemyHandler.getHitBoxPlayer()))
+            if (hitBox.hit(EnemyHandler.getPlayer().getHitBox()))
             {
                 hitPlayer = true;
                 return hitPlayer;
@@ -132,86 +128,86 @@ namespace Soulmate.Classes
             }
         }
 
-        public void move(Vector2f direction)    //get a direction, and move to it with the enemys' movementspeed only left,right,up,down and diagonal don't wanna implements sin/cos just now
-        {
-            if (hitAnotherEnemy() && !moveAwayFromEnemy && !hitPlayer)
-            {
-                moveAwayFromEnemy = true;
+        //public void move(Vector2f direction)    //get a direction, and move to it with the enemys' movementspeed only left,right,up,down and diagonal don't wanna implements sin/cos just now
+        //{
+        //    if (hitAnotherEnemy() && !moveAwayFromEnemy && !hitPlayer)
+        //    {
+        //        moveAwayFromEnemy = true;
 
-                for (int i = 0; i < hitFromDirections.Count; i++)
-                {
-                    if (Math.Abs((direction.X >= hitFromDirections[i].X) ? (direction.X) : (hitFromDirections[i].X)) > Math.Abs(direction.X - hitFromDirections[i].X) || 
-                        Math.Abs((direction.X >= hitFromDirections[i].X) ? (direction.X) : (hitFromDirections[i].X)) < Math.Abs(direction.X - hitFromDirections[i].X))//if they have the same sign otherwise it doesn't matter
-                    {
-                        direction.X = -hitFromDirections[i].X;
-                    }
+        //        for (int i = 0; i < hitFromDirections.Count; i++)
+        //        {
+        //            if (Math.Abs((direction.X >= hitFromDirections[i].X) ? (direction.X) : (hitFromDirections[i].X)) > Math.Abs(direction.X - hitFromDirections[i].X) || 
+        //                Math.Abs((direction.X >= hitFromDirections[i].X) ? (direction.X) : (hitFromDirections[i].X)) < Math.Abs(direction.X - hitFromDirections[i].X))//if they have the same sign otherwise it doesn't matter
+        //            {
+        //                direction.X = -hitFromDirections[i].X;
+        //            }
 
-                    if (Math.Abs((direction.Y >= hitFromDirections[i].Y) ? (direction.Y) : (hitFromDirections[i].Y)) > Math.Abs(direction.Y - hitFromDirections[i].Y) || 
-                        Math.Abs((direction.Y >= hitFromDirections[i].Y) ? (direction.Y) : (hitFromDirections[i].Y)) < Math.Abs(direction.Y - hitFromDirections[i].Y))
-                    {
-                        direction.Y = -hitFromDirections[i].Y;
-                    }
-                }
-                move(direction);
-            }
-            else if(!hitPlayer)
-            {
-                moveAwayFromEnemy = false;
-                Vector2f move = new Vector2f(0, 0);
+        //            if (Math.Abs((direction.Y >= hitFromDirections[i].Y) ? (direction.Y) : (hitFromDirections[i].Y)) > Math.Abs(direction.Y - hitFromDirections[i].Y) || 
+        //                Math.Abs((direction.Y >= hitFromDirections[i].Y) ? (direction.Y) : (hitFromDirections[i].Y)) < Math.Abs(direction.Y - hitFromDirections[i].Y))
+        //            {
+        //                direction.Y = -hitFromDirections[i].Y;
+        //            }
+        //        }
+        //        move(direction);
+        //    }
+        //    else if(!hitPlayer)
+        //    {
+        //        moveAwayFromEnemy = false;
+        //        Vector2f move = new Vector2f(0, 0);
 
-                if (direction.X > 0)
-                    move.X += movementSpeed;
-                else
-                {
-                    if (direction.X < 0)
-                        move.X -= movementSpeed;
-                    else
-                        move.X += 0;
-                }
-                if (direction.Y > 0)
-                    move.Y += movementSpeed;
-                else
-                {
-                    if (direction.Y < 0)
-                        move.Y -= movementSpeed;
-                    else
-                        move.Y += 0;
-                }
-                // this would do the same:
+        //        if (direction.X > 0)
+        //            move.X += movementSpeed;
+        //        else
+        //        {
+        //            if (direction.X < 0)
+        //                move.X -= movementSpeed;
+        //            else
+        //                move.X += 0;
+        //        }
+        //        if (direction.Y > 0)
+        //            move.Y += movementSpeed;
+        //        else
+        //        {
+        //            if (direction.Y < 0)
+        //                move.Y -= movementSpeed;
+        //            else
+        //                move.Y += 0;
+        //        }
+        //        // this would do the same:
 
-                // Vector2f move = new Vector2f(((direction.X > 0) ? (movementSpeed) : ((direction.X < 0) ? (-movementSpeed) : (0))), ((direction.Y > 0) ? (movementSpeed) : ((direction.Y < 0) ? (-movementSpeed) : (0))));
+        //        // Vector2f move = new Vector2f(((direction.X > 0) ? (movementSpeed) : ((direction.X < 0) ? (-movementSpeed) : (0))), ((direction.Y > 0) ? (movementSpeed) : ((direction.Y < 0) ? (-movementSpeed) : (0))));
 
-                if (EnemyHandler.getMap().getWalkable(enemySprite, move))    // only move if it's walkable
-                    enemySprite.Position = new Vector2f(enemySprite.Position.X + move.X, enemySprite.Position.Y + move.Y);
+        //        if (EnemyHandler.getMap().getWalkable(enemySprite, move))    // only move if it's walkable
+        //            enemySprite.Position = new Vector2f(enemySprite.Position.X + move.X, enemySprite.Position.Y + move.Y);
 
-            }
-        }
+        //    }
+        //}
 
-        private bool hitAnotherEnemy()
-        {
-            for (int i = 0; i < EnemyHandler.getEnemies().Count; i++)
-            {
-                if ((i!=index)&&(hitBox.hit(EnemyHandler.getEnemies()[i].getHitBox())))
-                {
-                    bool notFound = true;
-                    for (int j = 0; j < hitFromDirections.Count; j++)
-                    {
-                        if (hitFromDirections[j].Equals(hitBox.hitFrom(EnemyHandler.getEnemies()[i].getHitBox())))
-                        {
-                            notFound = false;
-                        }
-                    }
-                    if (notFound)
-                        hitFromDirections.Add(hitBox.hitFrom(EnemyHandler.getEnemies()[i].getHitBox()));
-                }
-            }
-            if (hitFromDirections.Count > 0)
-            {
-                return true;
-            }
-            else
-                return false;
-        }
+        //private bool hitAnotherEnemy()
+        //{
+        //    for (int i = 0; i < EnemyHandler.getEnemies().Count; i++)
+        //    {
+        //        if ((i!=index)&&(hitBox.hit(EnemyHandler.getEnemies()[i].getHitBox())))
+        //        {
+        //            bool notFound = true;
+        //            for (int j = 0; j < hitFromDirections.Count; j++)
+        //            {
+        //                if (hitFromDirections[j].Equals(hitBox.hitFrom(EnemyHandler.getEnemies()[i].getHitBox())))
+        //                {
+        //                    notFound = false;
+        //                }
+        //            }
+        //            if (notFound)
+        //                hitFromDirections.Add(hitBox.hitFrom(EnemyHandler.getEnemies()[i].getHitBox()));
+        //        }
+        //    }
+        //    if (hitFromDirections.Count > 0)
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //        return false;
+        //}
 
         public void moveRandom()
         {
@@ -233,49 +229,49 @@ namespace Soulmate.Classes
             switch (randomMovingDirection)  //move in the direction for 1000 millisecounds so 1 second
             {
                 case 0:
-                    if (EnemyHandler.getMap().getWalkable(enemySprite, up))
+                    if (EnemyHandler.getMap().getWalkable(sprite, up))
                         move(up);
                     watch.Start();
                     movingFor = (int)(1000*random.NextDouble()) + 500;
                     break;
                 case 1:
-                    if (EnemyHandler.getMap().getWalkable(enemySprite, upRight))
+                    if (EnemyHandler.getMap().getWalkable(sprite, upRight))
                         move(upRight);
                     watch.Start();
                     movingFor = (int)(1000 * random.NextDouble()) + 500;
                     break;
                 case 2:
-                    if (EnemyHandler.getMap().getWalkable(enemySprite, right))
+                    if (EnemyHandler.getMap().getWalkable(sprite, right))
                         move(right);
                     watch.Start();
                     movingFor = (int)(1000 * random.NextDouble()) + 500;
                     break;
                 case 3:
-                    if (EnemyHandler.getMap().getWalkable(enemySprite, downRight))
+                    if (EnemyHandler.getMap().getWalkable(sprite, downRight))
                         move(downRight);
                     watch.Start();
                     movingFor = (int)(1000 * random.NextDouble()) + 500;
                     break;
                 case 4:
-                    if (EnemyHandler.getMap().getWalkable(enemySprite, down))
+                    if (EnemyHandler.getMap().getWalkable(sprite, down))
                         move(down);
                     watch.Start();
                     movingFor = (int)(1000 * random.NextDouble()) + 500;
                     break;
                 case 5:
-                    if (EnemyHandler.getMap().getWalkable(enemySprite, downLeft))
+                    if (EnemyHandler.getMap().getWalkable(sprite, downLeft))
                         move(downLeft);
                     watch.Start();
                     movingFor = (int)(1000 * random.NextDouble()) + 500;
                     break;
                 case 6:
-                    if (EnemyHandler.getMap().getWalkable(enemySprite, left))
+                    if (EnemyHandler.getMap().getWalkable(sprite, left))
                         move(left);
                     watch.Start();
                     movingFor = (int)(1000 * random.NextDouble()) + 500;
                     break;
                 case 7:
-                    if (EnemyHandler.getMap().getWalkable(enemySprite, upLeft))
+                    if (EnemyHandler.getMap().getWalkable(sprite, upLeft))
                         move(upLeft);
                     watch.Start();
                     movingFor = (int)(1000 * random.NextDouble()) + 500;
