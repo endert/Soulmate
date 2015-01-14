@@ -12,13 +12,12 @@ namespace Soulmate.Classes
     {
         Texture enemyTexture = new Texture("Pictures/Player.png");
 
-        public TestEnemy(Vector2f spawnPos, int _lvl, int _index)
+        public TestEnemy(Vector2f spawnPos, int _lvl)
         {
             sprite = new Sprite(enemyTexture);
             position = spawnPos;
             sprite.Position = position;
             isAlive = true;
-            index = _index;
             hitBox = new HitBox(sprite.Position, sprite.Texture.Size.X, sprite.Texture.Size.Y);
             lvl = _lvl;
             hp = 1 + 1 * (lvl - 1);

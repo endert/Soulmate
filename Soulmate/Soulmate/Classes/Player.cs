@@ -14,9 +14,6 @@ namespace Soulmate.Classes
         Map map;
         Vector2f movement;
 
-        bool moveAwayFromEnemy = false;
-        List<Vector2f> hitFromDirections = new List<Vector2f>();
-
         float startLife = 4;
         Sprite lifeSprite;
         Texture lifeTexture = new Texture("Pictures/LifeFull.png");
@@ -36,7 +33,7 @@ namespace Soulmate.Classes
             sprite = new Sprite(playerTexture);
             sprite.Position = spawnPosition;
             position = spawnPosition;
-            hitBox = new HitBox(sprite.Position, getWeidth(), getHeight());
+            hitBox = new HitBox(sprite.Position, new Texture("Pictures/Player/SpielerSeiteRechts.png").Size.X, getHeight());
             map = levelMap;
         }
 
@@ -89,13 +86,6 @@ namespace Soulmate.Classes
 
             if (currentLife == this.startLife)
                 lifeSprite = new Sprite(lifeTexture);
-        }
-
-        override public void draw(RenderWindow window)
-        {
-            lifeSprite.Position = new Vector2f(((getSprite().Position.X + (getWeidth() / 2)) - 620), (getSprite().Position.Y + (getHeight() / 2)) + 320);
-            window.Draw(sprite);
-            window.Draw(lifeSprite);
         }
     }
 }

@@ -102,8 +102,7 @@ namespace Soulmate.Classes
             window.Draw(backGround);
             window.SetView(view);
             map.draw(window);
-            player.draw(window);
-            enemies.draw(window);
+            objcs.draw(window);
             
             if(inventoryOpen==true)
             {

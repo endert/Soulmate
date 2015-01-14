@@ -60,8 +60,8 @@ namespace Soulmate.Classes
                         float rY = 100 + random.Next(1000);
                         Vector2f spawnPos = new Vector2f(rX, rY);
 
-                        TestEnemy test = new TestEnemy(spawnPos, 1, i);
-                        if (test.distancePlayer() > 200 && map.getWalkable(test.getEnemySprite(), spawnPos))
+                        TestEnemy test = new TestEnemy(spawnPos, 1);
+                        if (test.distancePlayer() > 200 && map.getWalkable(test.getSprite(), spawnPos))
                             enemies.Add(test);
                         else
                             i--;
@@ -76,7 +76,7 @@ namespace Soulmate.Classes
 
         public static HitBox getHitBoxPlayer()
         {
-            return new HitBox(player.getSprite().Position, player.getWeidth(), player.getHeight());
+            return player.getHitBox();
         }
 
         public static Vector2f PosPlayer()

@@ -32,15 +32,11 @@ namespace Soulmate.Classes
         protected int randomMovingDirection;
 
         //protected HitBox hitBox;
-        protected int index;
+        //protected int index;
 
-        protected bool moveAwayFromEnemy = false;
+        //protected bool moveAwayFromEnemy = false;
 
         //Getter**************************************************************************************
-        public Sprite getEnemySprite()
-        {
-            return sprite;
-        }
         override public Vector2f getPosition()
         {
             return new Vector2f(sprite.Position.X+(sprite.Texture.Size.X/2), sprite.Position.Y+(sprite.Texture.Size.Y/2));
@@ -89,10 +85,7 @@ namespace Soulmate.Classes
             return movementSpeed;
         }
 
-        public HitBox getHitBox()
-        {
-            return hitBox;
-        }
+        
         //********************************************************************************************
 
         //Methods*************************************************************************************

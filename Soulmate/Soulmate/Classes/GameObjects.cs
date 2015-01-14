@@ -94,10 +94,7 @@ namespace Soulmate.Classes
                     else
                         movement.Y += 0;
                 }
-                // this would do the same:
-
-                // Vector2f move = new Vector2f(((direction.X > 0) ? (movementSpeed) : ((direction.X < 0) ? (-movementSpeed) : (0))), ((direction.Y > 0) ? (movementSpeed) : ((direction.Y < 0) ? (-movementSpeed) : (0))));
-
+                
                 if (ObjectHandler.lvlMap.getWalkable(sprite, movement))    // only move if it's walkable
                     position = new Vector2f(position.X + movement.X, position.Y + movement.Y);
 
@@ -130,7 +127,7 @@ namespace Soulmate.Classes
                 return false;
         }
 
-        virtual public void draw(RenderWindow window)
+        public void draw(RenderWindow window)
         {
             window.Draw(sprite);
         }

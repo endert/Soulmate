@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SFML.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,6 +36,14 @@ namespace Soulmate.Classes
             for (int i = 0; i < gObjs.Count; i++)
             {
                 gObjs[i].setIndexEntityList(i);
+            }
+        }
+
+        public void draw(RenderWindow window)
+        {
+            foreach (GameObjects gObj in gObjs)
+            {
+                gObj.draw(window);
             }
         }
     }
