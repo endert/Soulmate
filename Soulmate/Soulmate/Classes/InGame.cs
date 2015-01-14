@@ -109,7 +109,6 @@ namespace Soulmate.Classes
             window.SetView(view);
             map.draw(window);
             objcs.draw(window);
-            //pet.draw(window);
             
             if(inventoryOpen==true)
             {

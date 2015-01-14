@@ -21,7 +21,7 @@ namespace Soulmate.Classes
 
         override public void update(GameTime time)
         {
-            hitBox = new HitBox(sprite.Position, getWeidth(), getHeight());
+            //hitBox = new HitBox(sprite.Position, getWeidth(), getHeight());
         }
     }
 }
