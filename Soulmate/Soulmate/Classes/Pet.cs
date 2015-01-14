@@ -17,11 +17,13 @@ namespace Soulmate.Classes
         {
             sprite = new Sprite(petTexture);
             sprite.Position = new Vector2f(player.Position.X - 100, player.Position.Y);
+            hitBox = new HitBox(sprite.Position, getWeidth(), getHeight());
         }
 
         override public void update(GameTime time)
         {
-            hitBox = new HitBox(sprite.Position, getWeidth(), getHeight());
+            hitBox.setPosition(sprite.Position);
+            position = sprite.Position;
         }
     }
 }
