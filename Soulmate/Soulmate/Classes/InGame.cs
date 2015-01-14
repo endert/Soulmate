@@ -19,6 +19,7 @@ namespace Soulmate.Classes
         Map map;
         ObjectHandler objcs;
         Player player;
+        Pet pet;
         EnemyHandler enemies;
         Inventory inventory;
         bool inventoryOpen;
@@ -49,8 +50,11 @@ namespace Soulmate.Classes
 
             enemies = new EnemyHandler(player, 1, map);
 
+            pet = new Pet(player.getSprite());
+
             objcs.add(player);
             objcs.add(enemies.getEnemiesGameObjects());
+            objcs.add(pet);
 
             inventory = new Inventory();
         }
@@ -88,6 +92,8 @@ namespace Soulmate.Classes
                 objcs.update(gameTime);
 
                 player.update(gameTime);
+
+                pet.update(gameTime);
                
                 enemies.update(gameTime);
 
@@ -103,6 +109,7 @@ namespace Soulmate.Classes
             window.SetView(view);
             map.draw(window);
             objcs.draw(window);
+            //pet.draw(window);
             
             if(inventoryOpen==true)
             {

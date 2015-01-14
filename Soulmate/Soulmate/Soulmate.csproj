@@ -63,6 +63,7 @@
     <Compile Include="Classes\Game.cs" />
     <Compile Include="Classes\GameStates.cs" />
     <Compile Include="Classes\InGameMenu.cs" />
+    <Compile Include="Classes\Interface.cs" />
     <Compile Include="Classes\Inventory.cs" />
     <Compile Include="Classes\MainMenu.cs" />
     <Compile Include="Classes\GameTime.cs" />
