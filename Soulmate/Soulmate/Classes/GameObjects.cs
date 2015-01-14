@@ -13,13 +13,28 @@ namespace Soulmate.Classes
         protected Vector2f position;
         protected Sprite sprite;
         protected HitBox hitBox;
+        protected List<Vector2f> hitFromDirections = new List<Vector2f>();
+        protected bool isAlive;
+        protected bool moveAwayFromEntity = false;
+        protected int indexEntityList;  //index in the ObjectList of the ObjectHandler
+        protected float movementSpeed;
+
+        public void setIndexEntityList(int index)
+        {
+            indexEntityList = index;
+        }
 
         public Sprite getSprite()
         {
             return this.sprite;
         }
 
-        public Vector2f getPosition()
+        public HitBox getHitBox()
+        {
+            return hitBox;
+        }
+
+        virtual public Vector2f getPosition()
         {
             return this.position;
         }
@@ -34,11 +49,92 @@ namespace Soulmate.Classes
             return sprite.Texture.Size.Y;
         }
 
-         
+        public void move(Vector2f direction)    //get a direction, and move to it with the enemys' movementspeed only left,right,up,down and diagonal don't wanna implements sin/cos just now
+        {
+            if (hitAnotherEntity() && !moveAwayFromEntity)
+            {
+                moveAwayFromEntity = true;
+
+                for (int i = 0; i < hitFromDirections.Count; i++)
+                {
+                    if (Math.Abs((direction.X >= hitFromDirections[i].X) ? (direction.X) : (hitFromDirections[i].X)) > Math.Abs(direction.X - hitFromDirections[i].X) ||
+                        Math.Abs((direction.X >= hitFromDirections[i].X) ? (direction.X) : (hitFromDirections[i].X)) < Math.Abs(direction.X - hitFromDirections[i].X))//if they have the same sign otherwise it doesn't matter
+                    {
+                        direction.X = -hitFromDirections[i].X;
+                    }
+
+                    if (Math.Abs((direction.Y >= hitFromDirections[i].Y) ? (direction.Y) : (hitFromDirections[i].Y)) > Math.Abs(direction.Y - hitFromDirections[i].Y) ||
+                        Math.Abs((direction.Y >= hitFromDirections[i].Y) ? (direction.Y) : (hitFromDirections[i].Y)) < Math.Abs(direction.Y - hitFromDirections[i].Y))
+                    {
+                        direction.Y = -hitFromDirections[i].Y;
+                    }
+                }
+                move(direction);
+            }
+            else
+            {
+                moveAwayFromEntity = false;
+                Vector2f movement = new Vector2f(0, 0);
+
+                if (direction.X > 0)
+                    movement.X += movementSpeed;
+                else
+                {
+                    if (direction.X < 0)
+                        movement.X -= movementSpeed;
+                    else
+                        movement.X += 0;
+                }
+                if (direction.Y > 0)
+                    movement.Y += movementSpeed;
+                else
+                {
+                    if (direction.Y < 0)
+                        movement.Y -= movementSpeed;
+                    else
+                        movement.Y += 0;
+                }
+                // this would do the same:
+
+                // Vector2f move = new Vector2f(((direction.X > 0) ? (movementSpeed) : ((direction.X < 0) ? (-movementSpeed) : (0))), ((direction.Y > 0) ? (movementSpeed) : ((direction.Y < 0) ? (-movementSpeed) : (0))));
+
+                if (ObjectHandler.lvlMap.getWalkable(sprite, movement))    // only move if it's walkable
+                    position = new Vector2f(position.X + movement.X, position.Y + movement.Y);
+
+            }
+        }
+
+        private bool hitAnotherEntity()
+        {
+            for (int i = 0; i < ObjectHandler.gObjs.Count; i++)
+            {
+                if ((i != indexEntityList) && (hitBox.hit(ObjectHandler.gObjs[i].getHitBox())))
+                {
+                    bool notFound = true;
+                    for (int j = 0; j < hitFromDirections.Count; j++)
+                    {
+                        if (hitFromDirections[j].Equals(hitBox.hitFrom(ObjectHandler.gObjs[i].getHitBox())))
+                        {
+                            notFound = false;
+                        }
+                    }
+                    if (notFound)
+                        hitFromDirections.Add(hitBox.hitFrom(ObjectHandler.gObjs[i].getHitBox()));
+                }
+            }
+            if (hitFromDirections.Count > 0)
+            {
+                return true;
+            }
+            else
+                return false;
+        }
 
         virtual public void draw(RenderWindow window)
         {
             window.Draw(sprite);
         }
+
+        public abstract void update(GameTime gameTime);
     }
 }

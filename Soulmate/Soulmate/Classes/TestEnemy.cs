@@ -14,11 +14,12 @@ namespace Soulmate.Classes
 
         public TestEnemy(Vector2f spawnPos, int _lvl, int _index)
         {
-            enemySprite = new Sprite(enemyTexture);
-            enemySprite.Position = spawnPos;
+            sprite = new Sprite(enemyTexture);
+            position = spawnPos;
+            sprite.Position = position;
             isAlive = true;
             index = _index;
-            hitBox = new HitBox(enemySprite.Position, enemySprite.Texture.Size.X, enemySprite.Texture.Size.Y);
+            hitBox = new HitBox(sprite.Position, sprite.Texture.Size.X, sprite.Texture.Size.Y);
             lvl = _lvl;
             hp = 1 + 1 * (lvl - 1);
             mp = 1 + 1 * (lvl - 1);

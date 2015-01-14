@@ -24,6 +24,16 @@ namespace Soulmate.Classes
             return enemies;
         }
 
+        public List<GameObjects> getEnemiesGameObjects()
+        {
+            List<GameObjects> _enemies = new List<GameObjects>();
+            foreach (AbstractEnemy enemy in enemies)
+            {
+                _enemies.Add(enemy);
+            }
+            return _enemies;
+        }
+
         public static Player getPlayer()
         {
             return player;

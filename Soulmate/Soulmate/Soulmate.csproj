@@ -68,6 +68,8 @@
     <Compile Include="Classes\GameTime.cs" />
     <Compile Include="Classes\InGame.cs" />
     <Compile Include="Classes\Map.cs" />
+    <Compile Include="Classes\ObjectHandler.cs" />
+    <Compile Include="Classes\Pet.cs" />
     <Compile Include="Classes\Player.cs" />
     <Compile Include="Classes\Program.cs" />
     <Compile Include="Classes\TestEnemy.cs" />
@@ -118,13 +120,37 @@
     <Content Include="Pictures\Map\Map2.bmp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Pictures\Pet\WolfFront.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Pet\WolfSeiteLinks.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Pictures\Player.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Pictures\Map\Sand.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Pictures\SpielerSeiteRechts.png">
+    <Content Include="Pictures\Player\SpielerFront.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Player\SpielerSeiteRechts.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Player\SpielerSeiteRechtsSchwert.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Player\WerwolfFront.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Player\WerwolfRueck.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Player\WerwolfSeiteLinks.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Player\WerwolfSeiteRechts.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Pictures\Map\Wald.png">
