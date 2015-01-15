@@ -45,7 +45,7 @@ namespace Soulmate.Classes
             return this.position;
         }
 
-        public float getWeidth()
+        public float getWidth()
         {
             return sprite.Texture.Size.X;
         }
@@ -55,7 +55,7 @@ namespace Soulmate.Classes
             return sprite.Texture.Size.Y;
         }
 
-        public void move(Vector2f direction)    //get a direction, and move to it with the enemys' movementspeed only left,right,up,down and diagonal don't wanna implements sin/cos just now
+        virtual public void move(Vector2f direction)    //get a direction, and move to it with the enemys' movementspeed only left,right,up,down and diagonal don't wanna implements sin/cos just now
         {
             if (!direction.Equals(new Vector2f(0, 0)))
             {
@@ -153,6 +153,25 @@ namespace Soulmate.Classes
             {
                 return false;
             }
+        }
+
+        public Vector2f getKeyPressed(float movementSpeed)
+        {
+            Vector2f result = new Vector2f(0, 0);
+
+            if (Keyboard.IsKeyPressed(Keyboard.Key.A))
+                result.X = -movementSpeed;
+
+            if (Keyboard.IsKeyPressed(Keyboard.Key.W))
+                result.Y = -movementSpeed;
+
+            if (Keyboard.IsKeyPressed(Keyboard.Key.S))
+                result.Y = movementSpeed;
+
+            if (Keyboard.IsKeyPressed(Keyboard.Key.D))
+                result.X = movementSpeed;
+
+            return result;
         }
 
         public void draw(RenderWindow window)
