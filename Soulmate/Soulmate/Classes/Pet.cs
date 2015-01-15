@@ -17,6 +17,7 @@ namespace Soulmate.Classes
             sprite = new Sprite(petTexture);
             sprite.Position = new Vector2f(player.Position.X - 100, player.Position.Y);
             hitBox = new HitBox(sprite.Position, getWidth(), getHeight());
+            movementSpeed = 0.1f;
         }
 
         override public void update(GameTime time)
