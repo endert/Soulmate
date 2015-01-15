@@ -83,6 +83,7 @@ namespace Soulmate.Classes
             {
                 tookDmg = true;
                 Console.WriteLine("HIT!!!!");
+                //if()
                 life--;
                 Console.WriteLine(life);
             }
