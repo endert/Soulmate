@@ -96,6 +96,7 @@ namespace Soulmate.Classes
                 player.update(gameTime);
                 if (player.getLife() <= 0)
                 {
+                    
                     return EnumGameStates.mainMenu;
                 }
 

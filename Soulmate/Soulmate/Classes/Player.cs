@@ -79,7 +79,7 @@ namespace Soulmate.Classes
 
         public void takeDamage()
         {
-            if(hitAnotherEntity() && isVulnerable())
+            if(hitAnotherEntity()&&isVulnerable()&&wasHitByEnemy())
             {
                 tookDmg = true;
                 Console.WriteLine("HIT!!!!");
@@ -87,6 +87,19 @@ namespace Soulmate.Classes
                 life--;
                 Console.WriteLine(life);
             }
+        }
+
+        public bool wasHitByEnemy()
+        {
+            bool hitByEnemy = false;
+            for (int i = 0; i < getTypeFromTouchedEntities().Count; i++)
+            {
+                if (getTypeFromTouchedEntities()[i].Equals("enemy"))
+                {
+                    hitByEnemy = true;
+                }
+            }
+            return hitByEnemy;
         }
 
         public bool pressedKeyForAttack()

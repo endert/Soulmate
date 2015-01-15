@@ -28,11 +28,16 @@ namespace Soulmate.Classes
         protected Vector2f facingInDirection { get; set; }
         protected bool moveAwayFromEntity = false;
         protected int indexEntityList;  //index in the ObjectList of the ObjectHandler
-        protected float movementSpeed;
+        protected float movementSpeed { get; set; }
 
         public void setIndexEntityList(int index)
         {
             indexEntityList = index;
+        }
+
+        public Vector2f getFacingDirection()
+        {
+            return facingInDirection;
         }
 
         public bool getIsAlive()
@@ -53,6 +58,19 @@ namespace Soulmate.Classes
         public HitBox getHitBox()
         {
             return hitBox;
+        }
+
+        public List<String> getTypeFromTouchedEntities()
+        {
+            List<String> types = new List<string>();
+            for (int i = 0; i < ObjectHandler.gObjs.Count; i++)
+            {
+                if ((i != indexEntityList) && (hitBox.hit(ObjectHandler.gObjs[i].getHitBox())))
+                {
+                    types.Add(ObjectHandler.gObjs[i].type);
+                }
+            }
+            return types;
         }
 
         virtual public Vector2f getPosition()
@@ -251,6 +269,11 @@ namespace Soulmate.Classes
                 }
             }
             return vulnerable;
+        }
+
+        public void finalize()
+        {
+            hitFromDirections.Clear();
         }
 
         public abstract void update(GameTime gameTime);
