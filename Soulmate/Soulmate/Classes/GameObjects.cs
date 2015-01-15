@@ -166,16 +166,16 @@ namespace Soulmate.Classes
         {
             Vector2f result = new Vector2f(0, 0);
 
-            if (Keyboard.IsKeyPressed(Keyboard.Key.A))
+            if (Keyboard.IsKeyPressed(Keyboard.Key.Left))
                 result.X = -movementSpeed;
 
-            if (Keyboard.IsKeyPressed(Keyboard.Key.W))
+            if (Keyboard.IsKeyPressed(Keyboard.Key.Up))
                 result.Y = -movementSpeed;
 
-            if (Keyboard.IsKeyPressed(Keyboard.Key.S))
+            if (Keyboard.IsKeyPressed(Keyboard.Key.Down))
                 result.Y = movementSpeed;
 
-            if (Keyboard.IsKeyPressed(Keyboard.Key.D))
+            if (Keyboard.IsKeyPressed(Keyboard.Key.Right))
                 result.X = movementSpeed;
 
             return result;

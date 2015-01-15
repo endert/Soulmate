@@ -94,6 +94,10 @@ namespace Soulmate.Classes
                 objcs.update(gameTime);
 
                 player.update(gameTime);
+                //if(player.getLife()<=0)
+                //{
+                //    return EnumGameStates.none;
+                //}
 
                 pet.update(gameTime);
                
