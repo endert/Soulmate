@@ -49,13 +49,13 @@ namespace Soulmate.Classes
 
             if (hitWithoutInsection(h))
             {
-                if ((position.X+width) <= h.position.X)
+                if ((position.X+width) < h.position.X)
                 {
                     hitFrom.X = 1;
                 }
                 else
                 {
-                    if ((h.position.X + h.width) <= position.X)
+                    if ((h.position.X + h.width) < position.X)
                     {
                         hitFrom.X = -1;
                     }

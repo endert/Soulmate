@@ -22,6 +22,7 @@ namespace Soulmate.Classes
             lvl = _lvl;
             hp = 1 + 1 * (lvl - 1);
             mp = 1 + 1 * (lvl - 1);
+            def = 0;
             attackDamage = 1 + 1 * (lvl -1);
             attackRange = 75f;
             aggroRange = 300f;
@@ -70,7 +71,10 @@ namespace Soulmate.Classes
             if (!touchedPlayer())
                 move(playerDirection);
             else
-                move(new Vector2f(-playerDirection.X, -playerDirection.Y));            
+            {
+                move(new Vector2f(-playerDirection.X, -playerDirection.Y));
+                facingInDirection = playerDirection;
+            }
         }
 
         public override void notReact()
@@ -80,15 +84,15 @@ namespace Soulmate.Classes
 
         public override void animate()
         {
-            if (movementInDirection.Y>0)
+            if (facingInDirection.Y>0)
             {
                 sprite = new Sprite(enemyTextures[0]);
             }
-            else if (movementInDirection.Y < 0)
+            else if (facingInDirection.Y < 0)
             {
                 sprite = new Sprite(enemyTextures[1]);
             }
-            else if (movementInDirection.X > 0)
+            else if (facingInDirection.X > 0)
             {
                 sprite = new Sprite(enemyTextures[2]);
             }
