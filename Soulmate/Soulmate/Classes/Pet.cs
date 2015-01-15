@@ -16,7 +16,7 @@ namespace Soulmate.Classes
         public Pet(Sprite player)
         {
             sprite = new Sprite(petTexture);
-            sprite.Position = new Vector2f(player.Position.X + 200, player.Position.Y+player.Texture.Size.Y-petTexture.Size.Y);
+            sprite.Position = new Vector2f(player.Position.X - 150, player.Position.Y+player.Texture.Size.Y-petTexture.Size.Y);
             position = sprite.Position;
             hitBox = new HitBox(sprite.Position, getWidth(), getHeight());
             //movementSpeed = 0.1f;
@@ -26,10 +26,6 @@ namespace Soulmate.Classes
         {
             sprite.Position = position;
             hitBox.setPosition(sprite.Position);
-            
-
-            //move(EnemyHandler.getPlayer().getSprite());
-            //move(new Vector2f(EnemyHandler.getPlayer().getPosition().X-sprite.Position.X, EnemyHandler.getPlayer().getPosition().Y-sprite.Position.Y));
 
             movementSpeed = 0.2f * (float)time.EllapsedTime.TotalMilliseconds;
 

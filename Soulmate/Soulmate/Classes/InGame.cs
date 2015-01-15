@@ -44,7 +44,7 @@ namespace Soulmate.Classes
 
             map = new Map(new Bitmap("Pictures/Map/Map2.bmp"));
 
-            player = new Player(new Vector2f(32 * 5, 32 * 10 - 219), map);
+            player = new Player(new Vector2f(32 * 15, 32 * 10 - 219), map);
  
             objcs = new ObjectHandler(map,player);
 
@@ -94,10 +94,10 @@ namespace Soulmate.Classes
                 objcs.update(gameTime);
 
                 player.update(gameTime);
-                //if(player.getLife()<=0)
-                //{
-                //    return EnumGameStates.none;
-                //}
+                if (player.getLife() <= 0)
+                {
+                    return EnumGameStates.mainMenu;
+                }
 
                 pet.update(gameTime);
                

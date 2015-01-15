@@ -22,7 +22,6 @@ namespace Soulmate.Classes
         float att = 1;
         float def = 1;
         float life = 10;
-        bool attack = false;
 
         Texture[] playerTextures = { new Texture("Pictures/Player/SpielerSeiteRechtsSchwert.png") };
 
@@ -48,11 +47,6 @@ namespace Soulmate.Classes
         public float getLife()
         {
             return life;
-        }
-
-        public bool getAttack()
-        {
-            return attack;
         }
 
         public HitBox getHitBoxSword()
@@ -85,22 +79,24 @@ namespace Soulmate.Classes
 
         public void takeDamage()
         {
-            if(hitAnotherEntity())
+            if(hitAnotherEntity() && isVulnerable())
             {
+                tookDmg = true;
                 Console.WriteLine("HIT!!!!");
+                //if()
                 life--;
                 Console.WriteLine(life);
             }
         }
 
-        public void pressedKeyForAttack()
+        public bool pressedKeyForAttack()
         {
             if (Keyboard.IsKeyPressed(Keyboard.Key.A))
             {
-                attack = true;
+                return true;
             }
             else
-                attack = false;
+                return false;
         }
     }
 }
