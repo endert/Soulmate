@@ -65,10 +65,6 @@ namespace Soulmate.Classes
         {
             return aggroRange;
         }
-        public float getMovementSpeed()
-        {
-            return movementSpeed;
-        }
 
         
         //********************************************************************************************
@@ -96,8 +92,8 @@ namespace Soulmate.Classes
                     notReact();
                 }
             }
-            hitFromDirections.Clear();
             takeDmg();
+            finalize();
         }
 
         public void moveRandom()
@@ -205,13 +201,13 @@ namespace Soulmate.Classes
 
         public void takeDmg()
         {
-            if (hitBox.hit(ObjectHandler.player.getHitBoxSword()) && isVulnerable())
+            if (hitBox.hit(ObjectHandler.player.getHitBoxSword()) && isVulnerable() && ObjectHandler.player.pressedKeyForAttack())
             {
                 float dmg = ObjectHandler.player.getAtt() - def;
                 hp -= dmg;
                 tookDmg = true;
 
-                Vector2f knockedInDirection = new Vector2f(-hitBox.hitFrom(ObjectHandler.player.getHitBoxSword()).X, -hitBox.hitFrom(ObjectHandler.player.getHitBoxSword()).Y);
+                Vector2f knockedInDirection = ObjectHandler.player.getFacingDirection();
 
                 knockedBack(knockedInDirection, ObjectHandler.player.getKnockBack());
                 Console.WriteLine(hp);
