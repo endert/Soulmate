@@ -113,7 +113,7 @@ namespace Soulmate.Classes
             }
         }
 
-        private bool hitAnotherEntity()
+        public bool hitAnotherEntity()
         {
             for (int i = 0; i < ObjectHandler.gObjs.Count; i++)
             {
