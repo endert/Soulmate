@@ -16,11 +16,12 @@ namespace Soulmate.Classes
         Map map;
         Vector2f movement;
         HitBox hitBoxSword { get; set; }
+        Vector2f swordPosition;
 
         float att = 1;
         float def = 1;
 
-        Texture[] playerTextures;
+        Texture[] playerTextures = { new Texture("Pictures/Player/SpielerSeiteRechtsSchwert.png") };
 
         public Player(Vector2f spawnPosition, Map levelMap)
         {
@@ -54,6 +55,9 @@ namespace Soulmate.Classes
             sprite.Position = position;
             hitBox.setPosition(sprite.Position);
 
+            swordPosition = new Vector2f(sprite.Position.X + 70, sprite.Position.Y);
+            hitBox.setPosition(swordPosition);
+
             movement = new Vector2f(0, 0);
             movement = getKeyPressed(movementSpeed);
             move(movement);
@@ -61,9 +65,15 @@ namespace Soulmate.Classes
             hitFromDirections.Clear();
         }
 
-        //public bool takeDamage()
-        //{
-        //    if(hitBoxSword.hit(EnemyHandler.getEnemies()))
-        //}
+        public bool takeDamage()
+        {
+            if(hitAnotherEntity())
+            {
+                Console.WriteLine("HIT!!!!");
+                return true;
+            }
+            else
+                return false;
+        }
     }
 }
