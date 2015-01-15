@@ -20,14 +20,14 @@ namespace Soulmate.Classes
             isAlive = true;
             hitBox = new HitBox(sprite.Position, sprite.Texture.Size.X, sprite.Texture.Size.Y);
             lvl = _lvl;
-            hp = 1 + 1 * (lvl - 1);
+            hp = 5 + 1 * (lvl - 1);
             mp = 1 + 1 * (lvl - 1);
             def = 0;
             attackDamage = 1 + 1 * (lvl -1);
             attackRange = 75f;
             aggroRange = 300f;
             movementSpeed = 1f;
-            knockBack = 1f;
+            knockBack = 50f;
         }
 
         public override void attack()
@@ -84,21 +84,28 @@ namespace Soulmate.Classes
 
         public override void animate()
         {
-            if (facingInDirection.Y>0)
+            if (isVulnerable())
             {
-                sprite = new Sprite(enemyTextures[0]);
-            }
-            else if (facingInDirection.Y < 0)
-            {
-                sprite = new Sprite(enemyTextures[1]);
-            }
-            else if (facingInDirection.X > 0)
-            {
-                sprite = new Sprite(enemyTextures[2]);
+                if (facingInDirection.Y > 0)
+                {
+                    sprite = new Sprite(enemyTextures[0]);
+                }
+                else if (facingInDirection.Y < 0)
+                {
+                    sprite = new Sprite(enemyTextures[1]);
+                }
+                else if (facingInDirection.X > 0)
+                {
+                    sprite = new Sprite(enemyTextures[2]);
+                }
+                else
+                {
+                    sprite = new Sprite(enemyTextures[3]);
+                }
             }
             else
             {
-                sprite = new Sprite(enemyTextures[3]);
+                sprite = new Sprite(new Texture("Pictures/Pet/WolfFront.png"));
             }
         }
     }

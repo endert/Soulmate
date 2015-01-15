@@ -25,7 +25,7 @@ namespace Soulmate.Classes
         }
         public void setPosition(Vector2f _pos)
         {
-            position = _pos;
+            position = new Vector2f(_pos.X, _pos.Y);
         }
         public float getWidth()
         {

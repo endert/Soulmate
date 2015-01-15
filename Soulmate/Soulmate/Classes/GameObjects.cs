@@ -23,7 +23,7 @@ namespace Soulmate.Classes
         protected bool isAlive = true;
         protected bool tookDmg { get; set; }
         protected int invulnerableFor = 500; //0.5s invulnerable
-        protected float knockBack = 0.1f;
+        protected float knockBack = 150f;
 
         protected Vector2f facingInDirection { get; set; }
         protected bool moveAwayFromEntity = false;
@@ -38,6 +38,11 @@ namespace Soulmate.Classes
         public bool getIsAlive()
         {
             return isAlive;
+        }
+
+        public float getKnockBack()
+        {
+            return knockBack;
         }
 
         public Sprite getSprite()
@@ -78,13 +83,13 @@ namespace Soulmate.Classes
                         if (Math.Abs((direction.X >= hitFromDirections[i].X) ? (direction.X) : (hitFromDirections[i].X)) > Math.Abs(direction.X - hitFromDirections[i].X) ||
                             Math.Abs((direction.X >= hitFromDirections[i].X) ? (direction.X) : (hitFromDirections[i].X)) < Math.Abs(direction.X - hitFromDirections[i].X))//if they have the same sign otherwise it doesn't matter
                         {
-                            direction.X = knockBack*(-hitFromDirections[i].X/Math.Abs(hitFromDirections[i].X));
+                            direction.X = -hitFromDirections[i].X;
                         }
 
                         if (Math.Abs((direction.Y >= hitFromDirections[i].Y) ? (direction.Y) : (hitFromDirections[i].Y)) > Math.Abs(direction.Y - hitFromDirections[i].Y) ||
                             Math.Abs((direction.Y >= hitFromDirections[i].Y) ? (direction.Y) : (hitFromDirections[i].Y)) < Math.Abs(direction.Y - hitFromDirections[i].Y))
                         {
-                            direction.Y = knockBack*(-hitFromDirections[i].Y/Math.Abs(hitFromDirections[i].Y));
+                            direction.Y = -hitFromDirections[i].Y;
                         }
                     }
                     move(direction);
@@ -162,6 +167,48 @@ namespace Soulmate.Classes
             else
             {
                 return false;
+            }
+        }
+
+        public void knockedBack(Vector2f direction, float knockBack)
+        {
+            Vector2f knocking = new Vector2f(0, 0);
+
+            if (direction.X > 0)
+                knocking.X += knockBack;
+            else
+            {
+                if (direction.X < 0)
+                    knocking.X -= knockBack;
+                else
+                    knocking.X += 0;
+            }
+            if (direction.Y > 0)
+                knocking.Y += knockBack;
+            else
+            {
+                if (direction.Y < 0)
+                    knocking.Y -= knockBack;
+                else
+                    knocking.Y += 0;
+            }
+
+            if (ObjectHandler.lvlMap.getWalkable(sprite, knocking))    // only move if it's walkable
+            {
+                position = new Vector2f(position.X + knocking.X, position.Y + knocking.Y);
+            }
+            else
+            {
+                for (float i = 0; i < knockBack; i++)
+                {
+                    if (ObjectHandler.lvlMap.getWalkable(sprite, new Vector2f(((knocking.X<0)?(-1):(1))*(Math.Abs(knocking.X) - i), 
+                        ((knocking.Y<0)?(-1):(1))*(Math.Abs(knocking.Y) - i))))    // only move if it's walkable
+                    {
+                        position = new Vector2f(position.X + ((knocking.X < 0) ? (-1) : (1)) * (Math.Abs(knocking.X) - i),
+                            ((knocking.Y < 0) ? (-1) : (1)) * (Math.Abs(knocking.Y) - i));
+                        return;
+                    }
+                }
             }
         }
 

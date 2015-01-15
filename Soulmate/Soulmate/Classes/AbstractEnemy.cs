@@ -76,6 +76,7 @@ namespace Soulmate.Classes
         //Methods*************************************************************************************
         override public void update(GameTime gameTime)
         {
+            type = "enemy";
             animate();
             sprite.Position = position;
             if (hp<=0)
@@ -85,7 +86,7 @@ namespace Soulmate.Classes
             if (isAlive)
             {
                 hitBox.setPosition(sprite.Position);
-                takeDmg();
+                
                 if (sensePlayer())  //if a player is sensed (is in aggroRange) react else not ;)
                 {
                     react();
@@ -96,7 +97,7 @@ namespace Soulmate.Classes
                 }
             }
             hitFromDirections.Clear();
-            Console.WriteLine(hp);
+            takeDmg();
         }
 
         public void moveRandom()
@@ -204,10 +205,16 @@ namespace Soulmate.Classes
 
         public void takeDmg()
         {
-            if (hitBox.hit(ObjectHandler.player.getHitBoxSword())&&!isVulnerable())
+            if (hitBox.hit(ObjectHandler.player.getHitBoxSword()) && isVulnerable())
             {
                 float dmg = ObjectHandler.player.getAtt() - def;
                 hp -= dmg;
+                tookDmg = true;
+
+                Vector2f knockedInDirection = new Vector2f(-hitBox.hitFrom(ObjectHandler.player.getHitBoxSword()).X, -hitBox.hitFrom(ObjectHandler.player.getHitBoxSword()).Y);
+
+                knockedBack(knockedInDirection, ObjectHandler.player.getKnockBack());
+                Console.WriteLine(hp);
             }
         }
         //********************************************************************************************
