@@ -10,7 +10,6 @@ namespace Soulmate.Classes
 {
     class Player : GameObjects
     {
-        Texture playerWithSwordTexture = new Texture("Pictures/Player/SpielerSeiteRechtsSchwert.png");
         Texture playerWithoutSwordTexture = new Texture("Pictures/Player/SpielerSeiteRechts.png");
 
         Map map;
@@ -28,13 +27,13 @@ namespace Soulmate.Classes
         public Player(Vector2f spawnPosition, Map levelMap)
         {
             type = "player";
-            sprite = new Sprite(playerWithSwordTexture);
+            sprite = new Sprite(playerTextures[0]);
             sprite.Position = spawnPosition;
             position = spawnPosition;
             hitBox = new HitBox(sprite.Position, playerWithoutSwordTexture.Size.X, getHeight());
 
             swordVector = new Vector2f(sprite.Position.X + 70, sprite.Position.Y + 94);
-            hitBoxSword = new HitBox(swordVector, playerWithSwordTexture.Size.X - playerWithoutSwordTexture.Size.X, 85);
+            hitBoxSword = new HitBox(swordVector, playerTextures[0].Size.X - playerWithoutSwordTexture.Size.X, 85);
             
             map = levelMap;
         }

@@ -92,7 +92,7 @@ namespace Soulmate.Classes
         {
             if (!direction.Equals(new Vector2f(0, 0)))
             {
-                if (hitAnotherEntity() && !moveAwayFromEntity && ((type.Equals("player"))?(true):(!touchedPlayer()))) //if an entity is not a player it should not touch the player
+                if (hitAnotherEntity() && !moveAwayFromEntity && ((type.Equals("player")) ? (true) : (!touchedPlayer()))) //if an entity is not a player it should not touch the player
                 {
                     moveAwayFromEntity = true;
 
@@ -150,7 +150,7 @@ namespace Soulmate.Classes
         {
             for (int i = 0; i < ObjectHandler.gObjs.Count; i++)
             {
-                if ((i != indexEntityList) && (hitBox.hit(ObjectHandler.gObjs[i].getHitBox())))
+                if ((i != indexEntityList) && (hitBox.hit(ObjectHandler.gObjs[i].getHitBox())) && !petPlayerCollision())
                 {
                     bool notFound = true;
                     for (int j = 0; j < hitFromDirections.Count; j++)
@@ -174,6 +174,33 @@ namespace Soulmate.Classes
             {
                 return false;
             }
+        }
+
+        public bool petPlayerCollision()
+        {
+            if(type.Equals("pet"))
+            {
+                foreach(GameObjects gObj in ObjectHandler.gObjs)
+                {
+                    if(hitBox.hit(gObj.hitBox) && !gObj.type.Equals("pet") && gObj.type.Equals("player"))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            if(type.Equals("player"))
+            {
+                foreach(GameObjects gObj in ObjectHandler.gObjs)
+                {
+                    if(hitBox.hit(gObj.hitBox) && !gObj.type.Equals("player") && gObj.type.Equals("pet"))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
         public bool touchedPlayer()

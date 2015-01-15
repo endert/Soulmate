@@ -15,11 +15,11 @@ namespace Soulmate.Classes
         
         public Pet(Sprite player)
         {
+            type = "pet";
             sprite = new Sprite(petTexture);
             sprite.Position = new Vector2f(player.Position.X - 150, player.Position.Y+player.Texture.Size.Y-petTexture.Size.Y);
             position = sprite.Position;
             hitBox = new HitBox(sprite.Position, getWidth(), getHeight());
-            //movementSpeed = 0.1f;
         }
 
         override public void update(GameTime time)
@@ -33,12 +33,26 @@ namespace Soulmate.Classes
             movement = getKeyPressed(movementSpeed);
             move(movement);
 
+            if (petPlayerCollision())
+            {
+                if(ObjectHandler.player.getFacingDirection().X<0)
+                    position.X++;
+
+                if (ObjectHandler.player.getFacingDirection().X > 0)
+                    position.X--;
+
+                else
+                    position.X++;
+            }
+
             hitFromDirections.Clear();
         }
 
-        //public void move(Sprite player)
-        //{
-        //    sprite.Position = new Vector2f(player.Position.X - 200, player.Position.Y);
-        //}
+        public Vector2f getVectorForMove()
+        {
+            
+            
+            return new Vector2f(0, 0);
+        }
     }
 }
