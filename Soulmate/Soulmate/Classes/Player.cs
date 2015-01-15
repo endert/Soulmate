@@ -55,8 +55,8 @@ namespace Soulmate.Classes
             sprite.Position = position;
             hitBox.setPosition(sprite.Position);
 
-            swordPosition = new Vector2f(sprite.Position.X + 70, sprite.Position.Y);
-            hitBox.setPosition(swordPosition);
+            swordPosition = hitBoxSword.getPosition();
+            hitBoxSword.setPosition(swordPosition);
 
             movement = new Vector2f(0, 0);
             movement = getKeyPressed(movementSpeed);
