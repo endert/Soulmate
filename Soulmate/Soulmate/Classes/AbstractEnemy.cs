@@ -14,6 +14,8 @@ namespace Soulmate.Classes
         protected Stopwatch watch1 = new Stopwatch();    //random movement
         protected Random random = new Random();
 
+        protected Texture[] enemyTextureArray = new Texture[5];
+
         protected bool hitPlayer = false;
 
         protected int lvl;
@@ -73,7 +75,7 @@ namespace Soulmate.Classes
         override public void update(GameTime gameTime)
         {
             type = "enemy";
-            animate();
+            animate(enemyTextureArray);
             sprite.Position = position;
             if (hp<=0)
             {
@@ -221,7 +223,5 @@ namespace Soulmate.Classes
         public abstract void react();   //what the enemy does if it's sense a player
 
         public abstract void notReact();    //what the enemy normaly does
-
-        public abstract void animate();
     }
 }

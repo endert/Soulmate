@@ -58,5 +58,14 @@ namespace Soulmate.Classes
                 gObj.draw(window);
             }
         }
+
+        static public void deleate()
+        {
+            foreach (GameObjects gObj in gObjs)
+            {
+                gObj.kill();
+            }
+
+        }
     }
 }
