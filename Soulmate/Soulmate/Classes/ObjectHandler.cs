@@ -58,5 +58,10 @@ namespace Soulmate.Classes
                 gObj.draw(window);
             }
         }
+
+        public void finalize()
+        {
+            gObjs.Clear();
+        }
     }
 }
