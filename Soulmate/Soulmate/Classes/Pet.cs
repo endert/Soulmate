@@ -36,6 +36,8 @@ namespace Soulmate.Classes
             movement = new Vector2f(0, 0);
             movement = getKeyPressed(movementSpeed);
             move(movement);
+
+            hitFromDirections.Clear();
         }
 
         //public void move(Sprite player)
