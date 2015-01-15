@@ -11,7 +11,7 @@ namespace Soulmate.Classes
 {
     abstract class AbstractEnemy : GameObjects
     {
-        protected Stopwatch watch = new Stopwatch();    //for animations and the random movement
+        protected Stopwatch watch1 = new Stopwatch();    //random movement
         protected Random random = new Random();
 
         protected bool hitPlayer = false;
@@ -110,10 +110,10 @@ namespace Soulmate.Classes
             Vector2f left = new Vector2f(-1, 0);
             Vector2f upLeft = new Vector2f(-1, -1);
 
-            if (watch.ElapsedMilliseconds >= movingFor) //only evaluate a new direction, if the enemy isnt moving already
+            if (watch1.ElapsedMilliseconds >= movingFor) //only evaluate a new direction, if the enemy isnt moving already
             {
                 randomMovingDirection = random.Next(9);
-                watch.Restart();
+                watch1.Restart();
                 movingFor = 0;
             }
             switch (randomMovingDirection)  //move in the direction for 1000 millisecounds so 1 second
@@ -121,54 +121,54 @@ namespace Soulmate.Classes
                 case 0:
                     if (EnemyHandler.getMap().getWalkable(sprite, up))
                         move(up);
-                    watch.Start();
+                    watch1.Start();
                     movingFor = (int)(1000*random.NextDouble()) + 500;
                     break;
                 case 1:
                     if (EnemyHandler.getMap().getWalkable(sprite, upRight))
                         move(upRight);
-                    watch.Start();
+                    watch1.Start();
                     movingFor = (int)(1000 * random.NextDouble()) + 500;
                     break;
                 case 2:
                     if (EnemyHandler.getMap().getWalkable(sprite, right))
                         move(right);
-                    watch.Start();
+                    watch1.Start();
                     movingFor = (int)(1000 * random.NextDouble()) + 500;
                     break;
                 case 3:
                     if (EnemyHandler.getMap().getWalkable(sprite, downRight))
                         move(downRight);
-                    watch.Start();
+                    watch1.Start();
                     movingFor = (int)(1000 * random.NextDouble()) + 500;
                     break;
                 case 4:
                     if (EnemyHandler.getMap().getWalkable(sprite, down))
                         move(down);
-                    watch.Start();
+                    watch1.Start();
                     movingFor = (int)(1000 * random.NextDouble()) + 500;
                     break;
                 case 5:
                     if (EnemyHandler.getMap().getWalkable(sprite, downLeft))
                         move(downLeft);
-                    watch.Start();
+                    watch1.Start();
                     movingFor = (int)(1000 * random.NextDouble()) + 500;
                     break;
                 case 6:
                     if (EnemyHandler.getMap().getWalkable(sprite, left))
                         move(left);
-                    watch.Start();
+                    watch1.Start();
                     movingFor = (int)(1000 * random.NextDouble()) + 500;
                     break;
                 case 7:
                     if (EnemyHandler.getMap().getWalkable(sprite, upLeft))
                         move(upLeft);
-                    watch.Start();
+                    watch1.Start();
                     movingFor = (int)(1000 * random.NextDouble()) + 500;
                     break;
                 default:    //stand still for one sek
                     move(new Vector2f(0, 0));
-                    watch.Start();
+                    watch1.Start();
                     movingFor = (int)(1000 * random.NextDouble()) + 500;
                     break;
             }
@@ -204,7 +204,7 @@ namespace Soulmate.Classes
 
         public void takeDmg()
         {
-            if (hitBox.hit(ObjectHandler.player.getHitBoxSword()))
+            if (hitBox.hit(ObjectHandler.player.getHitBoxSword())&&!isVulnerable())
             {
                 float dmg = ObjectHandler.player.getAtt() - def;
                 hp -= dmg;

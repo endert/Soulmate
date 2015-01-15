@@ -2,6 +2,7 @@
 using SFML.Window;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,12 +15,14 @@ namespace Soulmate.Classes
         protected Vector2f position;
         protected Sprite sprite;
 
+        protected Stopwatch watchInvulnerablety = new Stopwatch();    //for Invulnerablety
+
         protected HitBox hitBox;
         protected List<Vector2f> hitFromDirections = new List<Vector2f>();
 
         protected bool isAlive = true;
         protected bool tookDmg { get; set; }
-        protected int invulnerableFor { get; set; }
+        protected int invulnerableFor = 500; //0.5s invulnerable
         protected float knockBack = 0.1f;
 
         protected Vector2f facingInDirection { get; set; }
@@ -184,6 +187,23 @@ namespace Soulmate.Classes
         public void draw(RenderWindow window)
         {
             window.Draw(sprite);
+        }
+
+        public bool isVulnerable()
+        {
+            bool vulnerable = true;
+            if (tookDmg)
+            {
+                vulnerable = false;
+                watchInvulnerablety.Start();
+                if (watchInvulnerablety.ElapsedMilliseconds>=invulnerableFor)
+                {
+                    tookDmg = false;
+                    vulnerable = true;
+                    watchInvulnerablety.Reset();
+                }
+            }
+            return vulnerable;
         }
 
         public abstract void update(GameTime gameTime);
