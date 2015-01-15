@@ -45,24 +45,5 @@ namespace Soulmate.Classes
 
             hitFromDirections.Clear();
         }
-
-        public Vector2f getKeyPressed(float movementSpeed)
-        {
-            Vector2f result = new Vector2f(0, 0);
-
-            if (Keyboard.IsKeyPressed(Keyboard.Key.A))
-                result.X = -movementSpeed;
-
-            if (Keyboard.IsKeyPressed(Keyboard.Key.W))
-                result.Y = -movementSpeed;
-
-            if (Keyboard.IsKeyPressed(Keyboard.Key.S))
-                result.Y = movementSpeed;
-
-            if (Keyboard.IsKeyPressed(Keyboard.Key.D))
-                result.X = movementSpeed;
-
-            return result;
-        }
     }
 }

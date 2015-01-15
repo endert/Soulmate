@@ -81,7 +81,7 @@ namespace Soulmate.Classes
 
         public static Vector2f PosPlayer()
         {
-            return new Vector2f(player.getSprite().Position.X + (player.getWeidth() / 2), player.getSprite().Position.Y + (player.getHeight() / 2));
+            return new Vector2f(player.getSprite().Position.X + (player.getWidth() / 2), player.getSprite().Position.Y + (player.getHeight() / 2));
         }
 
         public bool getHitPlayer()

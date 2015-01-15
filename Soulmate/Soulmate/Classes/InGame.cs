@@ -22,11 +22,11 @@ namespace Soulmate.Classes
         Pet pet;
         EnemyHandler enemies;
         Inventory inventory;
+        Interface hud;
+
         bool inventoryOpen;
         bool isKlickedInventory = false;
 
-        
-        
         public void initialize()
         {
             time = new GameTime();
@@ -57,6 +57,8 @@ namespace Soulmate.Classes
             objcs.add(pet);
 
             inventory = new Inventory();
+
+            hud = new Interface();
         }
 
         public EnumGameStates update(GameTime gameTime)
@@ -87,7 +89,7 @@ namespace Soulmate.Classes
             else
             {
                 backGround.Position = new Vector2f(view.Center.X - 640, view.Center.Y - 360);
-                view.Move(new Vector2f((player.getSprite().Position.X + (player.getWeidth() / 2)), (player.getSprite().Position.Y + (player.getHeight() / 2))) - view.Center);
+                view.Move(new Vector2f((player.getSprite().Position.X + (player.getWidth() / 2)), (player.getSprite().Position.Y + (player.getHeight() / 2))) - view.Center);
 
                 objcs.update(gameTime);
 
@@ -96,6 +98,8 @@ namespace Soulmate.Classes
                 pet.update(gameTime);
                
                 enemies.update(gameTime);
+
+                hud.update(gameTime);
 
                 if (Keyboard.IsKeyPressed(Keyboard.Key.Escape))
                     return EnumGameStates.mainMenu;
@@ -109,6 +113,7 @@ namespace Soulmate.Classes
             window.SetView(view);
             map.draw(window);
             objcs.draw(window);
+            hud.draw(window);
             
             if(inventoryOpen==true)
             {
