@@ -78,6 +78,11 @@ namespace Soulmate.Classes
             return this.position;
         }
 
+        public void kill()
+        {
+            isAlive = false;
+        }
+
         public float getWidth()
         {
             return sprite.Texture.Size.X;
@@ -150,7 +155,7 @@ namespace Soulmate.Classes
         {
             for (int i = 0; i < ObjectHandler.gObjs.Count; i++)
             {
-                if ((i != indexEntityList) && (hitBox.hit(ObjectHandler.gObjs[i].getHitBox())))
+                if ((i != indexEntityList) && (hitBox.hit(ObjectHandler.gObjs[i].getHitBox())) && !petPlayerCollision())
                 {
                     bool notFound = true;
                     for (int j = 0; j < hitFromDirections.Count; j++)
@@ -174,6 +179,33 @@ namespace Soulmate.Classes
             {
                 return false;
             }
+        }
+
+        public bool petPlayerCollision()
+        {
+            if (type.Equals("pet"))
+            {
+                foreach (GameObjects gObj in ObjectHandler.gObjs)
+                {
+                    if (hitBox.hit(gObj.hitBox) && !gObj.type.Equals("pet") && gObj.type.Equals("player"))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            if (type.Equals("player"))
+            {
+                foreach (GameObjects gObj in ObjectHandler.gObjs)
+                {
+                    if (hitBox.hit(gObj.hitBox)  && !gObj.type.Equals("player") && gObj.type.Equals("pet"))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
         public bool touchedPlayer()
@@ -214,19 +246,6 @@ namespace Soulmate.Classes
             if (ObjectHandler.lvlMap.getWalkable(sprite, knocking))    // only move if it's walkable
             {
                 position = new Vector2f(position.X + knocking.X, position.Y + knocking.Y);
-            }
-            else
-            {
-                for (float i = 0; i < knockBack; i++)
-                {
-                    if (ObjectHandler.lvlMap.getWalkable(sprite, new Vector2f(((knocking.X<0)?(-1):(1))*(Math.Abs(knocking.X) - i), 
-                        ((knocking.Y<0)?(-1):(1))*(Math.Abs(knocking.Y) - i))))    // only move if it's walkable
-                    {
-                        position = new Vector2f(position.X + ((knocking.X < 0) ? (-1) : (1)) * (Math.Abs(knocking.X) - i),
-                            ((knocking.Y < 0) ? (-1) : (1)) * (Math.Abs(knocking.Y) - i));
-                        return;
-                    }
-                }
             }
         }
 
@@ -274,6 +293,36 @@ namespace Soulmate.Classes
         public void finalize()
         {
             hitFromDirections.Clear();
+        }
+
+        public void animate(Texture[] textureArray)
+        {
+            if (isVulnerable())
+            {
+                if (facingInDirection.Y > 0)
+                {
+                    sprite = new Sprite(textureArray[0]); //front
+                }
+                else if (facingInDirection.Y < 0)
+                {
+                    sprite = new Sprite(textureArray[1]); // back
+                }
+                else if (facingInDirection.X > 0)
+                {
+                    sprite = new Sprite(textureArray[2]); // right
+                }
+                else
+                {
+                    sprite = new Sprite(textureArray[3]); // left
+                }
+            }
+            else
+            {
+                if (textureArray.Length>4)
+                {
+                    sprite = new Sprite(textureArray[4]); // invulnerablety
+                }
+            }
         }
 
         public abstract void update(GameTime gameTime);

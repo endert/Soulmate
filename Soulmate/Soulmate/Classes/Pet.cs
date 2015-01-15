@@ -15,6 +15,7 @@ namespace Soulmate.Classes
         
         public Pet(Sprite player)
         {
+            type = "pet";
             sprite = new Sprite(petTexture);
             sprite.Position = new Vector2f(player.Position.X - 150, player.Position.Y+player.Texture.Size.Y-petTexture.Size.Y);
             position = sprite.Position;

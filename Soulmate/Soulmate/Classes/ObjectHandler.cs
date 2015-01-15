@@ -59,9 +59,13 @@ namespace Soulmate.Classes
             }
         }
 
-        public void finalize()
+        static public void deleate()
         {
-            gObjs.Clear();
+            foreach (GameObjects gObj in gObjs)
+            {
+                gObj.kill();
+            }
+
         }
     }
 }

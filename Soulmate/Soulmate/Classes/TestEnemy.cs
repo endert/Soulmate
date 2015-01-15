@@ -10,11 +10,10 @@ namespace Soulmate.Classes
 {
     class TestEnemy : AbstractEnemy
     {
-        Texture[] enemyTextures = { new Texture("Pictures/Enemy/Enemy1Front.png"), new Texture("Pictures/Enemy/Enemy1Rueck.png"), new Texture("Pictures/Enemy/Enemy1SeiteRechts.png"), new Texture("Pictures/Enemy/Enemy1SeiteLinks.png") };
-
         public TestEnemy(Vector2f spawnPos, int _lvl)
         {
-            sprite = new Sprite(enemyTextures[0]);
+            setEnemyTextures();
+            sprite = new Sprite(enemyTextureArray[0]);
             position = spawnPos;
             sprite.Position = position;
             isAlive = true;
@@ -28,6 +27,15 @@ namespace Soulmate.Classes
             aggroRange = 300f;
             movementSpeed = 1f;
             knockBack = 50f;
+        }
+
+        private void setEnemyTextures()
+        {
+            enemyTextureArray[0] = new Texture("Pictures/Enemy/Enemy1Front.png");
+            enemyTextureArray[1] = new Texture("Pictures/Enemy/Enemy1Rueck.png");
+            enemyTextureArray[2] = new Texture("Pictures/Enemy/Enemy1SeiteRechts.png");
+            enemyTextureArray[3] = new Texture("Pictures/Enemy/Enemy1SeiteLinks.png");
+            enemyTextureArray[4] = new Texture("Pictures/Enemy/Enemy1FrontInvulnerable.png");
         }
 
         public override void attack()
@@ -80,33 +88,6 @@ namespace Soulmate.Classes
         public override void notReact()
         {
             moveRandom();
-        }
-
-        public override void animate()
-        {
-            if (isVulnerable())
-            {
-                if (facingInDirection.Y > 0)
-                {
-                    sprite = new Sprite(enemyTextures[0]);
-                }
-                else if (facingInDirection.Y < 0)
-                {
-                    sprite = new Sprite(enemyTextures[1]);
-                }
-                else if (facingInDirection.X > 0)
-                {
-                    sprite = new Sprite(enemyTextures[2]);
-                }
-                else
-                {
-                    sprite = new Sprite(enemyTextures[3]);
-                }
-            }
-            else
-            {
-                sprite = new Sprite(new Texture("Pictures/Pet/WolfFront.png"));
-            }
         }
     }
 }
