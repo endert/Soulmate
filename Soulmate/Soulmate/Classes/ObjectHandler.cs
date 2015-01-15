@@ -37,6 +37,15 @@ namespace Soulmate.Classes
         {
             for (int i = 0; i < gObjs.Count; i++)
             {
+                if (!gObjs[i].getIsAlive())
+                {
+                    gObjs.RemoveAt(i);
+                    i--;
+                }
+            }
+
+            for (int i = 0; i < gObjs.Count; i++)
+            {
                 gObjs[i].setIndexEntityList(i);
                 gObjs[i].update(gameTime);
             }

@@ -17,7 +17,9 @@ namespace Soulmate.Classes
         protected HitBox hitBox;
         protected List<Vector2f> hitFromDirections = new List<Vector2f>();
 
-        protected bool isAlive;
+        protected bool isAlive = true;
+        protected bool tookDmg { get; set; }
+        protected int invulnerableFor { get; set; }
         protected float knockBack = 0.1f;
 
         protected Vector2f facingInDirection { get; set; }
@@ -28,6 +30,11 @@ namespace Soulmate.Classes
         public void setIndexEntityList(int index)
         {
             indexEntityList = index;
+        }
+
+        public bool getIsAlive()
+        {
+            return isAlive;
         }
 
         public Sprite getSprite()

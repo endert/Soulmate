@@ -15,7 +15,7 @@ namespace Soulmate.Classes
 
         Map map;
         Vector2f movement;
-        HitBox hitBoxSword;
+        HitBox hitBoxSword { get; set; }
 
         float att = 1;
         float def = 1;
@@ -31,6 +31,16 @@ namespace Soulmate.Classes
             hitBox = new HitBox(sprite.Position, playerWithoutSwordTexture.Size.X, getHeight());
             hitBoxSword = new HitBox(new Vector2f(sprite.Position.X + 70, sprite.Position.Y), playerWithSwordTexture.Size.X - playerWithoutSwordTexture.Size.X, getHeight());
             map = levelMap;
+        }
+
+        public float getAtt()
+        {
+            return att;
+        }
+
+        public HitBox getHitBoxSword()
+        {
+            return hitBoxSword;
         }
 
         override public void update(GameTime time)

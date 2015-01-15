@@ -29,12 +29,7 @@ namespace Soulmate.Classes
         //Getter**************************************************************************************
         override public Vector2f getPosition()
         {
-            return new Vector2f(sprite.Position.X+(sprite.Texture.Size.X/2), sprite.Position.Y+(sprite.Texture.Size.Y/2));
-        }
-
-        public bool getIsAlive()
-        {
-            return isAlive;
+            return new Vector2f(sprite.Position.X + (sprite.Texture.Size.X / 2), sprite.Position.Y + (sprite.Texture.Size.Y / 2));
         }
 
         public bool getTochedPlayer()
@@ -83,9 +78,14 @@ namespace Soulmate.Classes
         {
             animate();
             sprite.Position = position;
+            if (hp<=0)
+            {
+                isAlive = false;
+            }
             if (isAlive)
             {
                 hitBox.setPosition(sprite.Position);
+                takeDmg();
                 if (sensePlayer())  //if a player is sensed (is in aggroRange) react else not ;)
                 {
                     react();
@@ -96,20 +96,7 @@ namespace Soulmate.Classes
                 }
             }
             hitFromDirections.Clear();
-        }
-
-        public bool touchedPlayer()
-        {
-            if (hitBox.hit(ObjectHandler.player.getHitBox()))
-            {
-                hitPlayer = true;
-                return hitPlayer;
-            }
-            else
-            {
-                hitPlayer = false;
-                return hitPlayer;
-            }
+            Console.WriteLine(hp);
         }
 
         public void moveRandom()
@@ -212,6 +199,15 @@ namespace Soulmate.Classes
             else
             {
                 return false;
+            }
+        }
+
+        public void takeDmg()
+        {
+            if (hitBox.hit(ObjectHandler.player.getHitBoxSword()))
+            {
+                float dmg = ObjectHandler.player.getAtt() - def;
+                hp -= dmg;
             }
         }
         //********************************************************************************************

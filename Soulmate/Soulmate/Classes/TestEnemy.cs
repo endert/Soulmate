@@ -22,6 +22,7 @@ namespace Soulmate.Classes
             lvl = _lvl;
             hp = 1 + 1 * (lvl - 1);
             mp = 1 + 1 * (lvl - 1);
+            def = 0;
             attackDamage = 1 + 1 * (lvl -1);
             attackRange = 75f;
             aggroRange = 300f;
