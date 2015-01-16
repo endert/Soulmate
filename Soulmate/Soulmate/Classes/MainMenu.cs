@@ -11,7 +11,7 @@ namespace Soulmate.Classes
     class MainMenu : GameStates
     {
         bool isPressed;
-        int x;
+        int x; //für Menüsteuerung
 
         Texture startSelected;
         Texture startNotSelected;

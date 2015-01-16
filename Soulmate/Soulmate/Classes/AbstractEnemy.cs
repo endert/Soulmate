@@ -213,7 +213,6 @@ namespace Soulmate.Classes
                 Vector2f knockedInDirection = ObjectHandler.player.getFacingDirection();
 
                 knockedBack(knockedInDirection, ObjectHandler.player.getKnockBack());
-                Console.WriteLine(hp);
             }
         }
         //********************************************************************************************

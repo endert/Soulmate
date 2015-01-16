@@ -49,8 +49,8 @@ namespace Soulmate.Classes
                 case 1:
                     for (int i = 0; i < 2; i++)
                     {
-                        float rX = 100 + random.Next(1000);
-                        float rY = 100 + random.Next(1000);
+                        float rX = 600 + random.Next(1000);
+                        float rY = 400 + random.Next(400);
                         Vector2f spawnPos = new Vector2f(rX, rY);
 
                         TestEnemy test = new TestEnemy(spawnPos, 1);
