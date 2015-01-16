@@ -12,6 +12,8 @@ namespace Soulmate.Classes
     {
         Texture playerWithoutSwordTexture = new Texture("Pictures/Player/SpielerSeiteRechts.png");
 
+        int numPlayerTexture = 2; // nach RECHTS
+
         Map map;
         Vector2f movement;
         HitBox hitBoxSword { get; set; }
@@ -28,13 +30,14 @@ namespace Soulmate.Classes
         public Player(Vector2f spawnPosition, Map levelMap)
         {
             type = "player";
+            facingInDirection = new Vector2f(1, 0); // RECHTS
             sprite = new Sprite(playerTextures[0]);
             sprite.Position = spawnPosition;
             position = spawnPosition;
             hitBox = new HitBox(sprite.Position, playerWithoutSwordTexture.Size.X, getHeight());
 
             swordVector = getSwordVector();
-            hitBoxSword = new HitBox(swordVector, playerTextures[0].Size.X - playerWithoutSwordTexture.Size.X, 85);
+            hitBoxSword = new HitBox(swordVector, playerTextures[2].Size.X - playerWithoutSwordTexture.Size.X, 85);
             
             map = levelMap;
         }
@@ -69,16 +72,37 @@ namespace Soulmate.Classes
 
             takeDamage();
             animate(playerTextures);
+
+            switch (numPlayerTexture)
+            {
+                case 0:
+                    {
+                        sprite.Position = position;
+                        break;
+                    }
+                case 1:
+                    {
+                        sprite.Position = position;
+                        break;
+                    }
+                case 2:
+                    {
+                        sprite.Position = position;
+                        break;
+                    }
+                case 3:
+                    {
+                        sprite.Position = new Vector2f(position.X - (playerTextures[2].Size.X - playerWithoutSwordTexture.Size.X), position.Y);
+                        break;
+                    }
+                default:
+                    {
+                        Console.WriteLine("default");
+                        break;
+                    }
+            }
+
             
-            //switch(playerTextures)
-            //{
-            //    case playerTextures[0]:
-            //        {
-
-            //        }
-            //}
-
-            sprite.Position = position;
             hitBox.setPosition(sprite.Position);
 
             swordPosition = getSwordVector();
@@ -131,19 +155,22 @@ namespace Soulmate.Classes
             if (facingInDirection.Y > 0)
             {
                 sprite = new Sprite(textureArray[0]); //front
+                numPlayerTexture = 0;
             }
             else if (facingInDirection.Y < 0)
             {
                 sprite = new Sprite(textureArray[1]); // back
+                numPlayerTexture = 1;
             }
             else if (facingInDirection.X > 0)
             {
                 sprite = new Sprite(textureArray[2]); // right
-                //sprite.Position
+                numPlayerTexture = 2;
             }
             else
             {
                 sprite = new Sprite(textureArray[3]); // left
+                numPlayerTexture = 3;
             }
         }
     }
