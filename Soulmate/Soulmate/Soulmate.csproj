@@ -57,6 +57,7 @@
     <Compile Include="Classes\AbstractEnemy.cs" />
     <Compile Include="Classes\AbstractGame.cs" />
     <Compile Include="Classes\AbstractItem.cs" />
+    <Compile Include="Classes\Controls.cs" />
     <Compile Include="Classes\GameObjects.cs" />
     <Compile Include="Classes\HitBox.cs" />
     <Compile Include="Classes\Blocks.cs" />
@@ -92,6 +93,9 @@
     </Content>
     <Content Include="libsndfile-1.dll" />
     <Content Include="openal32.dll" />
+    <Content Include="Pictures\ControlsTextBild.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Pictures\Enemy\Enemy1\Enemy1Front.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -134,16 +138,22 @@
     <Content Include="Pictures\Life\LifeFull.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Pictures\MainMenu\ControlsNotSelected.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\MainMenu\ControlsSelected.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Pictures\MainMenu\EndNotSelected.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Pictures\MainMenu\EndSelected.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Pictures\MainMenu\TestNotSelected.png">
+    <Content Include="Pictures\MainMenu\OptionsNotSelected.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Pictures\MainMenu\TestSelected.png">
+    <Content Include="Pictures\MainMenu\OptionsSelected.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Pictures\Map\Boden.png">

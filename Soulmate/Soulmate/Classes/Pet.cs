@@ -31,18 +31,6 @@ namespace Soulmate.Classes
 
             move(getVectorForMove());
 
-            if (petPlayerCollision())
-            {
-                if (ObjectHandler.player.getFacingDirection().X < 0)
-                    position.X++;
-
-                if (ObjectHandler.player.getFacingDirection().X > 0)
-                    position.X--;
-
-                else
-                    position.X++;
-            }
-
             hitFromDirections.Clear();
         }
 

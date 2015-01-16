@@ -50,6 +50,9 @@ namespace Soulmate.Classes
                 case EnumGameStates.inGame:
                     gameState = new InGame();
                     break;
+                case EnumGameStates.controls:
+                    gameState = new Controls();
+                    break;
                 //case EGameStates.gameWon:
                 //    gameState = new GameWon();
                 //    break;

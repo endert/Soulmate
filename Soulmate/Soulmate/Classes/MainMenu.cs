@@ -17,16 +17,15 @@ namespace Soulmate.Classes
         Texture startNotSelected;
         Texture exitSelected;
         Texture exitNotSelected;
-        Texture controlSelected;
-        Texture controlNotSelected;
-
-        Texture testSelected;
-        Texture testNotSelected;
+        Texture controlsSelected;
+        Texture controlsNotSelected;
+        Texture optionsSelected;
+        Texture optionsNotSelected;
 
         Sprite start;
         Sprite exit;
-       
-        Sprite test;
+        Sprite options;
+        Sprite controls;
 
         Texture backGroundTex;
         Sprite backGround;
@@ -39,13 +38,16 @@ namespace Soulmate.Classes
             x = 0;
 
             start = new Sprite(startNotSelected);
-            start.Position = new Vector2f(300, 100);
+            start.Position = new Vector2f(300, 50);
 
             exit = new Sprite(exitNotSelected);
-            exit.Position = new Vector2f(300, 300);
+            exit.Position = new Vector2f(300, 200);
 
-            test = new Sprite(testNotSelected);
-            test.Position = new Vector2f(300, 500);
+            options = new Sprite(optionsNotSelected);
+            options.Position = new Vector2f(300, 350);
+
+            controls = new Sprite(controlsNotSelected);
+            controls.Position = new Vector2f(300, 500);
 
             backGround = new Sprite(backGroundTex);
             backGround.Position = new Vector2f(0, 0);
@@ -61,8 +63,11 @@ namespace Soulmate.Classes
             exitSelected = new Texture("Pictures/MainMenu/EndSelected.png");
             exitNotSelected = new Texture("Pictures/MainMenu/EndNotSelected.png");
 
-            testSelected = new Texture("Pictures/MainMenu/TestSelected.png");
-            testNotSelected = new Texture("Pictures/MainMenu/TestNotSelected.png");
+            optionsSelected = new Texture("Pictures/MainMenu/OptionsSelected.png");
+            optionsNotSelected = new Texture("Pictures/MainMenu/OptionsNotSelected.png");
+
+            controlsSelected = new Texture("Pictures/MainMenu/ControlsSelected.png");
+            controlsNotSelected = new Texture("Pictures/MainMenu/ControlsNotSelected.png");
             
             backGroundTex = new Texture("Pictures/Hintergrund.png");
         }
@@ -71,43 +76,49 @@ namespace Soulmate.Classes
         {
             if(Keyboard.IsKeyPressed(Keyboard.Key.Up) && !isPressed)
             {
-                if (x == 0)
-                    x = (x + 2) % 3;
-                else
-                    x = (x - 1) % 3;
+                x = (x + 3) % 4;
                 isPressed = true;
             }
 
             if(Keyboard.IsKeyPressed(Keyboard.Key.Down) && !isPressed)
             {
-                x = (x + 1) % 3;
+                x = (x + 1) % 4;
                 isPressed = true;
             }
 
             if (!Keyboard.IsKeyPressed(Keyboard.Key.Down) && !Keyboard.IsKeyPressed(Keyboard.Key.Up))
                 isPressed = false;
 
-
-
             if(x==0)
             {
                 start.Texture = startSelected;
                 exit.Texture = exitNotSelected;
-                test.Texture = testNotSelected;
+                options.Texture = optionsNotSelected;
+                controls.Texture = controlsNotSelected;
             }
 
             if(x==1)
             {
                 start.Texture = startNotSelected;
                 exit.Texture = exitSelected;
-                test.Texture = testNotSelected;
+                options.Texture = optionsNotSelected;
+                controls.Texture = controlsNotSelected;
             }
 
             if(x==2)
             {
                 start.Texture = startNotSelected;
                 exit.Texture = exitNotSelected;
-                test.Texture = testSelected;
+                options.Texture = optionsSelected;
+                controls.Texture = controlsNotSelected;
+            }
+
+            if(x==3)
+            {
+                start.Texture = startNotSelected;
+                exit.Texture = exitNotSelected;
+                options.Texture = optionsNotSelected;
+                controls.Texture = controlsSelected;
             }
 
 
@@ -115,6 +126,8 @@ namespace Soulmate.Classes
                 return EnumGameStates.inGame;
             if (x == 1 && Keyboard.IsKeyPressed(Keyboard.Key.Return))
                 return EnumGameStates.none;
+            if (x == 3 && Keyboard.IsKeyPressed(Keyboard.Key.Return))
+                return EnumGameStates.controls;
 
             return EnumGameStates.mainMenu;
         }
@@ -125,7 +138,8 @@ namespace Soulmate.Classes
             window.SetView(view);
             window.Draw(start);
             window.Draw(exit);
-            window.Draw(test);
+            window.Draw(options);
+            window.Draw(controls);
         }
     }
 }

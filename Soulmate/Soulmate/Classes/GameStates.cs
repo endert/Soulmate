@@ -16,7 +16,7 @@ namespace Soulmate.Classes
         credits,
         gameWon,
         village,
-        controls,
+        controls
     }
 
     interface GameStates
