@@ -60,7 +60,6 @@ C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulma
 C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Player\SpielerFront.png
 C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Player\SpielerSeiteRechts.png
 C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Player\SpielerSeiteRechtsSchwert.png
-C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\LifeFull.png
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Pet\WolfFront.png
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Pet\WolfSeiteLinks.png
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Player\SpielerFront.png
@@ -90,3 +89,9 @@ C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Player\PlayerWerewolf\WerwolfRueck.png
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Player\PlayerWerewolf\WerwolfSeiteLinks.png
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Player\PlayerWerewolf\WerwolfSeiteRechts.png
+C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Life\Life0hp.png
+C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Life\Life1hp.png
+C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Life\Life2hp.png
+C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Life\Life3hp.png
+C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Life\Life4hp.png
+C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Life\LifeFull.png
