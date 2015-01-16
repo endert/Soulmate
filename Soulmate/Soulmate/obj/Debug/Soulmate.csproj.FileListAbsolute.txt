@@ -60,10 +60,6 @@ C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulma
 C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Player\SpielerFront.png
 C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Player\SpielerSeiteRechts.png
 C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Player\SpielerSeiteRechtsSchwert.png
-C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Player\WerwolfFront.png
-C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Player\WerwolfRueck.png
-C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Player\WerwolfSeiteLinks.png
-C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Player\WerwolfSeiteRechts.png
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\LifeFull.png
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Pet\WolfFront.png
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Pet\WolfSeiteLinks.png
@@ -84,3 +80,10 @@ C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Enemy\Enemy1SeiteRechts.png
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Enemy\Enemy1FrontInvulnerable.png
 C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Enemy\Enemy1FrontInvulnerable.png
+C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Player\SpielerBackTest.png
+C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Player\SpielerSeiteLinksSchwertTest.png
+C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Player\PlayerWerewolf\WerwolfFront.png
+C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Player\PlayerWerewolf\WerwolfRueck.png
+C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Player\PlayerWerewolf\WerwolfSeiteLinks.png
+C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Player\PlayerWerewolf\WerwolfSeiteRechts.png
+C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Player\SpielerFrontTest.png

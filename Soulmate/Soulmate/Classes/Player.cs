@@ -22,7 +22,8 @@ namespace Soulmate.Classes
         float def = 1;
         float life = 10;
 
-        Texture[] playerTextures = { new Texture("Pictures/Player/SpielerSeiteRechtsSchwert.png") };
+        Texture[] playerTextures = {  new Texture("Pictures/Player/SpielerFrontTest.png"), new Texture("Pictures/Player/SpielerBackTest.png"), 
+                                      new Texture("Pictures/Player/SpielerSeiteRechtsSchwert.png"), new Texture("Pictures/Player/SpielerSeiteLinksSchwertTest.png") };
 
         public Player(Vector2f spawnPosition, Map levelMap)
         {
@@ -67,7 +68,16 @@ namespace Soulmate.Classes
             //Console.WriteLine((float)time.EllapsedTime.TotalMilliseconds);
 
             takeDamage();
+            animate(playerTextures);
             
+            //switch(playerTextures)
+            //{
+            //    case playerTextures[0]:
+            //        {
+
+            //        }
+            //}
+
             sprite.Position = position;
             hitBox.setPosition(sprite.Position);
 
@@ -114,6 +124,27 @@ namespace Soulmate.Classes
             }
             else
                 return false;
+        }
+
+        public override void animate(Texture[] textureArray)
+        {
+            if (facingInDirection.Y > 0)
+            {
+                sprite = new Sprite(textureArray[0]); //front
+            }
+            else if (facingInDirection.Y < 0)
+            {
+                sprite = new Sprite(textureArray[1]); // back
+            }
+            else if (facingInDirection.X > 0)
+            {
+                sprite = new Sprite(textureArray[2]); // right
+                //sprite.Position
+            }
+            else
+            {
+                sprite = new Sprite(textureArray[3]); // left
+            }
         }
     }
 }
