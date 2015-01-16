@@ -68,15 +68,12 @@ namespace Soulmate.Classes
             hud = new Interface();
         }
 
-        public EnumGameStates update(GameTime gameTime)
+        public bool getInventoryOpen()
         {
-            time.Update();
-            
-
             if (Keyboard.IsKeyPressed(Keyboard.Key.I) && !isKlickedInventory && !inventoryOpen)
             {
-                inventoryOpen = true;
                 isKlickedInventory = true;
+                return inventoryOpen = true;
             }
 
             if (!Keyboard.IsKeyPressed(Keyboard.Key.I))
@@ -84,31 +81,45 @@ namespace Soulmate.Classes
 
             if (Keyboard.IsKeyPressed(Keyboard.Key.I) && !isKlickedInventory && inventoryOpen == true)
             {
-                inventoryOpen = false;
                 isKlickedInventory = true;
+                return inventoryOpen = false;
             }
+
+            return false;
+        }
+
+        public bool getInGameMenuOpen()
+        {
+            if (Keyboard.IsKeyPressed(Keyboard.Key.Escape) && !isKlickedInGameMenu && !inGameMenuOpen)
+            {
+                isKlickedInGameMenu = true;
+                return inGameMenuOpen = true;
+            }
+
+            if (!Keyboard.IsKeyPressed(Keyboard.Key.Escape))
+                isKlickedInGameMenu = false;
+
+            if (((Keyboard.IsKeyPressed(Keyboard.Key.Escape) && !isKlickedInGameMenu) || (Keyboard.IsKeyPressed(Keyboard.Key.Return) && inGameMenu.getX() == 0)) && inGameMenuOpen == true)
+            {
+                isKlickedInGameMenu = true;
+                return inGameMenuOpen = false;
+            }
+
+            return false;
+        }
+
+        public EnumGameStates update(GameTime gameTime)
+        {
+            time.Update();
+
+            getInventoryOpen();
 
             if (inventoryOpen==true)
             {
                 inventory.update(gameTime);
             }
 
-//=================================================================================================================================
-
-            if (Keyboard.IsKeyPressed(Keyboard.Key.Escape) && !isKlickedInGameMenu && !inGameMenuOpen)
-            {
-                inGameMenuOpen = true;
-                isKlickedInGameMenu = true;
-            }
-
-            if (!Keyboard.IsKeyPressed(Keyboard.Key.Escape))
-                isKlickedInGameMenu = false;
-
-            if (((Keyboard.IsKeyPressed(Keyboard.Key.Escape) && !isKlickedInGameMenu) || (Keyboard.IsKeyPressed(Keyboard.Key.Return) && inGameMenu.getX()==0)) && inGameMenuOpen == true)
-            {
-                inGameMenuOpen = false;
-                isKlickedInGameMenu = true;
-            }
+            getInGameMenuOpen();
 
             if (Keyboard.IsKeyPressed(Keyboard.Key.Return) && inGameMenu.getX() == 1)
             {
@@ -120,8 +131,6 @@ namespace Soulmate.Classes
             {
                 inGameMenu.update(gameTime);
             }
-
-//==================================================================================================================================
 
             else if(!inventoryOpen && !inGameMenuOpen)
             {
