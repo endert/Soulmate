@@ -93,7 +93,8 @@ namespace Soulmate.Classes
                 {
                     notReact();
                 }
-            }
+            } 
+           
             takeDmg();
             finalize();
         }

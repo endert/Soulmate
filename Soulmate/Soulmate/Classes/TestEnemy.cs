@@ -31,11 +31,11 @@ namespace Soulmate.Classes
 
         private void setEnemyTextures()
         {
-            enemyTextureArray[0] = new Texture("Pictures/Enemy/Enemy1Front.png");
-            enemyTextureArray[1] = new Texture("Pictures/Enemy/Enemy1Rueck.png");
-            enemyTextureArray[2] = new Texture("Pictures/Enemy/Enemy1SeiteRechts.png");
-            enemyTextureArray[3] = new Texture("Pictures/Enemy/Enemy1SeiteLinks.png");
-            enemyTextureArray[4] = new Texture("Pictures/Enemy/Enemy1FrontInvulnerable.png");
+            enemyTextureArray[0] = new Texture("Pictures/Enemy/Enemy1/Enemy1Front.png");
+            enemyTextureArray[1] = new Texture("Pictures/Enemy/Enemy1/Enemy1Rueck.png");
+            enemyTextureArray[2] = new Texture("Pictures/Enemy/Enemy1/Enemy1SeiteRechts.png");
+            enemyTextureArray[3] = new Texture("Pictures/Enemy/Enemy1/Enemy1SeiteLinks.png");
+            enemyTextureArray[4] = new Texture("Pictures/Enemy/Enemy1/Enemy1FrontInvulnerable.png");
         }
 
         public override void attack()
