@@ -52,9 +52,9 @@ namespace Soulmate.Classes
 
             pet = new Pet(player.getSprite());
 
-            objcs.add(player);
             objcs.add(enemies.getEnemiesGameObjects());
             objcs.add(pet);
+            objcs.add(player);
 
             inventory = new Inventory();
 
@@ -89,7 +89,7 @@ namespace Soulmate.Classes
             else
             {
                 backGround.Position = new Vector2f(view.Center.X - 640, view.Center.Y - 360);
-                view.Move(new Vector2f((player.getSprite().Position.X + (player.getWidth() / 2)), (player.getSprite().Position.Y + (player.getHeight() / 2))) - view.Center);
+                view.Move(new Vector2f((player.getPosition().X + (player.getWidth() / 2)), (player.getPosition().Y + (player.getHeight() / 2))) - view.Center);
 
                 objcs.update(gameTime);
 
