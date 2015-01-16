@@ -32,10 +32,15 @@ namespace Soulmate.Classes
             position = spawnPosition;
             hitBox = new HitBox(sprite.Position, playerWithoutSwordTexture.Size.X, getHeight());
 
-            swordVector = new Vector2f(sprite.Position.X + 70, sprite.Position.Y + 94);
+            swordVector = getSwordVector();
             hitBoxSword = new HitBox(swordVector, playerTextures[0].Size.X - playerWithoutSwordTexture.Size.X, 85);
             
             map = levelMap;
+        }
+
+        public Vector2f getSwordVector()
+        {
+            return new Vector2f(sprite.Position.X + 70, sprite.Position.Y + 94);
         }
 
         public float getAtt()
@@ -66,7 +71,7 @@ namespace Soulmate.Classes
             sprite.Position = position;
             hitBox.setPosition(sprite.Position);
 
-            swordPosition = new Vector2f(sprite.Position.X + 70, sprite.Position.Y + 94);
+            swordPosition = getSwordVector();
             hitBoxSword.setPosition(swordPosition);
 
             movement = new Vector2f(0, 0);

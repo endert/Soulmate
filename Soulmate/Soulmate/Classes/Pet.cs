@@ -35,7 +35,7 @@ namespace Soulmate.Classes
 
             if (petPlayerCollision())
             {
-                if(ObjectHandler.player.getFacingDirection().X<0)
+                if (ObjectHandler.player.getFacingDirection().X < 0)
                     position.X++;
 
                 if (ObjectHandler.player.getFacingDirection().X > 0)
