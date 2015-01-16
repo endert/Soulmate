@@ -80,6 +80,7 @@ namespace Soulmate.Classes
                 }
                 else
                 {
+                    enemies[i].drop();
                     enemies.RemoveAt(i);
                     i--;
                 }

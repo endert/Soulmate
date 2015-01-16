@@ -121,7 +121,6 @@ namespace Soulmate.Classes
                 controls.Texture = controlsSelected;
             }
 
-
             if (x == 0 && Keyboard.IsKeyPressed(Keyboard.Key.Return))
                 return EnumGameStates.inGame;
             if (x == 1 && Keyboard.IsKeyPressed(Keyboard.Key.Return))

@@ -21,12 +21,16 @@ namespace Soulmate.Classes
         Player player;
         Pet pet;
         EnemyHandler enemies;
+        ItemHandler items;
         Inventory inventory;
+        InGameMenu inGameMenu;
         Interface hud;
 
         bool inventoryOpen;
         bool isKlickedInventory = false;
 
+        bool inGameMenuOpen;
+        bool isKlickedInGameMenu = false;
         public void initialize()
         {
             time = new GameTime();
@@ -52,11 +56,14 @@ namespace Soulmate.Classes
 
             pet = new Pet(player.getSprite());
 
+            items = new ItemHandler(map);
+
             objcs.add(enemies.getEnemiesGameObjects());
             objcs.add(pet);
             objcs.add(player);
 
             inventory = new Inventory();
+            inGameMenu = new InGameMenu();
 
             hud = new Interface();
         }
@@ -86,12 +93,43 @@ namespace Soulmate.Classes
                 inventory.update(gameTime);
             }
 
-            else
+//=================================================================================================================================
+
+            if (Keyboard.IsKeyPressed(Keyboard.Key.Escape) && !isKlickedInGameMenu && !inGameMenuOpen)
+            {
+                inGameMenuOpen = true;
+                isKlickedInGameMenu = true;
+            }
+
+            if (!Keyboard.IsKeyPressed(Keyboard.Key.Escape))
+                isKlickedInGameMenu = false;
+
+            if (((Keyboard.IsKeyPressed(Keyboard.Key.Escape) && !isKlickedInGameMenu) || (Keyboard.IsKeyPressed(Keyboard.Key.Return) && inGameMenu.getX()==0)) && inGameMenuOpen == true)
+            {
+                inGameMenuOpen = false;
+                isKlickedInGameMenu = true;
+            }
+
+            if (Keyboard.IsKeyPressed(Keyboard.Key.Return) && inGameMenu.getX() == 1)
+            {
+                ObjectHandler.deleate();
+                return EnumGameStates.mainMenu;
+            }
+
+            if (inGameMenuOpen == true)
+            {
+                inGameMenu.update(gameTime);
+            }
+
+//==================================================================================================================================
+
+            else if(!inventoryOpen && !inGameMenuOpen)
             {
                 backGround.Position = new Vector2f(view.Center.X - 640, view.Center.Y - 360);
                 view.Move(new Vector2f((player.getPosition().X + (player.getWidth() / 2)), (player.getPosition().Y + (player.getHeight() / 2))) - view.Center);
 
                 objcs.update(gameTime);
+                items.update(gameTime);
 
                 player.update(gameTime);
                 if (player.getLife() <= 0)
@@ -105,9 +143,6 @@ namespace Soulmate.Classes
                 enemies.update(gameTime);
 
                 hud.update(gameTime);
-
-                if (Keyboard.IsKeyPressed(Keyboard.Key.Escape))
-                    return EnumGameStates.mainMenu;
             }
             return EnumGameStates.inGame;
         }
@@ -119,11 +154,18 @@ namespace Soulmate.Classes
             map.draw(window);
             objcs.draw(window);
             hud.draw(window);
+            items.draw(window);
             
-            if(inventoryOpen==true)
+            if (inventoryOpen == true)
             {
                 window.SetView(viewInventory);
                 inventory.draw(window);
+            }
+
+            if (inGameMenuOpen == true)
+            {
+                window.SetView(viewInventory);
+                inGameMenu.draw(window);
             }
         }
     }

@@ -79,28 +79,5 @@ namespace Soulmate.Classes
                 return new Vector2f(-ObjectHandler.player.getFacingDirection().X, -ObjectHandler.player.getFacingDirection().Y);
             }
         }
-
-        public Vector2f getPlayerDirection()
-        {
-            Vector2f playerDirection = new Vector2f(0, 0);
-            if (ObjectHandler.player.getHitBox().getPosition().X + ObjectHandler.player.getHitBox().getWidth() < position.X) //player is to the left
-            {
-                playerDirection.X = -1;
-            }
-            else if (position.X + hitBox.getWidth() < ObjectHandler.player.getHitBox().getPosition().X)
-            {
-                playerDirection.X = 1;
-            }
-
-            if (ObjectHandler.player.getHitBox().getPosition().Y + ObjectHandler.player.getHitBox().getHeight() < position.Y)
-            {
-                playerDirection.Y = -1;
-            }
-            else if (position.Y + getHeight() < ObjectHandler.player.getHitBox().getPosition().Y)
-            {
-                playerDirection.Y = 1;
-            }
-            return playerDirection;
-        }
     }
 }
