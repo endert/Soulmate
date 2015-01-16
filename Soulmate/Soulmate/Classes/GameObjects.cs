@@ -295,7 +295,7 @@ namespace Soulmate.Classes
             hitFromDirections.Clear();
         }
 
-        public void animate(Texture[] textureArray)
+        virtual public void animate(Texture[] textureArray)
         {
             if (isVulnerable())
             {

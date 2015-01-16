@@ -78,9 +78,9 @@ C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulma
 C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Enemy\Enemy1Rueck.png
 C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Enemy\Enemy1SeiteLinks.png
 C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Enemy\Enemy1SeiteRechts.png
-C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Enemy\Enemy1Front.png
-C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Enemy\Enemy1Rueck.png
-C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Enemy\Enemy1SeiteLinks.png
-C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Enemy\Enemy1SeiteRechts.png
-C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Enemy\Enemy1FrontInvulnerable.png
 C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Enemy\Enemy1FrontInvulnerable.png
+C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Enemy\Enemy1\Enemy1Front.png
+C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Enemy\Enemy1\Enemy1FrontInvulnerable.png
+C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Enemy\Enemy1\Enemy1Rueck.png
+C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Enemy\Enemy1\Enemy1SeiteLinks.png
+C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Enemy\Enemy1\Enemy1SeiteRechts.png
