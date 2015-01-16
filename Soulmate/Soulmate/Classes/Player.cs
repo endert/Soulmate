@@ -12,7 +12,7 @@ namespace Soulmate.Classes
     {
         Texture playerWithoutSwordTexture = new Texture("Pictures/Player/SpielerSeiteRechts.png");
 
-        int numPlayerTexture = 2; // nach RECHTS
+        int numFacingDirection = 2; // nach RECHTS
 
         Map map;
         Vector2f movement;
@@ -42,14 +42,24 @@ namespace Soulmate.Classes
             map = levelMap;
         }
 
+        public float getWidth()
+        {
+            return playerTextures[0].Size.X;
+        }
+
+        public int getNumFacingDirection()
+        {
+            return numFacingDirection;
+        }
+
         public Vector2f getSwordVector()
         {
-            if (numPlayerTexture == 2)
+            if (numFacingDirection == 2)
             {
                 return new Vector2f(sprite.Position.X + 70, sprite.Position.Y + 94);
             }
 
-            else if (numPlayerTexture == 3)
+            else if (numFacingDirection == 3)
             {
                 return new Vector2f(sprite.Position.X, sprite.Position.Y + 94);
             }
@@ -84,7 +94,7 @@ namespace Soulmate.Classes
             takeDamage();
             animate(playerTextures);
 
-            switch (numPlayerTexture)
+            switch (numFacingDirection)
             {
                 case 0:
                     {
@@ -165,22 +175,22 @@ namespace Soulmate.Classes
             if (facingInDirection.Y > 0)
             {
                 sprite = new Sprite(textureArray[0]); //front
-                numPlayerTexture = 0;
+                numFacingDirection = 0;
             }
             else if (facingInDirection.Y < 0)
             {
                 sprite = new Sprite(textureArray[1]); // back
-                numPlayerTexture = 1;
+                numFacingDirection = 1;
             }
             else if (facingInDirection.X > 0)
             {
                 sprite = new Sprite(textureArray[2]); // right
-                numPlayerTexture = 2;
+                numFacingDirection = 2;
             }
             else
             {
                 sprite = new Sprite(textureArray[3]); // left
-                numPlayerTexture = 3;
+                numFacingDirection = 3;
             }
         }
     }

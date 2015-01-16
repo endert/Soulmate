@@ -29,9 +29,7 @@ namespace Soulmate.Classes
 
             movementSpeed = 0.2f * (float)time.EllapsedTime.TotalMilliseconds;
 
-            movement = new Vector2f(0, 0);
-            movement = getKeyPressed(movementSpeed);
-            move(movement);
+            move(getVectorForMove());
 
             if (petPlayerCollision())
             {
@@ -48,11 +46,73 @@ namespace Soulmate.Classes
             hitFromDirections.Clear();
         }
 
+        public bool isBehindPlayer()
+        {
+            switch (ObjectHandler.player.getNumFacingDirection())
+            {
+                case(0):
+                    if (position.Y+getHeight()<ObjectHandler.player.getPosition().Y)
+                    {
+                        return true;
+                    }
+                    break;
+                case(1):
+                    if (position.Y>ObjectHandler.player.getPosition().Y+ObjectHandler.player.getHeight())
+                    {
+                        return true;
+                    }
+                    break;
+                case(2):
+                    if (position.X+getWidth()<ObjectHandler.player.getPosition().X)
+                    {
+                        return true;
+                    }
+                    break;
+                case(3):
+                    if (position.X>ObjectHandler.player.getPosition().X+ObjectHandler.player.getWidth())
+                    {
+                        return true;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            return false;
+        }
+
         public Vector2f getVectorForMove()
         {
-            
-            
-            return new Vector2f(0, 0);
+            if (isBehindPlayer())
+            {
+                return getPlayerDirection();
+            }
+            else
+            {
+                return new Vector2f(-ObjectHandler.player.getFacingDirection().X, -ObjectHandler.player.getFacingDirection().Y);
+            }
+        }
+
+        public Vector2f getPlayerDirection()
+        {
+            Vector2f playerDirection = new Vector2f(0, 0);
+            if (ObjectHandler.player.getHitBox().getPosition().X + ObjectHandler.player.getHitBox().getWidth() < position.X) //player is to the left
+            {
+                playerDirection.X = -1;
+            }
+            else if (position.X + hitBox.getWidth() < ObjectHandler.player.getHitBox().getPosition().X)
+            {
+                playerDirection.X = 1;
+            }
+
+            if (ObjectHandler.player.getHitBox().getPosition().Y + ObjectHandler.player.getHitBox().getHeight() < position.Y)
+            {
+                playerDirection.Y = -1;
+            }
+            else if (position.Y + getHeight() < ObjectHandler.player.getHitBox().getPosition().Y)
+            {
+                playerDirection.Y = 1;
+            }
+            return playerDirection;
         }
     }
 }
