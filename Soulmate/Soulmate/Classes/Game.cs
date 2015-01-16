@@ -53,11 +53,11 @@ namespace Soulmate.Classes
                 case EnumGameStates.controls:
                     gameState = new Controls();
                     break;
+                case EnumGameStates.options:
+                    gameState = new Options();
+                    break;
                 //case EGameStates.gameWon:
                 //    gameState = new GameWon();
-                //    break;
-                //case EGameStates.controls:
-                //    gameState = new Controls();
                 //    break;
                 default:
                     throw new NotFiniteNumberException();

@@ -1,31 +1,31 @@
-﻿using System;
+﻿using SFML.Graphics;
+using SFML.Window;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SFML.Graphics;
-using SFML.Window;
 
 namespace Soulmate.Classes
 {
-    class Controls : GameStates
+    class Options : GameStates
     {
-        Texture controlsTexture;
-        Sprite controls;
+        Texture optionsTexture;
+        Sprite options;
 
         View view;
-
+        
         public void initialize()
         {
-            controls = new Sprite(controlsTexture);
-            controls.Position = new Vector2f(0, 0);
-
+            options = new Sprite(optionsTexture);
+            options.Position = new Vector2f(0, 0);
+            
             view = new View(new FloatRect(0, 0, 1280, 720));
         }
 
         public void loadContent()
         {
-            controlsTexture = new Texture("Pictures/ControlsTextBild.png");
+            optionsTexture = new Texture("Pictures/OptionsTest.png");
         }
 
         public EnumGameStates update(GameTime gameTime)
@@ -33,12 +33,12 @@ namespace Soulmate.Classes
             if (Keyboard.IsKeyPressed(Keyboard.Key.Return))
                 return EnumGameStates.mainMenu;
             
-            return EnumGameStates.controls;
+            return EnumGameStates.options;
         }
 
         public void draw(RenderWindow window)
         {
-            window.Draw(controls);
+            window.Draw(options);
         }
     }
 }

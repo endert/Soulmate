@@ -24,7 +24,7 @@ namespace Soulmate.Classes
 
         Sprite start;
         Sprite exit;
-        Sprite options;
+        Sprite optionsButton;
         Sprite controls;
 
         Texture backGroundTex;
@@ -43,8 +43,8 @@ namespace Soulmate.Classes
             exit = new Sprite(exitNotSelected);
             exit.Position = new Vector2f(300, 200);
 
-            options = new Sprite(optionsNotSelected);
-            options.Position = new Vector2f(300, 350);
+            optionsButton = new Sprite(optionsNotSelected);
+            optionsButton.Position = new Vector2f(300, 350);
 
             controls = new Sprite(controlsNotSelected);
             controls.Position = new Vector2f(300, 500);
@@ -93,7 +93,7 @@ namespace Soulmate.Classes
             {
                 start.Texture = startSelected;
                 exit.Texture = exitNotSelected;
-                options.Texture = optionsNotSelected;
+                optionsButton.Texture = optionsNotSelected;
                 controls.Texture = controlsNotSelected;
             }
 
@@ -101,7 +101,7 @@ namespace Soulmate.Classes
             {
                 start.Texture = startNotSelected;
                 exit.Texture = exitSelected;
-                options.Texture = optionsNotSelected;
+                optionsButton.Texture = optionsNotSelected;
                 controls.Texture = controlsNotSelected;
             }
 
@@ -109,7 +109,7 @@ namespace Soulmate.Classes
             {
                 start.Texture = startNotSelected;
                 exit.Texture = exitNotSelected;
-                options.Texture = optionsSelected;
+                optionsButton.Texture = optionsSelected;
                 controls.Texture = controlsNotSelected;
             }
 
@@ -117,7 +117,7 @@ namespace Soulmate.Classes
             {
                 start.Texture = startNotSelected;
                 exit.Texture = exitNotSelected;
-                options.Texture = optionsNotSelected;
+                optionsButton.Texture = optionsNotSelected;
                 controls.Texture = controlsSelected;
             }
 
@@ -126,6 +126,8 @@ namespace Soulmate.Classes
                 return EnumGameStates.inGame;
             if (x == 1 && Keyboard.IsKeyPressed(Keyboard.Key.Return))
                 return EnumGameStates.none;
+            if (x == 2 && Keyboard.IsKeyPressed(Keyboard.Key.Return))
+                return EnumGameStates.options;
             if (x == 3 && Keyboard.IsKeyPressed(Keyboard.Key.Return))
                 return EnumGameStates.controls;
 
@@ -138,7 +140,7 @@ namespace Soulmate.Classes
             window.SetView(view);
             window.Draw(start);
             window.Draw(exit);
-            window.Draw(options);
+            window.Draw(optionsButton);
             window.Draw(controls);
         }
     }
