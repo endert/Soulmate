@@ -24,8 +24,8 @@ namespace Soulmate.Classes
         float def = 1;
         float life = 10;
 
-        Texture[] playerTextures = {  new Texture("Pictures/Player/SpielerFrontTest.png"), new Texture("Pictures/Player/SpielerBackTest.png"), 
-                                      new Texture("Pictures/Player/SpielerSeiteRechtsSchwert.png"), new Texture("Pictures/Player/SpielerSeiteLinksSchwertTest.png") };
+        Texture[] playerTextures = { new Texture("Pictures/Player/SpielerFrontTest.png"), new Texture("Pictures/Player/SpielerBackTest.png"), 
+                                     new Texture("Pictures/Player/SpielerSeiteRechtsSchwert.png"), new Texture("Pictures/Player/SpielerSeiteLinksSchwertTest.png") };
 
         public Player(Vector2f spawnPosition, Map levelMap)
         {
@@ -44,7 +44,18 @@ namespace Soulmate.Classes
 
         public Vector2f getSwordVector()
         {
-            return new Vector2f(sprite.Position.X + 70, sprite.Position.Y + 94);
+            if (numPlayerTexture == 2)
+            {
+                return new Vector2f(sprite.Position.X + 70, sprite.Position.Y + 94);
+            }
+
+            else if (numPlayerTexture == 3)
+            {
+                return new Vector2f(sprite.Position.X, sprite.Position.Y + 94);
+            }
+
+            else
+                return new Vector2f(0, 0);
         }
 
         public float getAtt()
