@@ -16,6 +16,8 @@ namespace Soulmate.Classes
 
         protected Texture[] enemyTextureArray = new Texture[5];
 
+        protected AbstractItem[] drops;
+
         protected bool hitPlayer = false;
 
         protected int lvl;
@@ -213,6 +215,15 @@ namespace Soulmate.Classes
                 Vector2f knockedInDirection = ObjectHandler.player.getFacingDirection();
 
                 knockedBack(knockedInDirection, ObjectHandler.player.getKnockBack());
+            }
+        }
+
+        public void drop()
+        {
+            int i = 0;
+            if (drops[i].getDropRate()>random.Next(101))
+            {
+                drops[i].drop(sprite.Position);
             }
         }
         //********************************************************************************************

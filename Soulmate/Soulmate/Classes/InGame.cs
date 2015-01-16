@@ -21,6 +21,7 @@ namespace Soulmate.Classes
         Player player;
         Pet pet;
         EnemyHandler enemies;
+        ItemHandler items;
         Inventory inventory;
         Interface hud;
 
@@ -51,6 +52,8 @@ namespace Soulmate.Classes
             enemies = new EnemyHandler(player, 1, map); //1 = lvl(map)
 
             pet = new Pet(player.getSprite());
+
+            items = new ItemHandler(map);
 
             objcs.add(enemies.getEnemiesGameObjects());
             objcs.add(pet);
@@ -92,6 +95,7 @@ namespace Soulmate.Classes
                 view.Move(new Vector2f((player.getPosition().X + (player.getWidth() / 2)), (player.getPosition().Y + (player.getHeight() / 2))) - view.Center);
 
                 objcs.update(gameTime);
+                items.update(gameTime);
 
                 player.update(gameTime);
                 if (player.getLife() <= 0)
@@ -119,6 +123,7 @@ namespace Soulmate.Classes
             map.draw(window);
             objcs.draw(window);
             hud.draw(window);
+            items.draw(window);
             
             if(inventoryOpen==true)
             {
