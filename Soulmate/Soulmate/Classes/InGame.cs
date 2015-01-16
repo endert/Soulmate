@@ -48,7 +48,7 @@ namespace Soulmate.Classes
  
             objcs = new ObjectHandler(map,player);
 
-            enemies = new EnemyHandler(player, 1, map);
+            enemies = new EnemyHandler(player, 1, map); //1 = lvl(map)
 
             pet = new Pet(player.getSprite());
 
