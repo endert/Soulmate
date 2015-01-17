@@ -53,7 +53,7 @@ namespace Soulmate.Classes
 
             pet = new Pet(player.getSprite());
 
-            items = new ItemHandler(map);
+            
 
             objcs.add(enemies.getEnemiesGameObjects());
             objcs.add(pet);
@@ -61,6 +61,8 @@ namespace Soulmate.Classes
 
             inventory = new Inventory();
 
+            items = new ItemHandler(map, inventory);
+            
             hud = new Interface();
         }
 
@@ -84,7 +86,7 @@ namespace Soulmate.Classes
                 isKlickedInventory = true;
             }
 
-            if (inventoryOpen==true)
+            if (inventoryOpen == true)
             {
                 inventory.update(gameTime);
             }
@@ -101,17 +103,24 @@ namespace Soulmate.Classes
                 if (player.getLife() <= 0)
                 {
                     ObjectHandler.deleate();
+                    items.deleate();
+                    inventory.clear();
                     return EnumGameStates.mainMenu;
                 }
 
                 pet.update(gameTime);
-               
+
                 enemies.update(gameTime);
 
                 hud.update(gameTime);
 
                 if (Keyboard.IsKeyPressed(Keyboard.Key.Escape))
+                {
+                    ObjectHandler.deleate();
+                    items.deleate();
+                    inventory.clear();
                     return EnumGameStates.mainMenu;
+                }
             }
             return EnumGameStates.inGame;
         }

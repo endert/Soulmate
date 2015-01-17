@@ -11,7 +11,7 @@ namespace Soulmate.Classes
     class Inventory
     {
         Texture inventoryTexture = new Texture("Pictures/Inventory/inventory.png");
-        Sprite inventory;
+        public Sprite inventory { get; set; }
 
         Texture selectedTexture = new Texture("Pictures/Inventory/Selected.png");
         Sprite selected;
@@ -22,7 +22,7 @@ namespace Soulmate.Classes
         uint inventoryWidth;
         uint inventoryLength;
 
-        AbstractItem[,] inventoryMatrix { get; set; }
+        public AbstractItem[,] inventoryMatrix { get; set; }
         
         public Inventory()
         {
@@ -41,6 +41,18 @@ namespace Soulmate.Classes
         public void update(GameTime gameTime)
         {
             managment();
+        }
+
+        public bool isFull()
+        {
+            foreach (AbstractItem item in inventoryMatrix)
+            {
+                if (item == null)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public void managment()
@@ -80,7 +92,19 @@ namespace Soulmate.Classes
         public void draw(RenderWindow window)
         {
             window.Draw(inventory);
+            ItemHandler.drawInventoryItems(window);
             window.Draw(selected);
+        }
+
+        public void clear()
+        {
+            for (int i = 0; i < inventoryMatrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < inventoryMatrix.GetLength(1); j++)
+                {
+                    inventoryMatrix[i, j] = null;
+                }
+            }
         }
     }
 }

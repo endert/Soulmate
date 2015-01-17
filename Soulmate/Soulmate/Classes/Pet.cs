@@ -39,25 +39,25 @@ namespace Soulmate.Classes
             switch (ObjectHandler.player.getNumFacingDirection())
             {
                 case(0):
-                    if (position.Y+getHeight()<ObjectHandler.player.getPosition().Y)
+                    if (position.Y+getHeight()<=ObjectHandler.player.getPosition().Y)
                     {
                         return true;
                     }
                     break;
                 case(1):
-                    if (position.Y>ObjectHandler.player.getPosition().Y+ObjectHandler.player.getHeight())
+                    if (position.Y>=ObjectHandler.player.getPosition().Y+ObjectHandler.player.getHeight())
                     {
                         return true;
                     }
                     break;
                 case(2):
-                    if (position.X+getWidth()<ObjectHandler.player.getPosition().X)
+                    if (position.X+getWidth()<=ObjectHandler.player.getPosition().X)
                     {
                         return true;
                     }
                     break;
                 case(3):
-                    if (position.X>ObjectHandler.player.getPosition().X+ObjectHandler.player.getWidth())
+                    if (position.X>=ObjectHandler.player.getPosition().X+ObjectHandler.player.getWidth())
                     {
                         return true;
                     }
