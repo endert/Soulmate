@@ -54,31 +54,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\AbstractEnemy.cs" />
+    <Compile Include="Classes\Enemy\AbstractEnemy.cs" />
     <Compile Include="Classes\AbstractGame.cs" />
-    <Compile Include="Classes\AbstractItem.cs" />
-    <Compile Include="Classes\Controls.cs" />
-    <Compile Include="Classes\GameObjects.cs" />
-    <Compile Include="Classes\HitBox.cs" />
-    <Compile Include="Classes\Blocks.cs" />
-    <Compile Include="Classes\EnemyHandler.cs" />
+    <Compile Include="Classes\Items\AbstractItem.cs" />
+    <Compile Include="Classes\GameStates\Controls.cs" />
+    <Compile Include="Classes\Objects\GameObjects.cs" />
+    <Compile Include="Classes\Objects\HitBox.cs" />
+    <Compile Include="Classes\Map\Blocks.cs" />
+    <Compile Include="Classes\Enemy\EnemyHandler.cs" />
     <Compile Include="Classes\Game.cs" />
     <Compile Include="Classes\GameStates.cs" />
     <Compile Include="Classes\InGameMenu.cs" />
     <Compile Include="Classes\Interface.cs" />
     <Compile Include="Classes\Inventory.cs" />
-    <Compile Include="Classes\ItemHandler.cs" />
-    <Compile Include="Classes\MainMenu.cs" />
+    <Compile Include="Classes\Items\ItemHandler.cs" />
+    <Compile Include="Classes\GameStates\MainMenu.cs" />
     <Compile Include="Classes\GameTime.cs" />
-    <Compile Include="Classes\InGame.cs" />
-    <Compile Include="Classes\Map.cs" />
-    <Compile Include="Classes\ObjectHandler.cs" />
-    <Compile Include="Classes\Options.cs" />
-    <Compile Include="Classes\Pet.cs" />
-    <Compile Include="Classes\Player.cs" />
+    <Compile Include="Classes\GameStates\InGame.cs" />
+    <Compile Include="Classes\Map\Map.cs" />
+    <Compile Include="Classes\Objects\ObjectHandler.cs" />
+    <Compile Include="Classes\GameStates\Options.cs" />
+    <Compile Include="Classes\Player\Pet.cs" />
+    <Compile Include="Classes\Player\Player.cs" />
     <Compile Include="Classes\Program.cs" />
-    <Compile Include="Classes\TestEnemy.cs" />
-    <Compile Include="Classes\TestItem.cs" />
+    <Compile Include="Classes\Enemy\TestEnemy.cs" />
+    <Compile Include="Classes\Items\TestItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +112,21 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Pictures\Enemy\Enemy1\Enemy1SeiteRechts.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\InGameMenu\ContinueNotSelected.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\InGameMenu\ContinueSelected.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\InGameMenu\ExitNotSelected.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\InGameMenu\ExitSelected.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\InGameMenu\InGameMenuHintergrund.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Pictures\Inventory\Inventory.png">
