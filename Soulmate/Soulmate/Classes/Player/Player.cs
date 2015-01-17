@@ -42,7 +42,7 @@ namespace Soulmate.Classes
             map = levelMap;
         }
 
-        public float getWidth()
+        override public float getWidth()
         {
             return playerTextures[0].Size.X;
         }

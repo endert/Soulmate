@@ -136,9 +136,6 @@ namespace Soulmate.Classes
 
             else if (!inventoryOpen && !inGameMenuOpen)
             {
-                backGround.Position = new Vector2f(view.Center.X - 640, view.Center.Y - 360);
-                view.Move(new Vector2f((player.getPosition().X + (player.getWidth() / 2)), (player.getPosition().Y + (player.getHeight() / 2))) - view.Center);
-
                 objcs.update(gameTime);
                 items.update(gameTime);
 
@@ -154,6 +151,9 @@ namespace Soulmate.Classes
                 enemies.update(gameTime);
 
                 hud.update(gameTime);
+
+                backGround.Position = new Vector2f(view.Center.X - 640, view.Center.Y - 360);
+                view.Move(new Vector2f((player.getPosition().X + (player.getWidth() / 2)), (player.getPosition().Y + (player.getHeight() / 2))) - view.Center); //View als letztes updaten und der sprite springt nicht mehr -.-
             }
             return EnumGameStates.inGame;
         }

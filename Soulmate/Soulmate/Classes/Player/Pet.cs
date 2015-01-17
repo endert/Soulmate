@@ -28,36 +28,36 @@ namespace Soulmate.Classes
             hitBox.setPosition(sprite.Position);
 
             movementSpeed = 0.2f * (float)time.EllapsedTime.TotalMilliseconds;
-
-            move(getVectorForMove());
+            movement = getVectorForMove();
+            move(movement);
 
             hitFromDirections.Clear();
         }
 
-        public bool isBehindPlayer()
+        public bool isBehindPlayerLinear()
         {
             switch (ObjectHandler.player.getNumFacingDirection())
             {
-                case(0):
-                    if (position.Y+getHeight()<=ObjectHandler.player.getPosition().Y)
+                case (0):
+                    if (position.Y + getHeight() <= ObjectHandler.player.getPosition().Y)
                     {
                         return true;
                     }
                     break;
-                case(1):
-                    if (position.Y>=ObjectHandler.player.getPosition().Y+ObjectHandler.player.getHeight())
+                case (1):
+                    if (position.Y >= ObjectHandler.player.getPosition().Y + ObjectHandler.player.getHeight())
                     {
                         return true;
                     }
                     break;
-                case(2):
-                    if (position.X+getWidth()<=ObjectHandler.player.getPosition().X)
+                case (2):
+                    if (position.X + getWidth() <= ObjectHandler.player.getPosition().X)
                     {
                         return true;
                     }
                     break;
-                case(3):
-                    if (position.X>=ObjectHandler.player.getPosition().X+ObjectHandler.player.getWidth())
+                case (3):
+                    if (position.X >= ObjectHandler.player.getPosition().X + ObjectHandler.player.getWidth())
                     {
                         return true;
                     }
@@ -70,13 +70,31 @@ namespace Soulmate.Classes
 
         public Vector2f getVectorForMove()
         {
-            if (isBehindPlayer())
+            if (isBehindPlayerLinear())
             {
+                Console.Clear();
+                Console.WriteLine(getPlayerDirection());
                 return getPlayerDirection();
+            }
+            else if (!(ObjectHandler.player.getFacingDirection().X != 0 && ObjectHandler.player.getFacingDirection().Y != 0))    //If player dont facing diagonal
+            {
+                return new Vector2f(-ObjectHandler.player.getFacingDirection().X, -ObjectHandler.player.getFacingDirection().Y);
             }
             else
             {
-                return new Vector2f(-ObjectHandler.player.getFacingDirection().X, -ObjectHandler.player.getFacingDirection().Y);
+                switch (ObjectHandler.player.getNumFacingDirection())
+                {
+                    case 0:
+                        return new Vector2f(0, -1);
+                    case 1:
+                        return new Vector2f(0, 1);
+                    case 2:
+                        return new Vector2f(-1, 0);
+                    case 3:
+                        return new Vector2f(1, 0);
+                    default:
+                        return new Vector2f(0, 0);
+                }
             }
         }
     }
