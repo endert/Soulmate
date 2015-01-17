@@ -83,9 +83,9 @@ namespace Soulmate.Classes
             return hitBoxSword;
         }
 
-        override public void update(GameTime time)
+        override public void update(GameTime gameTime)
         {
-            movementSpeed = 0.4f * (float)time.EllapsedTime.TotalMilliseconds;
+            movementSpeed = 0.4f * (float)gameTime.EllapsedTime.TotalMilliseconds;
 
             //Console.Clear();
             //Console.WriteLine(movementSpeed);
@@ -127,12 +127,13 @@ namespace Soulmate.Classes
 
             swordPosition = getSwordVector();
             hitBoxSword.setPosition(swordPosition);
-
+            
             movement = new Vector2f(0, 0);
             movement = getKeyPressed(movementSpeed);
             move(movement);
-
+            
             hitFromDirections.Clear();
+            //InGame.HUD.update(gameTime);
         }
 
         public void takeDamage()

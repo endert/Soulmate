@@ -102,11 +102,11 @@ namespace Soulmate.Classes
             float distanceX = 0;
             float distanceY = 0;
 
-            distanceX += Math.Min(Math.Abs((position.X) - EnemyHandler.getHitBoxPlayer().getPosition().X),  //if the enemy is left of the player it checks the distance from the enemy's right side to the player's left 
-                Math.Abs(position.X - (EnemyHandler.getHitBoxPlayer().getPosition().X + EnemyHandler.getHitBoxPlayer().getWidth())));
+            distanceX += Math.Min(Math.Abs((position.X) - ObjectHandler.player.getHitBox().getPosition().X),  //if the enemy is left of the player it checks the distance from the enemy's right side to the player's left 
+                Math.Abs(position.X - (ObjectHandler.player.getHitBox().getPosition().X + ObjectHandler.player.getHitBox().getWidth())));
 
-            distanceY += Math.Min(Math.Abs((position.Y) - EnemyHandler.getHitBoxPlayer().getPosition().Y),
-                Math.Abs(position.Y - (EnemyHandler.getHitBoxPlayer().getPosition().Y + EnemyHandler.getHitBoxPlayer().getHeight())));
+            distanceY += Math.Min(Math.Abs((position.Y) - ObjectHandler.player.getHitBox().getPosition().Y),
+                Math.Abs(position.Y - (ObjectHandler.player.getHitBox().getPosition().Y + ObjectHandler.player.getHitBox().getHeight())));
 
             float distance = (float)Math.Sqrt(Math.Pow(distanceX, 2) + Math.Pow(distanceY, 2));
 

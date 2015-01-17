@@ -64,27 +64,5 @@ namespace Soulmate.Classes
                     break;
             }
         }
-
-        public static HitBox getHitBoxPlayer()
-        {
-            return ObjectHandler.player.getHitBox();
-        }
-
-        public void update(GameTime gameTime)
-        {
-            for (int i = 0; i < enemies.Count; i++)
-            {
-                if (enemies[i].getIsAlive())
-                {
-                    //enemies[i].update(gameTime);
-                }
-                else
-                {
-                    enemies[i].drop();
-                    enemies.RemoveAt(i);
-                    i--;
-                }
-            }
-        }
     }
 }

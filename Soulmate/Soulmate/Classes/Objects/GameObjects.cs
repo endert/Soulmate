@@ -25,6 +25,8 @@ namespace Soulmate.Classes
         protected int invulnerableFor = 500; //0.5s invulnerable
         protected float knockBack = 150f;
 
+        public bool isMoving { get; set; }
+
         protected Vector2f facingInDirection { get; set; }
         protected bool moveAwayFromEntity = false;
         protected int indexEntityList;  //index in the ObjectList of the ObjectHandler
@@ -99,6 +101,7 @@ namespace Soulmate.Classes
         {
             if (!direction.Equals(new Vector2f(0, 0)))
             {
+                isMoving = true;
                 if (hitAnotherEntity() && !moveAwayFromEntity && ((type.Equals("player")) ? (true) : (!touchedPlayer()))) //if an entity is not a player it should not touch the player
                 {
                     moveAwayFromEntity = true;
@@ -155,6 +158,8 @@ namespace Soulmate.Classes
                     }
                 }
             }
+            else
+                isMoving = false;
         }
 
         public bool hitAnotherEntity()

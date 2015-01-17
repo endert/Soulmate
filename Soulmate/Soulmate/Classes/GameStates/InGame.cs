@@ -24,7 +24,15 @@ namespace Soulmate.Classes
         ItemHandler items;
         Inventory inventory;
         InGameMenu inGameMenu;
-        Interface hud;
+        static Interface hud;
+
+        public static Interface HUD
+        {
+            get
+            {
+                return hud;
+            }
+        }
 
         bool inventoryOpen;
         bool isKlickedInventory = false;
@@ -47,7 +55,7 @@ namespace Soulmate.Classes
             backGroundTex = new Texture("Pictures/Hintergrund.png");
 
             map = new Map(new Bitmap("Pictures/Map/Map2.bmp"));
-
+            
             player = new Player(new Vector2f(32 * 15, 32 * 10 - 219), map);
  
             objcs = new ObjectHandler(map,player);
@@ -55,8 +63,6 @@ namespace Soulmate.Classes
             enemies = new EnemyHandler(player, 1, map); //1 = lvl(map)
 
             pet = new Pet(player.getSprite());
-
-            
 
             objcs.add(enemies.getEnemiesGameObjects());
             objcs.add(pet);
@@ -66,8 +72,9 @@ namespace Soulmate.Classes
             inGameMenu = new InGameMenu();
 
             items = new ItemHandler(map, inventory);
-            
+
             hud = new Interface();
+            
         }
 
         public bool getInventoryOpen()
@@ -138,9 +145,10 @@ namespace Soulmate.Classes
             {
                 backGround.Position = new Vector2f(view.Center.X - 640, view.Center.Y - 360);
                 view.Move(new Vector2f((player.getPosition().X + (player.getWidth() / 2)), (player.getPosition().Y + (player.getHeight() / 2))) - view.Center); //View als letztes updaten und der sprite springt nicht mehr 
+                
                 objcs.update(gameTime);
                 items.update(gameTime);
-                hud.update(gameTime);
+                hud.update(gameTime); //sollte zusammen mit dem player geupdated werden
 
                 if (player.getLife() <= 0)
                 {

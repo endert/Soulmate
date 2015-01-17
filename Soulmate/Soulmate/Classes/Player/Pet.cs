@@ -34,7 +34,7 @@ namespace Soulmate.Classes
             hitFromDirections.Clear();
         }
 
-        public bool isBehindPlayerLinear()
+        public bool isBehindPlayer()
         {
             switch (ObjectHandler.player.getNumFacingDirection())
             {
@@ -68,30 +68,83 @@ namespace Soulmate.Classes
             return false;
         }
 
+        public float distancePlayer()
+        {
+            float distanceX = 0;
+            float distanceY = 0;
+
+            distanceX += Math.Min(Math.Abs((hitBox.getPosition().X + hitBox.getWidth()) - ObjectHandler.player.getHitBox().getPosition().X),  //if the enemy is left of the player it checks the distance from the enemy's right side to the player's left 
+                Math.Abs(hitBox.getPosition().X - (ObjectHandler.player.getHitBox().getPosition().X + ObjectHandler.player.getHitBox().getWidth())));
+
+            distanceY += Math.Min(Math.Abs((hitBox.getPosition().Y + hitBox.getHeight()) - ObjectHandler.player.getHitBox().getPosition().Y),
+                Math.Abs(hitBox.getPosition().Y - (ObjectHandler.player.getHitBox().getPosition().Y + ObjectHandler.player.getHitBox().getHeight())));
+
+            float distance = (float)Math.Sqrt(Math.Pow(distanceX, 2) + Math.Pow(distanceY, 2));
+
+            return distance;
+        }
+
         public Vector2f getVectorForMove()
         {
-            if (isBehindPlayerLinear())
+            if (ObjectHandler.player.isMoving)
             {
-                return getPlayerDirection();
-            }
-            else if (!(ObjectHandler.player.getFacingDirection().X != 0 && ObjectHandler.player.getFacingDirection().Y != 0))    //If player dont facing diagonal
-            {
-                return new Vector2f(-ObjectHandler.player.getFacingDirection().X, -ObjectHandler.player.getFacingDirection().Y);
+                if (isBehindPlayer())
+                {
+                    return getPlayerDirection();
+                }
+                else if (!(ObjectHandler.player.getFacingDirection().X != 0 && ObjectHandler.player.getFacingDirection().Y != 0))    //If player dont facing diagonal
+                {
+                    return new Vector2f(-ObjectHandler.player.getFacingDirection().X, -ObjectHandler.player.getFacingDirection().Y);
+                }
+                else
+                {
+                    switch (ObjectHandler.player.getNumFacingDirection())
+                    {
+                        case 0:
+                            return new Vector2f(0, -1);
+                        case 1:
+                            return new Vector2f(0, 1);
+                        case 2:
+                            return new Vector2f(-1, 0);
+                        case 3:
+                            return new Vector2f(1, 0);
+                        default:
+                            return new Vector2f(0, 0);
+                    }
+                }
             }
             else
             {
-                switch (ObjectHandler.player.getNumFacingDirection())
+                if (isBehindPlayer()&& distancePlayer()>=150f)
                 {
-                    case 0:
-                        return new Vector2f(0, -1);
-                    case 1:
-                        return new Vector2f(0, 1);
-                    case 2:
-                        return new Vector2f(-1, 0);
-                    case 3:
-                        return new Vector2f(1, 0);
-                    default:
-                        return new Vector2f(0, 0);
+                    return getPlayerDirection();
+                }
+                else if (!isBehindPlayer())    //If player dont facing diagonal
+                {
+                    if (!(ObjectHandler.player.getFacingDirection().X != 0 && ObjectHandler.player.getFacingDirection().Y != 0))    //If player dont facing diagonal
+                    {
+                        return new Vector2f(-ObjectHandler.player.getFacingDirection().X, -ObjectHandler.player.getFacingDirection().Y);
+                    }
+                    else
+                    {
+                        switch (ObjectHandler.player.getNumFacingDirection())
+                        {
+                            case 0:
+                                return new Vector2f(0, -1);
+                            case 1:
+                                return new Vector2f(0, 1);
+                            case 2:
+                                return new Vector2f(-1, 0);
+                            case 3:
+                                return new Vector2f(1, 0);
+                            default:
+                                return new Vector2f(0, 0);
+                        }
+                    }
+                }
+                else
+                {
+                    return new Vector2f(0, 0);
                 }
             }
         }
