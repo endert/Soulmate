@@ -141,6 +141,7 @@ namespace Soulmate.Classes
                 items.update(gameTime);
 
                 player.update(gameTime);
+
                 if (player.getLife() <= 0)
                 {
                     ObjectHandler.deleate();
