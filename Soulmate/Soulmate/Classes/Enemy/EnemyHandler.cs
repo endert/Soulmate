@@ -54,7 +54,7 @@ namespace Soulmate.Classes
                         Vector2f spawnPos = new Vector2f(rX, rY);
 
                         TestEnemy test = new TestEnemy(spawnPos, 1);
-                        if (test.getHitBox().distanceTo(ObjectHandler.player.getHitBox()) > 200 && map.getWalkable(test.getSprite(), spawnPos))
+                        if (test.getHitBox().distanceTo(ObjectHandler.player.getHitBox()) > 200 && map.getWalkable(test.getHitBox(), spawnPos))
                             enemies.Add(test);
                         else
                             i--;

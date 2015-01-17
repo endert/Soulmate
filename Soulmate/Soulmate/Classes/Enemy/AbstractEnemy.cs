@@ -123,49 +123,49 @@ namespace Soulmate.Classes
             switch (randomMovingDirection)  //move in the direction for 1000 millisecounds so 1 second
             {
                 case 0:
-                    if (EnemyHandler.getMap().getWalkable(sprite, up))
+                    if (EnemyHandler.getMap().getWalkable(hitBox, up))
                         move(up);
                     watch1.Start();
                     movingFor = (int)(1000*random.NextDouble()) + 500;
                     break;
                 case 1:
-                    if (EnemyHandler.getMap().getWalkable(sprite, upRight))
+                    if (EnemyHandler.getMap().getWalkable(hitBox, upRight))
                         move(upRight);
                     watch1.Start();
                     movingFor = (int)(1000 * random.NextDouble()) + 500;
                     break;
                 case 2:
-                    if (EnemyHandler.getMap().getWalkable(sprite, right))
+                    if (EnemyHandler.getMap().getWalkable(hitBox, right))
                         move(right);
                     watch1.Start();
                     movingFor = (int)(1000 * random.NextDouble()) + 500;
                     break;
                 case 3:
-                    if (EnemyHandler.getMap().getWalkable(sprite, downRight))
+                    if (EnemyHandler.getMap().getWalkable(hitBox, downRight))
                         move(downRight);
                     watch1.Start();
                     movingFor = (int)(1000 * random.NextDouble()) + 500;
                     break;
                 case 4:
-                    if (EnemyHandler.getMap().getWalkable(sprite, down))
+                    if (EnemyHandler.getMap().getWalkable(hitBox, down))
                         move(down);
                     watch1.Start();
                     movingFor = (int)(1000 * random.NextDouble()) + 500;
                     break;
                 case 5:
-                    if (EnemyHandler.getMap().getWalkable(sprite, downLeft))
+                    if (EnemyHandler.getMap().getWalkable(hitBox, downLeft))
                         move(downLeft);
                     watch1.Start();
                     movingFor = (int)(1000 * random.NextDouble()) + 500;
                     break;
                 case 6:
-                    if (EnemyHandler.getMap().getWalkable(sprite, left))
+                    if (EnemyHandler.getMap().getWalkable(hitBox, left))
                         move(left);
                     watch1.Start();
                     movingFor = (int)(1000 * random.NextDouble()) + 500;
                     break;
                 case 7:
-                    if (EnemyHandler.getMap().getWalkable(sprite, upLeft))
+                    if (EnemyHandler.getMap().getWalkable(hitBox, upLeft))
                         move(upLeft);
                     watch1.Start();
                     movingFor = (int)(1000 * random.NextDouble()) + 500;

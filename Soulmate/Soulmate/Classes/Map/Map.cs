@@ -20,10 +20,10 @@ namespace Soulmate.Classes
         public static String white = "ffffffff";//Boden
         public static String black = "ff000000";//Wald
 
-        public bool getWalkable(Sprite sprite, Vector2f vector)
+        public bool getWalkable(HitBox hitBox, Vector2f vector)
         {
             bool walkable = true;
-            Vector2f newPosition = new Vector2f(sprite.Position.X + vector.X, sprite.Position.Y + vector.Y);
+            Vector2f newPosition = new Vector2f(hitBox.Position.X + vector.X, hitBox.Position.Y + vector.Y);
 
             //Map-Grenzen ;; muss auch abbrechen wenn die newPosition + Vector außerhalb liegt
             //Entschulidgung für die Änderung, aber anders hat es ständig exceptions geworfen ;(
@@ -33,15 +33,15 @@ namespace Soulmate.Classes
 
             //Kollision
             if (!(map[(int)(newPosition.X / objectSize), (int)(newPosition.Y / objectSize)].getWalkable()/*links oben*/
-                && map[(int)(newPosition.X / objectSize), (int)((newPosition.Y + sprite.Texture.Size.Y) / objectSize)].getWalkable()/*links unten*/
-                && map[(int)(newPosition.X / objectSize), (int)((newPosition.Y + sprite.Texture.Size.Y / 2)) / objectSize].getWalkable()/*links mitte*/
+                && map[(int)(newPosition.X / objectSize), (int)((newPosition.Y + hitBox.getHeight()) / objectSize)].getWalkable()/*links unten*/
+                && map[(int)(newPosition.X / objectSize), (int)((newPosition.Y + hitBox.getHeight() / 2)) / objectSize].getWalkable()/*links mitte*/
 
-                && map[(int)((newPosition.X + sprite.Texture.Size.X) / objectSize), (int)(newPosition.Y / objectSize)].getWalkable()/*rechts oben*/
-                && map[(int)((newPosition.X + sprite.Texture.Size.X) / objectSize), (int)((newPosition.Y + sprite.Texture.Size.Y) / objectSize)].getWalkable()/*rechts unten*/
-                && map[(int)((newPosition.X + sprite.Texture.Size.X) / objectSize), (int)((newPosition.Y + sprite.Texture.Size.Y / 2) / objectSize)].getWalkable()/*rechts mitte*/
+                && map[(int)((newPosition.X + hitBox.getWidth()) / objectSize), (int)(newPosition.Y / objectSize)].getWalkable()/*rechts oben*/
+                && map[(int)((newPosition.X + hitBox.getWidth()) / objectSize), (int)((newPosition.Y + hitBox.getHeight()) / objectSize)].getWalkable()/*rechts unten*/
+                && map[(int)((newPosition.X + hitBox.getWidth()) / objectSize), (int)((newPosition.Y + hitBox.getHeight() / 2) / objectSize)].getWalkable()/*rechts mitte*/
 
-                && map[(int)((newPosition.X + sprite.Texture.Size.X / 2) / objectSize), (int)(newPosition.Y / objectSize)].getWalkable()/*oben mitte*/
-                && map[(int)((newPosition.X + sprite.Texture.Size.X / 2) / objectSize), (int)((newPosition.Y + sprite.Texture.Size.Y) / objectSize)].getWalkable()/*unten mitte*/
+                && map[(int)((newPosition.X + hitBox.getWidth() / 2) / objectSize), (int)(newPosition.Y / objectSize)].getWalkable()/*oben mitte*/
+                && map[(int)((newPosition.X + hitBox.getWidth() / 2) / objectSize), (int)((newPosition.Y + hitBox.getHeight()) / objectSize)].getWalkable()/*unten mitte*/
                 ))
                 return false;
 

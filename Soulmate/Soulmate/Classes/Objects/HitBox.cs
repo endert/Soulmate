@@ -11,7 +11,7 @@ namespace Soulmate.Classes
 {
     public class HitBox
     {
-        private Vector2f position { get; set; }
+        public Vector2f Position { get; set; }
         private float width { get; set; }
         private float height { get;set; }
 
@@ -21,11 +21,11 @@ namespace Soulmate.Classes
 
         public Vector2f getPosition()
         {
-            return position;
+            return Position;
         }
         public void setPosition(Vector2f _pos)
         {
-            position = new Vector2f(_pos.X, _pos.Y);
+            Position = new Vector2f(_pos.X, _pos.Y);
         }
         public float getWidth()
         {
@@ -38,7 +38,7 @@ namespace Soulmate.Classes
 
         public HitBox(Vector2f pos, float _width, float _height)
         {
-            position = pos;
+            Position = pos;
             width = _width;
             height = _height;
         }
@@ -49,13 +49,13 @@ namespace Soulmate.Classes
 
             if (hitWithoutInsection(h))
             {
-                if ((position.X+width) < h.position.X)
+                if ((Position.X+width) < h.Position.X)
                 {
                     hitFrom.X = 1;
                 }
                 else
                 {
-                    if ((h.position.X + h.width) < position.X)
+                    if ((h.Position.X + h.width) < Position.X)
                     {
                         hitFrom.X = -1;
                     }
@@ -65,13 +65,13 @@ namespace Soulmate.Classes
                     }
                 }
 
-                if ((position.Y+height) <= h.position.Y)
+                if ((Position.Y+height) <= h.Position.Y)
                 {
                     hitFrom.Y = 1;
                 }
                 else
                 {
-                    if ((h.position.Y + h.height) <= position.Y)
+                    if ((h.Position.Y + h.height) <= Position.Y)
                     {
                         hitFrom.Y = -1;
                     }
@@ -84,7 +84,7 @@ namespace Soulmate.Classes
 
             if (hit(h) && !hitWithoutInsection(h))
             {
-                if ((position.X) <= h.position.X)
+                if ((Position.X) <= h.Position.X)
                 {
                     hitFrom.X = 1;
                 }
@@ -93,7 +93,7 @@ namespace Soulmate.Classes
                     hitFrom.X = -1;
                 }
 
-                if ((position.Y) <= h.position.Y)
+                if ((Position.Y) <= h.Position.Y)
                 {
                     hitFrom.Y = 1;
                 }
@@ -146,11 +146,11 @@ namespace Soulmate.Classes
 
         private void union(HitBox h)
         {
-            Vector2f thisBottomRight = new Vector2f(this.position.X + this.width, this.position.Y + this.height);
-            Vector2f hBottomRight = new Vector2f(h.position.X + h.width, h.position.Y + h.height);
+            Vector2f thisBottomRight = new Vector2f(this.Position.X + this.width, this.Position.Y + this.height);
+            Vector2f hBottomRight = new Vector2f(h.Position.X + h.width, h.Position.Y + h.height);
 
-            unionPos = new Vector2f((this.position.X <= h.position.X) ? (this.position.X) : (h.position.X), 
-                (this.position.Y <= h.position.Y) ? (this.position.Y) : (h.position.Y));
+            unionPos = new Vector2f((this.Position.X <= h.Position.X) ? (this.Position.X) : (h.Position.X), 
+                (this.Position.Y <= h.Position.Y) ? (this.Position.Y) : (h.Position.Y));
 
             unionWidth = ((thisBottomRight.X >= hBottomRight.X) ? (thisBottomRight.X) : (hBottomRight.X)) - unionPos.X;
             unionHeight = ((thisBottomRight.Y >= hBottomRight.Y) ? (thisBottomRight.Y) : (hBottomRight.Y)) - unionPos.Y;

@@ -36,40 +36,82 @@ namespace Soulmate.Classes
 
         public bool isBehindPlayer()
         {
-            switch (ObjectHandler.player.getNumFacingDirection())
+            Vector2f playerMovingDirection = ObjectHandler.player.getFacingDirection();
+            bool behindX = false;   // for diagonal moving;
+            bool behindY = false;
+
+            if (!(playerMovingDirection.X != 0 && playerMovingDirection.Y != 0))
             {
-                case (0):
-                    if (position.Y + getHeight() <= ObjectHandler.player.getPosition().Y)
-                    {
-                        return true;
-                    }
-                    break;
-                case (1):
-                    if (position.Y >= ObjectHandler.player.getPosition().Y + ObjectHandler.player.getHeight())
-                    {
-                        return true;
-                    }
-                    break;
-                case (2):
+                switch (ObjectHandler.player.getNumFacingDirection())
+                {
+                    case (0):
+                        if (position.Y + getHeight() <= ObjectHandler.player.getPosition().Y)
+                        {
+                            return true;
+                        }
+                        break;
+                    case (1):
+                        if (position.Y >= ObjectHandler.player.getPosition().Y + ObjectHandler.player.getHeight())
+                        {
+                            return true;
+                        }
+                        break;
+                    case (2):
+                        if (position.X + getWidth() <= ObjectHandler.player.getPosition().X)
+                        {
+                            return true;
+                        }
+                        break;
+                    case (3):
+                        if (position.X >= ObjectHandler.player.getPosition().X + ObjectHandler.player.getWidth())
+                        {
+                            return true;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else      // moving diagonal
+            {
+                if (playerMovingDirection.X > 0)
+                {
                     if (position.X + getWidth() <= ObjectHandler.player.getPosition().X)
                     {
-                        return true;
+                        behindX = true;
                     }
-                    break;
-                case (3):
+                }
+                else if (playerMovingDirection.X < 0)
+                {
                     if (position.X >= ObjectHandler.player.getPosition().X + ObjectHandler.player.getWidth())
                     {
-                        return true;
+                        behindX = true;
                     }
-                    break;
-                default:
-                    break;
+                }
+
+                if (playerMovingDirection.Y > 0)
+                {
+                    if (position.Y + getHeight() <= ObjectHandler.player.getPosition().Y)
+                    {
+                        behindY = true;
+                    }
+                }
+                else if (playerMovingDirection.Y < 0)
+                {
+                    if (position.Y >= ObjectHandler.player.getPosition().Y + ObjectHandler.player.getHeight())
+                    {
+                        behindY = true;
+                    }
+                } 
+                
+                return (behindX || behindY);
             }
             return false;
         }
 
         public Vector2f getVectorForMove()
         {
+            Console.WriteLine(isBehindPlayer());
             if (ObjectHandler.player.isMoving)
             {
                 if (isBehindPlayer())

@@ -147,10 +147,10 @@ namespace Soulmate.Classes
                     }
                     if (direction.X != 0 && direction.Y != 0)
                     {
-                        movement.X *= (float)Math.Sin(45);
-                        movement.Y *= (float)Math.Sin(45);
+                        //movement.X *= (float)Math.Sin(45);
+                        //movement.Y *= (float)Math.Sin(45);
                     }
-                    if (ObjectHandler.lvlMap.getWalkable(sprite, movement))    // only move if it's walkable
+                    if (ObjectHandler.lvlMap.getWalkable(hitBox, movement))    // only move if it's walkable
                     {
                         position = new Vector2f(position.X + movement.X, position.Y + movement.Y);
                         facingInDirection = movement;
@@ -254,7 +254,7 @@ namespace Soulmate.Classes
                     knocking.Y += 0;
             }
 
-            if (ObjectHandler.lvlMap.getWalkable(sprite, knocking))    // only move if it's walkable
+            if (ObjectHandler.lvlMap.getWalkable(hitBox, knocking))    // only move if it's walkable
             {
                 position = new Vector2f(position.X + knocking.X, position.Y + knocking.Y);
             }
