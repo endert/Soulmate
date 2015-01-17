@@ -16,10 +16,22 @@ namespace Soulmate.Classes
         protected bool isAlive = true;
         public Vector2f position { get; set; }
         protected Texture texture;
-        protected Sprite sprite;
+        public Sprite sprite { get; set; }
         protected int dropRate; //in percent
 
-        protected bool inInventory = false;
+        protected float _pickUpRange = 150f;
+
+        public float pickUpRange
+        {
+            get
+            {
+                return _pickUpRange;
+            }
+            set 
+            { 
+                _pickUpRange = value; 
+            }
+        }
 
         protected int decayingIn = 50000; //50sec
         public bool onMap { get; set; }
@@ -33,7 +45,7 @@ namespace Soulmate.Classes
 
         public void pickUp()
         {
-            onMap = false;
+            
             for (int i = 0; i < ItemHandler.playerInventory.inventoryMatrix.GetLength(0); i++) //row -> x-coordinate
             {
                 for (int j = 0; j < ItemHandler.playerInventory.inventoryMatrix.GetLength(1); j++) //collum -> y-coordinate
@@ -42,6 +54,7 @@ namespace Soulmate.Classes
                     {
                         ItemHandler.playerInventory.inventoryMatrix[i, j] = this;
                         position = new Vector2f((j * 50 + ItemHandler.playerInventory.inventory.Position.X), (i * 50 + ItemHandler.playerInventory.inventory.Position.Y));
+                        onMap = false;
                         return;
                     }
                 }

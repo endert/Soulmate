@@ -27,11 +27,14 @@ namespace Soulmate.Classes
             {
                 if (Items[i].getIsAlive())
                 {
-                    if (!playerInventory.isFull() && Items[i].distancePlayer() <= 350 && Items[i].onMap)
+                    if (!playerInventory.isFull() && Items[i].distancePlayer() <= Items[i].pickUpRange && Items[i].onMap)
                     {
                         Items[i].pickUp();
+                        Items.RemoveAt(i);
+                        i--;
                     }
-                    Items[i].update(gameTime);
+                    else
+                        Items[i].update(gameTime);
                 }
                 else
                 {
@@ -47,6 +50,7 @@ namespace Soulmate.Classes
             {
                 if (item != null)
                 {
+                    item.sprite.Position = item.position;
                     item.visible = true;
                 }
             }
@@ -54,7 +58,11 @@ namespace Soulmate.Classes
 
         static public void deleate()
         {
-            Items.Clear();
+            for (int i = 0; i < Items.Count; i++)
+            {
+                Items.RemoveAt(i);
+                i--;
+            }
             playerInventory.deleate();
         }
 
@@ -73,10 +81,7 @@ namespace Soulmate.Classes
         {
             foreach (AbstractItem item in Items)
             {
-                if (item.visible)
-                {
-                    item.draw(window);
-                }
+                item.draw(window);
             }
         }
     }

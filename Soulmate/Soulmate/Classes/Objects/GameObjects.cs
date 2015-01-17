@@ -28,6 +28,8 @@ namespace Soulmate.Classes
         protected Vector2f facingInDirection { get; set; }
         protected bool moveAwayFromEntity = false;
         protected int indexEntityList;  //index in the ObjectList of the ObjectHandler
+
+        protected float movementSpeedConstante = 0.2f;    //standart
         protected float movementSpeed { get; set; }
 
         public void setIndexEntityList(int index)
@@ -140,7 +142,11 @@ namespace Soulmate.Classes
                         else
                             movement.Y += 0;
                     }
-
+                    if (direction.X != 0 && direction.Y != 0)
+                    {
+                        movement.X *= (float)Math.Sin(45);
+                        movement.Y *= (float)Math.Sin(45);
+                    }
                     if (ObjectHandler.lvlMap.getWalkable(sprite, movement))    // only move if it's walkable
                     {
                         position = new Vector2f(position.X + movement.X, position.Y + movement.Y);
@@ -346,6 +352,11 @@ namespace Soulmate.Classes
                 playerDirection.Y = 1;
             }
             return playerDirection;
+        }
+
+        public virtual void drop()
+        {
+
         }
 
         public abstract void update(GameTime gameTime);

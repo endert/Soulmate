@@ -76,7 +76,7 @@ namespace Soulmate.Classes
             {
                 if (enemies[i].getIsAlive())
                 {
-                    enemies[i].update(gameTime);
+                    //enemies[i].update(gameTime);
                 }
                 else
                 {

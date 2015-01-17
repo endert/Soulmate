@@ -85,7 +85,7 @@ namespace Soulmate.Classes
 
         override public void update(GameTime time)
         {
-            movementSpeed = 0.2f * (float)time.EllapsedTime.TotalMilliseconds;
+            movementSpeed = 0.4f * (float)time.EllapsedTime.TotalMilliseconds;
 
             //Console.Clear();
             //Console.WriteLine(movementSpeed);

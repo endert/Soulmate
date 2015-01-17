@@ -27,7 +27,7 @@ namespace Soulmate.Classes
             sprite.Position = position;
             hitBox.setPosition(sprite.Position);
 
-            movementSpeed = 0.2f * (float)time.EllapsedTime.TotalMilliseconds;
+            movementSpeed = 0.4f * (float)time.EllapsedTime.TotalMilliseconds;
             movement = getVectorForMove();
             move(movement);
 
@@ -72,8 +72,6 @@ namespace Soulmate.Classes
         {
             if (isBehindPlayerLinear())
             {
-                Console.Clear();
-                Console.WriteLine(getPlayerDirection());
                 return getPlayerDirection();
             }
             else if (!(ObjectHandler.player.getFacingDirection().X != 0 && ObjectHandler.player.getFacingDirection().Y != 0))    //If player dont facing diagonal

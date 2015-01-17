@@ -39,6 +39,7 @@ namespace Soulmate.Classes
             {
                 if (!gObjs[i].getIsAlive())
                 {
+                    gObjs[i].drop();
                     gObjs.RemoveAt(i);
                     i--;
                 }

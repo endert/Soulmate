@@ -76,9 +76,11 @@ namespace Soulmate.Classes
         //Methods*************************************************************************************
         override public void update(GameTime gameTime)
         {
+            movementSpeed = movementSpeedConstante * (float)gameTime.EllapsedTime.TotalMilliseconds;
             type = "enemy";
             animate(enemyTextureArray);
             sprite.Position = position;
+            takeDmg();
             if (hp<=0)
             {
                 isAlive = false;
@@ -97,7 +99,7 @@ namespace Soulmate.Classes
                 }
             } 
            
-            takeDmg();
+            
             finalize();
         }
 
@@ -218,7 +220,7 @@ namespace Soulmate.Classes
             }
         }
 
-        public void drop()
+        override public void drop()
         {
             int i = 0;
             if (drops[i].getDropRate()>random.Next(101))
