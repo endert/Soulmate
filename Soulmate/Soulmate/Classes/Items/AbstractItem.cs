@@ -34,9 +34,9 @@ namespace Soulmate.Classes
         public void pickUp()
         {
             onMap = false;
-            for (int i = 0; i < ItemHandler.playerInventory.inventoryMatrix.GetLength(0); i++)
+            for (int i = 0; i < ItemHandler.playerInventory.inventoryMatrix.GetLength(0); i++) //row -> x-coordinate
             {
-                for (int j = 0; j < ItemHandler.playerInventory.inventoryMatrix.GetLength(1); j++)
+                for (int j = 0; j < ItemHandler.playerInventory.inventoryMatrix.GetLength(1); j++) //collum -> y-coordinate
                 {
                     if (ItemHandler.playerInventory.inventoryMatrix[i,j] == null)
                     {
