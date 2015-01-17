@@ -14,6 +14,7 @@ namespace Soulmate.Classes
     {
         public TestItem()
         {
+            name = "Pete";
             dropRate = 100;
             texture = new Texture("Pictures/Items/TestItem(Pete).png");
             sprite = new Sprite(texture);

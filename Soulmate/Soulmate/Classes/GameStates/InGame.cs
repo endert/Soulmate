@@ -56,7 +56,7 @@ namespace Soulmate.Classes
 
             pet = new Pet(player.getSprite());
 
-            items = new ItemHandler(map);
+            
 
             objcs.add(enemies.getEnemiesGameObjects());
             objcs.add(pet);
@@ -65,6 +65,8 @@ namespace Soulmate.Classes
             inventory = new Inventory();
             inGameMenu = new InGameMenu();
 
+            items = new ItemHandler(map, inventory);
+            
             hud = new Interface();
         }
 
@@ -132,11 +134,8 @@ namespace Soulmate.Classes
                 inGameMenu.update(gameTime);
             }
 
-            else if(!inventoryOpen && !inGameMenuOpen)
+            else if (!inventoryOpen && !inGameMenuOpen)
             {
-                backGround.Position = new Vector2f(view.Center.X - 640, view.Center.Y - 360);
-                view.Move(new Vector2f((player.getPosition().X + (player.getWidth() / 2)), (player.getPosition().Y + (player.getHeight() / 2))) - view.Center);
-
                 objcs.update(gameTime);
                 items.update(gameTime);
 
@@ -149,10 +148,13 @@ namespace Soulmate.Classes
                 }
 
                 pet.update(gameTime);
-               
+
                 enemies.update(gameTime);
 
                 hud.update(gameTime);
+
+                backGround.Position = new Vector2f(view.Center.X - 640, view.Center.Y - 360);
+                view.Move(new Vector2f((player.getPosition().X + (player.getWidth() / 2)), (player.getPosition().Y + (player.getHeight() / 2))) - view.Center); //View als letztes updaten und der sprite springt nicht mehr -.-
             }
             return EnumGameStates.inGame;
         }
