@@ -53,9 +53,10 @@ namespace Soulmate.Classes
             }
         }
 
-        public void deleate()
+        static public void deleate()
         {
             Items.Clear();
+            playerInventory.deleate();
         }
 
         static public void drawInventoryItems(RenderWindow window)

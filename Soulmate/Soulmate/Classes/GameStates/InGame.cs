@@ -134,7 +134,7 @@ namespace Soulmate.Classes
                 inGameMenu.update(gameTime);
             }
 
-            else if(!inventoryOpen && !inGameMenuOpen)
+            else if (!inventoryOpen && !inGameMenuOpen)
             {
                 backGround.Position = new Vector2f(view.Center.X - 640, view.Center.Y - 360);
                 view.Move(new Vector2f((player.getPosition().X + (player.getWidth() / 2)), (player.getPosition().Y + (player.getHeight() / 2))) - view.Center);
@@ -146,8 +146,6 @@ namespace Soulmate.Classes
                 if (player.getLife() <= 0)
                 {
                     ObjectHandler.deleate();
-                    items.deleate();
-                    inventory.clear();
                     return EnumGameStates.mainMenu;
                 }
 
@@ -156,7 +154,6 @@ namespace Soulmate.Classes
                 enemies.update(gameTime);
 
                 hud.update(gameTime);
-                }
             }
             return EnumGameStates.inGame;
         }

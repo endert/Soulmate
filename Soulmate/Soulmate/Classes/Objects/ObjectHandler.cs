@@ -65,7 +65,7 @@ namespace Soulmate.Classes
             {
                 gObj.kill();
             }
-
+            ItemHandler.deleate();
         }
     }
 }

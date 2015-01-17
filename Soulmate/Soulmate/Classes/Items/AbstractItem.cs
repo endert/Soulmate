@@ -21,7 +21,9 @@ namespace Soulmate.Classes
         protected Sprite sprite;
         protected int dropRate; //in percent
 
-        protected int decayingIn = 5000; //5sec
+        protected bool inInventory = false;
+
+        protected int decayingIn = 50000; //50sec
         public bool onMap { get; set; }
         public bool visible { get; set; }
         protected bool wasOnMap { get; set; }
@@ -41,8 +43,10 @@ namespace Soulmate.Classes
                     if (ItemHandler.playerInventory.inventoryMatrix[i,j] == null)
                     {
                         ItemHandler.playerInventory.inventoryMatrix[i, j] = this;
+                        position = new Vector2f((i * 50 + ItemHandler.playerInventory.inventory.Position.X), (j * 50 + ItemHandler.playerInventory.inventory.Position.Y));
                         this.i = i;
                         this.j = j;
+                        return;
                     }
                 }
             }

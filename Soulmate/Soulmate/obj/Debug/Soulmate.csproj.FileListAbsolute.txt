@@ -109,3 +109,8 @@ C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\MainMenu\OptionsNotSelected.png
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\MainMenu\OptionsSelected.png
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\OptionsTest.png
+C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\InGameMenu\ContinueNotSelected.png
+C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\InGameMenu\ContinueSelected.png
+C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\InGameMenu\ExitNotSelected.png
+C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\InGameMenu\ExitSelected.png
+C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\InGameMenu\InGameMenuHintergrund.png

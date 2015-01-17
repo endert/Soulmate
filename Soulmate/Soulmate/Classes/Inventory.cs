@@ -40,6 +40,7 @@ namespace Soulmate.Classes
 
         public void update(GameTime gameTime)
         {
+            ItemHandler.updateInventoryMatrix(gameTime);
             managment();
         }
 
@@ -96,15 +97,9 @@ namespace Soulmate.Classes
             window.Draw(selected);
         }
 
-        public void clear()
+        public void deleate()
         {
-            for (int i = 0; i < inventoryMatrix.GetLength(0); i++)
-            {
-                for (int j = 0; j < inventoryMatrix.GetLength(1); j++)
-                {
-                    inventoryMatrix[i, j] = null;
-                }
-            }
+            inventoryMatrix = new AbstractItem[inventoryLength, inventoryWidth];
         }
     }
 }
