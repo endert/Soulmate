@@ -15,8 +15,6 @@ namespace Soulmate.Classes
         protected Stopwatch decay = new Stopwatch();
         protected bool isAlive = true;
         public Vector2f position { get; set; }
-        public int i { get; set; } //row in the inventoryMatrix
-        public int j { get; set; } //colum in the inventoryMatrix
         protected Texture texture;
         protected Sprite sprite;
         protected int dropRate; //in percent
@@ -43,9 +41,7 @@ namespace Soulmate.Classes
                     if (ItemHandler.playerInventory.inventoryMatrix[i,j] == null)
                     {
                         ItemHandler.playerInventory.inventoryMatrix[i, j] = this;
-                        position = new Vector2f((i * 50 + ItemHandler.playerInventory.inventory.Position.X), (j * 50 + ItemHandler.playerInventory.inventory.Position.Y));
-                        this.i = i;
-                        this.j = j;
+                        position = new Vector2f((j * 50 + ItemHandler.playerInventory.inventory.Position.X), (i * 50 + ItemHandler.playerInventory.inventory.Position.Y));
                         return;
                     }
                 }

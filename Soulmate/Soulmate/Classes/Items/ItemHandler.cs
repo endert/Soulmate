@@ -47,7 +47,6 @@ namespace Soulmate.Classes
             {
                 if (item != null)
                 {
-                    item.position = new Vector2f((item.i * 50 + ItemHandler.playerInventory.inventory.Position.X), (item.j * 50 + ItemHandler.playerInventory.inventory.Position.Y));
                     item.visible = true;
                 }
             }
