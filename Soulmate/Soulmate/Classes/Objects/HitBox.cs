@@ -106,6 +106,25 @@ namespace Soulmate.Classes
             return hitFrom;
         }
 
+        public float distanceTo(HitBox h)
+        {
+            float distanceX = 0;
+            float distanceY = 0;
+
+            union(h);
+            if (unionWidth > (this.width + h.width))
+            {
+                distanceX = unionWidth - (this.width + h.width);
+            }
+
+            if (unionHeight > (this.height + h.height))
+            {
+                distanceY = unionHeight - (this.height + h.height);
+            }
+
+            return (float)Math.Sqrt(Math.Pow(distanceX, 2) + Math.Pow(distanceY, 2));
+        }
+
         public bool hit(HitBox h)
         {
             union(h);

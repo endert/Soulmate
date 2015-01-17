@@ -68,22 +68,6 @@ namespace Soulmate.Classes
             return false;
         }
 
-        public float distancePlayer()
-        {
-            float distanceX = 0;
-            float distanceY = 0;
-
-            distanceX += Math.Min(Math.Abs((hitBox.getPosition().X + hitBox.getWidth()) - ObjectHandler.player.getHitBox().getPosition().X),  //if the enemy is left of the player it checks the distance from the enemy's right side to the player's left 
-                Math.Abs(hitBox.getPosition().X - (ObjectHandler.player.getHitBox().getPosition().X + ObjectHandler.player.getHitBox().getWidth())));
-
-            distanceY += Math.Min(Math.Abs((hitBox.getPosition().Y + hitBox.getHeight()) - ObjectHandler.player.getHitBox().getPosition().Y),
-                Math.Abs(hitBox.getPosition().Y - (ObjectHandler.player.getHitBox().getPosition().Y + ObjectHandler.player.getHitBox().getHeight())));
-
-            float distance = (float)Math.Sqrt(Math.Pow(distanceX, 2) + Math.Pow(distanceY, 2));
-
-            return distance;
-        }
-
         public Vector2f getVectorForMove()
         {
             if (ObjectHandler.player.isMoving)
@@ -115,7 +99,7 @@ namespace Soulmate.Classes
             }
             else
             {
-                if (isBehindPlayer()&& distancePlayer()>=150f)
+                if (isBehindPlayer()&& hitBox.distanceTo(ObjectHandler.player.getHitBox())>=50f)
                 {
                     return getPlayerDirection();
                 }
