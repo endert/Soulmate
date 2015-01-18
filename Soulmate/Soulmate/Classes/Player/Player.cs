@@ -90,7 +90,7 @@ namespace Soulmate.Classes
             //Console.Clear();
             //Console.WriteLine(movementSpeed);
             //Console.WriteLine((float)time.EllapsedTime.TotalMilliseconds);
-
+            //InGame.HUD.update(gameTime);
             takeDamage();
             animate(playerTextures);
 
@@ -133,7 +133,7 @@ namespace Soulmate.Classes
             move(movement);
             
             hitFromDirections.Clear();
-            //InGame.HUD.update(gameTime);
+            
         }
 
         public void takeDamage()
@@ -141,10 +141,8 @@ namespace Soulmate.Classes
             if(hitAnotherEntity()&&isVulnerable()&&wasHitByEnemy())
             {
                 tookDmg = true;
-                Console.WriteLine("HIT!!!!");
                 //if()
                 life--;
-                Console.WriteLine(life);
             }
         }
 

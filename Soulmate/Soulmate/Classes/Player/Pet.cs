@@ -111,7 +111,6 @@ namespace Soulmate.Classes
 
         public Vector2f getVectorForMove()
         {
-            Console.WriteLine(isBehindPlayer());
             if (ObjectHandler.player.isMoving)
             {
                 if (isBehindPlayer())

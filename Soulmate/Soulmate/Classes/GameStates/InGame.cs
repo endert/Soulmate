@@ -148,14 +148,14 @@ namespace Soulmate.Classes
                 
                 objcs.update(gameTime);
                 items.update(gameTime);
-                hud.update(gameTime); //sollte zusammen mit dem player geupdated werden
+                
 
                 if (player.getLife() <= 0)
                 {
                     ObjectHandler.deleate();
                     return EnumGameStates.mainMenu;
                 }
-                
+                hud.update(gameTime);
             }
             return EnumGameStates.inGame;
         }

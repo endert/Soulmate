@@ -33,7 +33,7 @@ namespace Soulmate.Classes
 
         public void draw(RenderWindow window)
         {
-            switch((int)ObjectHandler.player.getLife())
+            switch ((int)ObjectHandler.player.getLife())
             {
                 case 0:
                     {
