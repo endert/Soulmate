@@ -57,7 +57,7 @@
     <Compile Include="Classes\Enemy\AbstractEnemy.cs" />
     <Compile Include="Classes\AbstractGame.cs" />
     <Compile Include="Classes\HUD\Life.cs" />
-    <Compile Include="Classes\HUD\LifePet.cs" />
+    <Compile Include="Classes\HUD\LifeBar.cs" />
     <Compile Include="Classes\Items\AbstractItem.cs" />
     <Compile Include="Classes\GameStates\Controls.cs" />
     <Compile Include="Classes\Objects\GameObjects.cs" />

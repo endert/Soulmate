@@ -21,7 +21,6 @@ namespace Soulmate.Classes
         protected bool hitPlayer = false;
 
         protected int lvl;
-        protected int hp;
         protected int mp;
         protected int attackDamage;
         protected int def;
@@ -40,9 +39,9 @@ namespace Soulmate.Classes
         {
             return lvl;
         }
-        public int getHp()
+        public int getCurrentHP()
         {
-            return hp;
+            return currentHP;
         }
         public int getMp()
         {
@@ -76,7 +75,7 @@ namespace Soulmate.Classes
             animate(enemyTextureArray);
             sprite.Position = position;
             takeDmg();
-            if (hp<=0)
+            if (currentHP<=0)
             {
                 isAlive = false;
             }
@@ -92,8 +91,9 @@ namespace Soulmate.Classes
                 {
                     notReact();
                 }
-            } 
-           
+            }
+
+            lifeBar.update(this);
             
             finalize();
         }
@@ -190,7 +190,7 @@ namespace Soulmate.Classes
             if (hitBox.hit(ObjectHandler.player.getHitBoxSword()) && isVulnerable() && ObjectHandler.player.pressedKeyForAttack())
             {
                 int dmg = ObjectHandler.player.getAtt() - def;
-                hp -= dmg;
+                currentHP -= dmg;
                 tookDmg = true;
 
                 Vector2f knockedInDirection = ObjectHandler.player.getFacingDirection();
