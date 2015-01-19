@@ -30,8 +30,11 @@ namespace Soulmate.Classes
 
         public void setPosition()
         {
-            lifePetSpriteBackground.Position = new Vector2f(ObjectHandler.pet.getPosition().X, ObjectHandler.pet.getPosition().Y);
-            lifePetSpriteBar.Position = new Vector2f(lifePetSpriteBackground.Position.X + 2, lifePetSpriteBackground.Position.Y + 2);
+            if(ObjectHandler.pet != null)
+            { 
+                lifePetSpriteBackground.Position = new Vector2f(ObjectHandler.pet.getPosition().X, ObjectHandler.pet.getPosition().Y);
+                lifePetSpriteBar.Position = new Vector2f(lifePetSpriteBackground.Position.X + 2, lifePetSpriteBackground.Position.Y + 2);
+            }
         }
         
         public void update(GameTime gameTime)
