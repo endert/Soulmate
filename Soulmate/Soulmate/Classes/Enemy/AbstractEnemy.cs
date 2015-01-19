@@ -30,10 +30,6 @@ namespace Soulmate.Classes
         protected int movingFor = 0;    //moving for millisek in one direction
         protected int randomMovingDirection;
         //Getter**************************************************************************************
-        override public Vector2f getPosition()
-        {
-            return new Vector2f(sprite.Position.X + (sprite.Texture.Size.X / 2), sprite.Position.Y + (sprite.Texture.Size.Y / 2));
-        }
 
         public bool getTochedPlayer()
         {
