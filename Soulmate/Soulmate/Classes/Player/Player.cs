@@ -29,17 +29,13 @@ namespace Soulmate.Classes
         public Player(Vector2f spawnPosition, Map levelMap, int spawnNumFacingDirection)
         {
             type = "player";
-            maxHP = 12;
-            att = 1;
-            def = 0;
-            currentHP = maxHP;
             numFacingDirection = spawnNumFacingDirection;
             facingInDirection = new Vector2f(1, 0); // RECHTS
             sprite = new Sprite(playerTextures[0]);
             sprite.Position = spawnPosition;
             position = spawnPosition;
             hitBox = new HitBox(sprite.Position, playerWithoutSwordTexture.Size.X, getHeight());
-            maxHP = 12;
+            maxHP = 20 * 4;
             currentHP = maxHP;
             att = 1;
             def = 0;
