@@ -56,7 +56,7 @@ namespace Soulmate.Classes
 
             map = new Map(new Bitmap("Pictures/Map/Map2.bmp"));
             
-            player = new Player(new Vector2f(32 * 15, 32 * 10 - 219), map, 2);
+            player = new Player(new Vector2f(32 * 15, 32 * 10 - 219), map, 2); // 2 = NumFacingDirection
  
             objcs = new ObjectHandler(map,player);
 
