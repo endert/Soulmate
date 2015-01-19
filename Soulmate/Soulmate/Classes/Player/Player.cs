@@ -12,7 +12,7 @@ namespace Soulmate.Classes
     {
         Texture playerWithoutSwordTexture = new Texture("Pictures/Player/SpielerSeiteRechts.png");
 
-        int numFacingDirection = 2; // nach RECHTS
+        int numFacingDirection; // nach RECHTS
 
         Map map;
         Vector2f movement;
@@ -20,16 +20,17 @@ namespace Soulmate.Classes
         Vector2f swordPosition;
         Vector2f swordVector;
 
-        float att = 1;
-        float def = 1;
-        float life = 10;
+        int att = 1;
+        int def = 1;
+        int life = 10;
 
         Texture[] playerTextures = { new Texture("Pictures/Player/SpielerFrontTest.png"), new Texture("Pictures/Player/SpielerBackTest.png"), 
                                      new Texture("Pictures/Player/SpielerSeiteRechtsSchwert.png"), new Texture("Pictures/Player/SpielerSeiteLinksSchwertTest.png") };
 
-        public Player(Vector2f spawnPosition, Map levelMap)
+        public Player(Vector2f spawnPosition, Map levelMap, int spawnNumFacingDirection)
         {
             type = "player";
+            numFacingDirection = spawnNumFacingDirection;
             facingInDirection = new Vector2f(1, 0); // RECHTS
             sprite = new Sprite(playerTextures[0]);
             sprite.Position = spawnPosition;

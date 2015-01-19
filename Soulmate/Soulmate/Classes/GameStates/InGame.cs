@@ -56,7 +56,7 @@ namespace Soulmate.Classes
 
             map = new Map(new Bitmap("Pictures/Map/Map2.bmp"));
             
-            player = new Player(new Vector2f(32 * 15, 32 * 10 - 219), map);
+            player = new Player(new Vector2f(32 * 15, 32 * 10 - 219), map, 2);
  
             objcs = new ObjectHandler(map,player);
 
@@ -64,9 +64,9 @@ namespace Soulmate.Classes
 
             pet = new Pet(player.getSprite());
 
-            objcs.add(enemies.getEnemiesGameObjects());
             objcs.add(pet);
             objcs.add(player);
+            objcs.add(enemies.getEnemiesGameObjects());
 
             inventory = new Inventory();
             inGameMenu = new InGameMenu();
