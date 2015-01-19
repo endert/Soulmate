@@ -118,7 +118,6 @@ namespace Soulmate.Classes
                     }
                 default:
                     {
-                        Console.WriteLine("default");
                         break;
                     }
             }
