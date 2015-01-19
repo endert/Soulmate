@@ -12,6 +12,7 @@ namespace Soulmate.Classes
     {
         Texture[] lifeTexture = { new Texture("Pictures/Life/Life0hp.png"), new Texture("Pictures/Life/Life1hp.png"), new Texture("Pictures/Life/Life2hp.png"), new Texture("Pictures/Life/Life3hp.png"),
                                   new Texture("Pictures/Life/Life4hp.png"), new Texture("Pictures/Life/LifeFull.png") };
+
         Sprite lifeSprite;
 
         public Interface()

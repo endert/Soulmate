@@ -181,3 +181,8 @@ C:\Users\Joshua Endert\Desktop\Soulmate\Soulmate\Soulmate\Soulmate\bin\Debug\Pic
 C:\Users\Joshua Endert\Desktop\Soulmate\Soulmate\Soulmate\Soulmate\bin\Debug\Soulmate.exe
 C:\Users\Joshua Endert\Desktop\Soulmate\Soulmate\Soulmate\Soulmate\bin\Debug\Soulmate.pdb
 C:\Users\Joshua Endert\Desktop\Soulmate\Soulmate\Soulmate\Soulmate\obj\Debug\Soulmate.csprojResolveAssemblyReference.cache
+C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Life\LifeHeartFull.png
+C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Life\LifeHeartHalf.png
+C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Life\LifeHeartOne-Quarter.png
+C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Life\LifeHeartThree-Quarters.png
+C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Life\LifeHeartZero.png
