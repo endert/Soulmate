@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace Soulmate.Classes
 {
-    class Life
+    class LifePlayer
     {
         Texture[] lifeHeartTexture = { new Texture("Pictures/Life/LifeHeartZero.png"), new Texture("Pictures/Life/LifeHeartOne-Quarter.png"), new Texture("Pictures/Life/LifeHeartHalf.png"), 
                                        new Texture("Pictures/Life/LifeHeartThree-Quarters.png"), new Texture("Pictures/Life/LifeHeartFull.png") };
         List<Sprite> lifeHeartSprite = new List<Sprite>();
 
-        public Life()
+        public LifePlayer()
         {
             for (int i = 0; i < ObjectHandler.player.getMaxLife() / 4; i++)
             {
@@ -41,8 +41,8 @@ namespace Soulmate.Classes
                     lifeHeartSprite[i] = new Sprite(lifeHeartTexture[0]);
                 }
 
-                lifeHeartSprite[i].Position = new Vector2f((InGame.VIEW.Center.X - (Game.windowSizeX / 2) + 5 + (i*lifeHeartSprite[i].Texture.Size.X)),
-                                                           (InGame.VIEW.Center.Y + (Game.windowSizeY / 2) - lifeHeartSprite[i].Texture.Size.Y - 5));
+                lifeHeartSprite[i].Position = new Vector2f((InGame.VIEW.Center.X - (Game.windowSizeX / 2) + 5 + (i % 10 * lifeHeartSprite[i].Texture.Size.X)),
+                                                           (InGame.VIEW.Center.Y + (Game.windowSizeY / 2) - lifeHeartSprite[i].Texture.Size.Y * (2 - (i / 10)) - 5));
             }
             return lifeHeartSprite;
         }

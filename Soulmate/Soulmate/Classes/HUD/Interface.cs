@@ -10,21 +10,21 @@ namespace Soulmate.Classes
 {
     class Interface
     {
-        Life life;
+        LifePlayer lifePlayer;
 
         public Interface()
         {
-            life = new Life();
+            lifePlayer = new LifePlayer();
         }
 
         public void update(GameTime gameTime)
         {
-            life.update(gameTime);
+            lifePlayer.update(gameTime);
         }
 
         public void draw(RenderWindow window)
         {
-            life.draw(window);
+            lifePlayer.draw(window);
         }
     }
 }
