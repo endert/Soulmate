@@ -16,12 +16,15 @@ namespace Soulmate.Classes
         private static List<AbstractEnemy> enemies = new List<AbstractEnemy>();
         private static Map map;
 
-        private Random random = new Random();
-
-        public static List<AbstractEnemy> getEnemies()
+        public static List<AbstractEnemy> ENEMIES
         {
-            return enemies;
+            get
+            {
+                return enemies;
+            }
         }
+
+        private Random random = new Random();
 
         public List<GameObjects> getEnemiesGameObjects()
         {
@@ -37,7 +40,6 @@ namespace Soulmate.Classes
         {
             return map;
         }
-
 
         public EnemyHandler(Player p, int _lvlCount, Map _map)
         {

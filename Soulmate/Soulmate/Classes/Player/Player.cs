@@ -31,6 +31,10 @@ namespace Soulmate.Classes
         public Player(Vector2f spawnPosition, Map levelMap, int spawnNumFacingDirection)
         {
             type = "player";
+            maxLife = 12;
+            att = 1;
+            def = 0;
+            currentLife = maxLife;
             numFacingDirection = spawnNumFacingDirection;
             facingInDirection = new Vector2f(1, 0); // RECHTS
             sprite = new Sprite(playerTextures[0]);
@@ -148,10 +152,22 @@ namespace Soulmate.Classes
 
         public void takeDamage()
         {
-            if(hitAnotherEntity()&&isVulnerable()&&wasHitByEnemy())
+            if (hitAnotherEntity() && isVulnerable() && wasHitByEnemy())
             {
+                int dmg = 0;
                 tookDmg = true;
-                currentLife--;
+                foreach (AbstractEnemy enemy in EnemyHandler.ENEMIES)
+                {
+                    if (enemy.touchedPlayer())
+                    {
+                        dmg = enemy.getAttackDamage();
+                    }
+                }
+
+                if (dmg - def >= 0)
+                {
+                    currentLife -= dmg - def;
+                }
             }
         }
 
