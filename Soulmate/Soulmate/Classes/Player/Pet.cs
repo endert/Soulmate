@@ -10,23 +10,28 @@ namespace Soulmate.Classes
 {
     class Pet : GameObjects
     {
-        Texture petTexture = new Texture("Pictures/Pet/WolfSeiteLinks.png");
-        Vector2f movement;
         
+        Vector2f movement;
+
+        Texture[] petTexture = {new Texture("Pictures/Pet/WolfFront.png"), new Texture("Pictures/Pet/WolfRueckTest.png"), 
+                                   new Texture("Pictures/Pet/WolfSeiteRechts.png"), new Texture("Pictures/Pet/WolfSeiteLinks.png")};
+
         public Pet(Sprite player)
         {
             type = "pet";
-            sprite = new Sprite(petTexture);
-            sprite.Position = new Vector2f(player.Position.X - 150, player.Position.Y+player.Texture.Size.Y-petTexture.Size.Y);
+            sprite = new Sprite(petTexture[0]);
+            sprite.Position = new Vector2f(player.Position.X - 150, player.Position.Y+player.Texture.Size.Y-petTexture[0].Size.Y);
             position = sprite.Position;
             hitBox = new HitBox(sprite.Position, getWidth(), getHeight());
         }
 
         override public void update(GameTime time)
         {
+            animate(petTexture);
             sprite.Position = position;
             hitBox.setPosition(sprite.Position);
 
+            
             movementSpeed = 0.4f * (float)time.EllapsedTime.TotalMilliseconds;
             movement = getVectorForMove();
             move(movement);
