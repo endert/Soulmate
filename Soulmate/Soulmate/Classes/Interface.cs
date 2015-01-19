@@ -17,13 +17,12 @@ namespace Soulmate.Classes
         public Interface()
         {
             lifeSprite = new Sprite(lifeTexture[5]);
-            lifeSprite.Position = getLifeSpritePosition();
+            lifeSprite.Position = new Vector2f(0, 0);
         }
 
         public Vector2f getLifeSpritePosition()
         {
-            return new Vector2f(((ObjectHandler.player.getPosition().X + (ObjectHandler.player.getWidth() / 2)) - 620),
-                                 (ObjectHandler.player.getPosition().Y + (ObjectHandler.player.getHeight() / 2)) + 320);
+            return new Vector2f((InGame.VIEW.Center.X - Game.windowSizeX / 2 + 5), (InGame.VIEW.Center.Y + Game.windowSizeY / 2 - lifeSprite.Texture.Size.Y - 5));
         }
 
         public void update(GameTime gameTime)
