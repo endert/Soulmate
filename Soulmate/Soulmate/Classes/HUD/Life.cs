@@ -10,13 +10,24 @@ namespace Soulmate.Classes
     class Life
     {
         Texture[] lifeHeartTexture = { new Texture("Pictures/Life/LifeHeartZero.png"), new Texture("Pictures/Life/LifeHeartOne-Quarter.png"), new Texture("Pictures/Life/LifeHeartHalf.png"), 
-                                   new Texture("Pictures/Life/LifeHeartThree-Quarters.png"), new Texture("Pictures/Life/LifeHeartFull.png") };
+                                       new Texture("Pictures/Life/LifeHeartThree-Quarters.png"), new Texture("Pictures/Life/LifeHeartFull.png") };
         List<Sprite> lifeHeartSprite = new List<Sprite>();
 
         public Life()
         {
 
         }
+
+        public List<Sprite> textureToSprite()
+        {
+            foreach (Sprite sprite in lifeHeartSprite)
+            {
+                
+            }
+            
+            return lifeHeartSprite;
+        }
+
 
         public void update(GameTime gameTime)
         {
