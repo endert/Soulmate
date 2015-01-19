@@ -20,9 +20,10 @@ namespace Soulmate.Classes
         Vector2f swordPosition;
         Vector2f swordVector;
 
-        int att = 1;
-        int def = 1;
-        int life = 10;
+        int att;
+        int def;
+        int maxLife;
+        int currentLife;
 
         Texture[] playerTextures = { new Texture("Pictures/Player/SpielerFront.png"), new Texture("Pictures/Player/SpielerRueckTest.png"), 
                                      new Texture("Pictures/Player/SpielerSeiteRechtsSchwert.png"), new Texture("Pictures/Player/SpielerSeiteLinksSchwert.png") };
@@ -36,6 +37,10 @@ namespace Soulmate.Classes
             sprite.Position = spawnPosition;
             position = spawnPosition;
             hitBox = new HitBox(sprite.Position, playerWithoutSwordTexture.Size.X, getHeight());
+            maxLife = 12;
+            currentLife = maxLife;
+            att = 1;
+            def = 0;
 
             swordVector = getSwordVector();
             hitBoxSword = new HitBox(swordVector, playerTextures[2].Size.X - playerWithoutSwordTexture.Size.X, 85);
@@ -69,14 +74,19 @@ namespace Soulmate.Classes
                 return new Vector2f(0, 0);
         }
 
-        public float getAtt()
+        public int getAtt()
         {
             return att;
         }
 
-        public float getLife()
+        public int getCurrentLife()
         {
-            return life;
+            return currentLife;
+        }
+
+        public int getMaxLife()
+        {
+            return maxLife;
         }
 
         public HitBox getHitBoxSword()
@@ -141,8 +151,7 @@ namespace Soulmate.Classes
             if(hitAnotherEntity()&&isVulnerable()&&wasHitByEnemy())
             {
                 tookDmg = true;
-                //if()
-                life--;
+                currentLife--;
             }
         }
 

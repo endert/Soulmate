@@ -1,4 +1,5 @@
 ﻿using SFML.Graphics;
+using SFML.Window;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,23 +16,41 @@ namespace Soulmate.Classes
 
         public Life()
         {
-
+            for (int i = 0; i < ObjectHandler.player.getMaxLife() / 4; i++)
+            {
+                lifeHeartSprite.Add(new Sprite(lifeHeartTexture[0]));
+            }
         }
 
         public List<Sprite> textureToSprite()
         {
-            foreach (Sprite sprite in lifeHeartSprite)
+            for (int i = 0; i < ObjectHandler.player.getMaxLife()/4; i++)
             {
-                
+                if((i+1)*4<=ObjectHandler.player.getCurrentLife())
+                {
+                    lifeHeartSprite[i] = new Sprite(lifeHeartTexture[4]);
+                }
+
+                else if((i*4)<=ObjectHandler.player.getCurrentLife())
+                {
+                    lifeHeartSprite[i] = new Sprite(lifeHeartTexture[(ObjectHandler.player.getCurrentLife() % 4)]);
+                }
+
+                else
+                {
+                    lifeHeartSprite[i] = new Sprite(lifeHeartTexture[0]);
+                }
+
+                lifeHeartSprite[i].Position = new Vector2f((InGame.VIEW.Center.X - (Game.windowSizeX / 2) + 5 + (i*lifeHeartSprite[i].Texture.Size.X)),
+                                                           (InGame.VIEW.Center.Y + (Game.windowSizeY / 2) - lifeHeartSprite[i].Texture.Size.Y - 5));
             }
-            
             return lifeHeartSprite;
         }
 
 
         public void update(GameTime gameTime)
         {
-
+            textureToSprite();
         }
 
         public void draw(RenderWindow window)

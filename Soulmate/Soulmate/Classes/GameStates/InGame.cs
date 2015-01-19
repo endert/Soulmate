@@ -143,14 +143,14 @@ namespace Soulmate.Classes
 
             else if (!inventoryOpen && !inGameMenuOpen)
             {
-                backGround.Position = new Vector2f(view.Center.X - 640, view.Center.Y - 360);
+                backGround.Position = new Vector2f(view.Center.X - Game.windowSizeX / 2, view.Center.Y - Game.windowSizeY / 2);
                 view.Move(new Vector2f((player.getPosition().X + (player.getWidth() / 2)), (player.getPosition().Y + (player.getHeight() / 2))) - view.Center); //View als letztes updaten und der sprite springt nicht mehr 
                
                 objcs.update(gameTime);
                 items.update(gameTime);
                 hud.update(gameTime);
 
-                if (player.getLife() <= 0)
+                if (player.getCurrentLife() <= 0)
                 {
                     ObjectHandler.deleate();
                     return EnumGameStates.mainMenu;

@@ -27,7 +27,7 @@ namespace Soulmate.Classes
         public Inventory()
         {
             inventory = new Sprite(inventoryTexture);
-            inventory.Position = new Vector2f((1280 - inventoryTexture.Size.X) / 2, (720 - inventoryTexture.Size.Y) / 2);
+            inventory.Position = new Vector2f((Game.windowSizeX - inventoryTexture.Size.X) / 2, (Game.windowSizeY - inventoryTexture.Size.Y) / 2);
 
             selected = new Sprite(selectedTexture);
             selected.Position = inventory.Position;
