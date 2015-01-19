@@ -31,7 +31,7 @@ namespace Soulmate.Classes
         protected bool moveAwayFromEntity = false;
         protected int indexEntityList;  //index in the ObjectList of the ObjectHandler
 
-        protected float movementSpeedConstante = 0.2f;    //standart
+        protected float movementSpeedConstante = 0.1f;    //standart
         protected float movementSpeed { get; set; }
 
         public void setIndexEntityList(int index)

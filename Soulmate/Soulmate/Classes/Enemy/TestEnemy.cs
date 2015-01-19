@@ -25,7 +25,7 @@ namespace Soulmate.Classes
             def = 0;
             attackDamage = 2 + 1 * (lvl -1);
             attackRange = 75f;
-            aggroRange = 300f;
+            aggroRange = 150f;
             knockBack = 50f;
         }
 

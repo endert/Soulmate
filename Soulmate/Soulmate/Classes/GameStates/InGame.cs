@@ -12,7 +12,7 @@ namespace Soulmate.Classes
     class InGame : GameStates
     {
         GameTime time = new GameTime();
-        View view;
+        static View view;
         View viewInventory;
         Texture backGroundTex;
         Sprite backGround;
@@ -24,13 +24,13 @@ namespace Soulmate.Classes
         ItemHandler items;
         Inventory inventory;
         InGameMenu inGameMenu;
-        static Interface hud;
+        Interface hud;
 
-        public static Interface HUD
+        public static View VIEW
         {
             get
             {
-                return hud;
+                return view;
             }
         }
 
