@@ -24,8 +24,8 @@ namespace Soulmate.Classes
         int def = 1;
         int life = 10;
 
-        Texture[] playerTextures = { new Texture("Pictures/Player/SpielerFront.png"), new Texture("Pictures/Player/SpielerBackTest.png"), 
-                                     new Texture("Pictures/Player/SpielerSeiteRechtsSchwert.png"), new Texture("Pictures/Player/SpielerSeiteLinksSchwertTest.png") };
+        Texture[] playerTextures = { new Texture("Pictures/Player/SpielerFront.png"), new Texture("Pictures/Player/SpielerRueckTest.png"), 
+                                     new Texture("Pictures/Player/SpielerSeiteRechtsSchwert.png"), new Texture("Pictures/Player/SpielerSeiteLinksSchwert.png") };
 
         public Player(Vector2f spawnPosition, Map levelMap, int spawnNumFacingDirection)
         {
