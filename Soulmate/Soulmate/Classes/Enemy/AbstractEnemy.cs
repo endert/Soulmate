@@ -29,7 +29,7 @@ namespace Soulmate.Classes
         protected int movingFor = 0;    //moving for millisek in one direction
         protected int randomMovingDirection;
         //Getter**************************************************************************************
-        
+
         public bool getTochedPlayer()
         {
             return hitPlayer;

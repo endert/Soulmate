@@ -34,7 +34,7 @@ namespace Soulmate.Classes
         {
             animate(petTexture);
             sprite.Position = position;
-            hitBox.setPosition(sprite.Position);
+            hitBox.update(sprite);
 
             
             movementSpeed = 0.4f * (float)time.EllapsedTime.TotalMilliseconds;

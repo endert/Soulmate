@@ -12,8 +12,8 @@ namespace Soulmate.Classes
     public class HitBox
     {
         public Vector2f Position { get; set; }
-        private float width { get; set; }
-        private float height { get;set; }
+        public float width { get; set; }
+        public float height { get; set; }
 
         Vector2f unionPos;
         float unionWidth;
@@ -123,6 +123,13 @@ namespace Soulmate.Classes
             }
 
             return (float)Math.Sqrt(Math.Pow(distanceX, 2) + Math.Pow(distanceY, 2));
+        }
+
+        public void update(Sprite sprite)
+        {
+            Position = sprite.Position;
+            width = sprite.Texture.Size.X;
+            height = sprite.Texture.Size.Y;
         }
 
         public bool hit(HitBox h)
