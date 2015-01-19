@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Soulmate.Classes.HUD
+namespace Soulmate.Classes
 {
     class LifePet
     {
@@ -30,12 +30,13 @@ namespace Soulmate.Classes.HUD
 
         public void setPosition()
         {
-            lifePetSpriteBackground.Position = ;
+            lifePetSpriteBackground.Position = new Vector2f(ObjectHandler.pet.getPosition().X, ObjectHandler.pet.getPosition().Y);
+            lifePetSpriteBar.Position = new Vector2f(lifePetSpriteBackground.Position.X + 2, lifePetSpriteBackground.Position.Y + 2);
         }
-
+        
         public void update(GameTime gameTime)
         {
-            
+            setPosition();
         }
 
         public void draw(RenderWindow window)
