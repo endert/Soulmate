@@ -22,8 +22,6 @@ namespace Soulmate.Classes
 
         int att;
         int def;
-        int maxLife;
-        int currentLife;
 
         Texture[] playerTextures = { new Texture("Pictures/Player/SpielerFront.png"), new Texture("Pictures/Player/SpielerRueckTest.png"), 
                                      new Texture("Pictures/Player/SpielerSeiteRechtsSchwert.png"), new Texture("Pictures/Player/SpielerSeiteLinksSchwert.png") };
@@ -31,18 +29,18 @@ namespace Soulmate.Classes
         public Player(Vector2f spawnPosition, Map levelMap, int spawnNumFacingDirection)
         {
             type = "player";
-            maxLife = 12;
+            maxHP = 12;
             att = 1;
             def = 0;
-            currentLife = maxLife;
+            currentHP = maxHP;
             numFacingDirection = spawnNumFacingDirection;
             facingInDirection = new Vector2f(1, 0); // RECHTS
             sprite = new Sprite(playerTextures[0]);
             sprite.Position = spawnPosition;
             position = spawnPosition;
             hitBox = new HitBox(sprite.Position, playerWithoutSwordTexture.Size.X, getHeight());
-            maxLife = 12;
-            currentLife = maxLife;
+            maxHP = 12;
+            currentHP = maxHP;
             att = 1;
             def = 0;
 
@@ -85,12 +83,12 @@ namespace Soulmate.Classes
 
         public int getCurrentLife()
         {
-            return currentLife;
+            return currentHP;
         }
 
         public int getMaxLife()
         {
-            return maxLife;
+            return maxHP;
         }
 
         public HitBox getHitBoxSword()
@@ -166,7 +164,7 @@ namespace Soulmate.Classes
 
                 if (dmg - def >= 0)
                 {
-                    currentLife -= dmg - def;
+                    currentHP -= dmg - def;
                 }
             }
         }

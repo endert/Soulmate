@@ -10,19 +10,24 @@ namespace Soulmate.Classes
 {
     class Pet : GameObjects
     {
-        
         Vector2f movement;
 
         Texture[] petTexture = {new Texture("Pictures/Pet/WolfFront.png"), new Texture("Pictures/Pet/WolfRueckTest.png"), 
                                    new Texture("Pictures/Pet/WolfSeiteRechts.png"), new Texture("Pictures/Pet/WolfSeiteLinks.png")};
 
+        int maxLife;
+        int currentLife;
+
         public Pet(Sprite player)
         {
             type = "pet";
+            maxLife = 8;
+            currentLife = maxLife;
             sprite = new Sprite(petTexture[0]);
             sprite.Position = new Vector2f(player.Position.X - 150, player.Position.Y+player.Texture.Size.Y-petTexture[0].Size.Y);
             position = sprite.Position;
             hitBox = new HitBox(sprite.Position, getWidth(), getHeight());
+            lifeBar = new LifeBar();
         }
 
         override public void update(GameTime time)
@@ -35,6 +40,7 @@ namespace Soulmate.Classes
             movementSpeed = 0.4f * (float)time.EllapsedTime.TotalMilliseconds;
             movement = getVectorForMove();
             move(movement);
+            lifeBar.update(this);
 
             hitFromDirections.Clear();
         }

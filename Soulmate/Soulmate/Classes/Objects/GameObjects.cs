@@ -14,6 +14,7 @@ namespace Soulmate.Classes
         protected String type = "object";
         protected Vector2f position;
         protected Sprite sprite;
+        protected LifeBar lifeBar;
 
         protected Stopwatch watchInvulnerablety = new Stopwatch();    //for Invulnerablety
 
@@ -24,6 +25,8 @@ namespace Soulmate.Classes
         protected bool tookDmg { get; set; }
         protected int invulnerableFor = 500; //0.5s invulnerable
         protected float knockBack = 150f;
+        protected int currentHP;
+        protected int maxHP;
 
         public bool isMoving { get; set; }
 
@@ -64,6 +67,16 @@ namespace Soulmate.Classes
             return hitBox;
         }
 
+        public int getCurrentHP()
+        {
+            return currentHP;
+        }
+
+        public int getMaxHP()
+        {
+            return maxHP;
+        }
+
         public List<String> getTypeFromTouchedEntities()
         {
             List<String> types = new List<string>();
@@ -85,6 +98,11 @@ namespace Soulmate.Classes
         public void kill()
         {
             isAlive = false;
+        }
+
+        public String getType()
+        {
+            return type;
         }
 
         virtual public float getWidth()
@@ -279,11 +297,6 @@ namespace Soulmate.Classes
             return result;
         }
 
-        public void draw(RenderWindow window)
-        {
-            window.Draw(sprite);
-        }
-
         public bool isVulnerable()
         {
             bool vulnerable = true;
@@ -365,5 +378,14 @@ namespace Soulmate.Classes
         }
 
         public abstract void update(GameTime gameTime);
+
+        public void draw(RenderWindow window)
+        {
+            window.Draw(sprite);
+            if(lifeBar!=null)
+            {
+                lifeBar.draw(window);
+            }
+        }
     }
 }

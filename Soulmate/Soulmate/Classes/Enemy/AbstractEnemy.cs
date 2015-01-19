@@ -21,7 +21,6 @@ namespace Soulmate.Classes
         protected bool hitPlayer = false;
 
         protected int lvl;
-        protected int hp;
         protected int mp;
         protected int attackDamage;
         protected int def;
@@ -30,11 +29,7 @@ namespace Soulmate.Classes
         protected int movingFor = 0;    //moving for millisek in one direction
         protected int randomMovingDirection;
         //Getter**************************************************************************************
-        override public Vector2f getPosition()
-        {
-            return new Vector2f(sprite.Position.X + (sprite.Texture.Size.X / 2), sprite.Position.Y + (sprite.Texture.Size.Y / 2));
-        }
-
+        
         public bool getTochedPlayer()
         {
             return hitPlayer;
@@ -44,9 +39,9 @@ namespace Soulmate.Classes
         {
             return lvl;
         }
-        public int getHp()
+        public int getCurrentHP()
         {
-            return hp;
+            return currentHP;
         }
         public int getMp()
         {
@@ -80,7 +75,7 @@ namespace Soulmate.Classes
             animate(enemyTextureArray);
             sprite.Position = position;
             takeDmg();
-            if (hp<=0)
+            if (currentHP<=0)
             {
                 isAlive = false;
             }
@@ -96,8 +91,9 @@ namespace Soulmate.Classes
                 {
                     notReact();
                 }
-            } 
-           
+            }
+
+            lifeBar.update(this);
             
             finalize();
         }
@@ -194,7 +190,7 @@ namespace Soulmate.Classes
             if (hitBox.hit(ObjectHandler.player.getHitBoxSword()) && isVulnerable() && ObjectHandler.player.pressedKeyForAttack())
             {
                 int dmg = ObjectHandler.player.getAtt() - def;
-                hp -= dmg;
+                currentHP -= dmg;
                 tookDmg = true;
 
                 Vector2f knockedInDirection = ObjectHandler.player.getFacingDirection();
