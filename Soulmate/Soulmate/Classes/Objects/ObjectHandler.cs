@@ -12,7 +12,20 @@ namespace Soulmate.Classes
         public static List<GameObjects> gObjs { get; set; }
         public static Map lvlMap { get; set; }
         public static Player player { get; set; }
-        public static GameObjects pet { get; set; }
+        public static Pet pet
+        {
+            get
+            {
+                for (int i = 0; i < gObjs.Count; i++)
+                {
+                    if (gObjs[i].getType().Equals("pet"))
+                    {
+                        return (Pet)gObjs[i];
+                    }
+                }
+                return null;
+            }
+        }
 
 
         public ObjectHandler(Map _lvlMap,Player _player)
@@ -24,10 +37,6 @@ namespace Soulmate.Classes
 
         public void add(GameObjects obj)
         {
-            if (obj.GetType().Equals("pet"))
-            {
-                pet = obj;
-            }
             gObjs.Add(obj);
         }
 

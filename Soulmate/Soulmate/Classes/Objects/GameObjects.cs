@@ -87,6 +87,11 @@ namespace Soulmate.Classes
             isAlive = false;
         }
 
+        public String getType()
+        {
+            return type;
+        }
+
         virtual public float getWidth()
         {
             return sprite.Texture.Size.X;
