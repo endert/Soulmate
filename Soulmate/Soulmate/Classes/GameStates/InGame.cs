@@ -12,7 +12,7 @@ namespace Soulmate.Classes
     class InGame : GameStates
     {
         GameTime time = new GameTime();
-        View view;
+        static View view;
         View viewInventory;
         Texture backGroundTex;
         Sprite backGround;
@@ -24,13 +24,13 @@ namespace Soulmate.Classes
         ItemHandler items;
         Inventory inventory;
         InGameMenu inGameMenu;
-        static Interface hud;
+        Interface hud;
 
-        public static Interface HUD
+        public static View VIEW
         {
             get
             {
-                return hud;
+                return view;
             }
         }
 
@@ -56,7 +56,7 @@ namespace Soulmate.Classes
 
             map = new Map(new Bitmap("Pictures/Map/Map2.bmp"));
             
-            player = new Player(new Vector2f(32 * 15, 32 * 10 - 219), map);
+            player = new Player(new Vector2f(32 * 15, 32 * 10 - 219), map, 2);
  
             objcs = new ObjectHandler(map,player);
 
@@ -64,9 +64,9 @@ namespace Soulmate.Classes
 
             pet = new Pet(player.getSprite());
 
-            objcs.add(enemies.getEnemiesGameObjects());
             objcs.add(pet);
             objcs.add(player);
+            objcs.add(enemies.getEnemiesGameObjects());
 
             inventory = new Inventory();
             inGameMenu = new InGameMenu();
@@ -145,17 +145,16 @@ namespace Soulmate.Classes
             {
                 backGround.Position = new Vector2f(view.Center.X - 640, view.Center.Y - 360);
                 view.Move(new Vector2f((player.getPosition().X + (player.getWidth() / 2)), (player.getPosition().Y + (player.getHeight() / 2))) - view.Center); //View als letztes updaten und der sprite springt nicht mehr 
-                
+               
                 objcs.update(gameTime);
                 items.update(gameTime);
-                
+                hud.update(gameTime);
 
                 if (player.getLife() <= 0)
                 {
                     ObjectHandler.deleate();
                     return EnumGameStates.mainMenu;
                 }
-                hud.update(gameTime);
             }
             return EnumGameStates.inGame;
         }
