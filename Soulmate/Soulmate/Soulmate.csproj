@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="Classes\Enemy\AbstractEnemy.cs" />
     <Compile Include="Classes\AbstractGame.cs" />
+    <Compile Include="Classes\HUD\Life.cs" />
     <Compile Include="Classes\Items\AbstractItem.cs" />
     <Compile Include="Classes\GameStates\Controls.cs" />
     <Compile Include="Classes\Objects\GameObjects.cs" />
@@ -65,7 +66,7 @@
     <Compile Include="Classes\Game.cs" />
     <Compile Include="Classes\GameStates.cs" />
     <Compile Include="Classes\InGameMenu.cs" />
-    <Compile Include="Classes\Interface.cs" />
+    <Compile Include="Classes\HUD\Interface.cs" />
     <Compile Include="Classes\Inventory.cs" />
     <Compile Include="Classes\Items\ItemHandler.cs" />
     <Compile Include="Classes\GameStates\MainMenu.cs" />
@@ -157,6 +158,21 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Pictures\Life\LifeFull.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Life\LifeHeartFull.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Life\LifeHeartHalf.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Life\LifeHeartOne-Quarter.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Life\LifeHeartThree-Quarters.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Life\LifeHeartZero.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Pictures\MainMenu\ControlsNotSelected.png">
