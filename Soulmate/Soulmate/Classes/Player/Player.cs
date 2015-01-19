@@ -20,9 +20,10 @@ namespace Soulmate.Classes
         Vector2f swordPosition;
         Vector2f swordVector;
 
-        int att = 1;
-        int def = 1;
-        int life = 10;
+        int att;
+        int def;
+        int maxLife;
+        int currentLife;
 
         Texture[] playerTextures = { new Texture("Pictures/Player/SpielerFront.png"), new Texture("Pictures/Player/SpielerRueckTest.png"), 
                                      new Texture("Pictures/Player/SpielerSeiteRechtsSchwert.png"), new Texture("Pictures/Player/SpielerSeiteLinksSchwert.png") };
@@ -30,6 +31,10 @@ namespace Soulmate.Classes
         public Player(Vector2f spawnPosition, Map levelMap, int spawnNumFacingDirection)
         {
             type = "player";
+            maxLife = 12;
+            att = 1;
+            def = 0;
+            currentLife = maxLife;
             numFacingDirection = spawnNumFacingDirection;
             facingInDirection = new Vector2f(1, 0); // RECHTS
             sprite = new Sprite(playerTextures[0]);
@@ -69,14 +74,19 @@ namespace Soulmate.Classes
                 return new Vector2f(0, 0);
         }
 
-        public float getAtt()
+        public int getAtt()
         {
             return att;
         }
 
-        public float getLife()
+        public int getMaxLife()
         {
-            return life;
+            return maxLife;
+        }
+
+        public int getCurrentLife()
+        {
+            return currentLife;
         }
 
         public HitBox getHitBoxSword()
@@ -138,11 +148,22 @@ namespace Soulmate.Classes
 
         public void takeDamage()
         {
-            if(hitAnotherEntity()&&isVulnerable()&&wasHitByEnemy())
+            if (hitAnotherEntity() && isVulnerable() && wasHitByEnemy())
             {
+                int dmg = 0;
                 tookDmg = true;
-                //if()
-                life--;
+                foreach (AbstractEnemy enemy in EnemyHandler.ENEMIES)
+                {
+                    if (enemy.touchedPlayer())
+                    {
+                        dmg = enemy.getAttackDamage();
+                    }
+                }
+
+                if (dmg - def >= 0)
+                {
+                    currentLife -= dmg - def;
+                }
             }
         }
 

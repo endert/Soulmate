@@ -150,7 +150,7 @@ namespace Soulmate.Classes
                 items.update(gameTime);
                 hud.update(gameTime);
 
-                if (player.getLife() <= 0)
+                if (player.getCurrentLife() <= 0)
                 {
                     ObjectHandler.deleate();
                     return EnumGameStates.mainMenu;

@@ -21,13 +21,12 @@ namespace Soulmate.Classes
         protected bool hitPlayer = false;
 
         protected int lvl;
-        protected float hp;
-        protected float mp;
-        protected float attackDamage;
-        protected float attackRange;
-        protected float def;
+        protected int hp;
+        protected int mp;
+        protected int attackDamage;
+        protected int def;
         protected float aggroRange;
-        
+        protected float attackRange;
         protected int movingFor = 0;    //moving for millisek in one direction
         protected int randomMovingDirection;
         //Getter**************************************************************************************
@@ -45,15 +44,15 @@ namespace Soulmate.Classes
         {
             return lvl;
         }
-        public float getHp()
+        public int getHp()
         {
             return hp;
         }
-        public float getMp()
+        public int getMp()
         {
             return mp;
         }
-        public float getAttackDamage()
+        public int getAttackDamage()
         {
             return attackDamage;
         }
@@ -61,7 +60,7 @@ namespace Soulmate.Classes
         {
             return attackRange;
         }
-        public float getDef()
+        public int getDef()
         {
             return def;
         }
@@ -194,7 +193,7 @@ namespace Soulmate.Classes
         {
             if (hitBox.hit(ObjectHandler.player.getHitBoxSword()) && isVulnerable() && ObjectHandler.player.pressedKeyForAttack())
             {
-                float dmg = ObjectHandler.player.getAtt() - def;
+                int dmg = ObjectHandler.player.getAtt() - def;
                 hp -= dmg;
                 tookDmg = true;
 
