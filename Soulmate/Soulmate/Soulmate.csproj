@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="Classes\Enemy\AbstractEnemy.cs" />
     <Compile Include="Classes\AbstractGame.cs" />
+    <Compile Include="Classes\HUD\BarFusionPlayerPet.cs" />
     <Compile Include="Classes\HUD\LifePlayer.cs" />
     <Compile Include="Classes\HUD\LifeBar.cs" />
     <Compile Include="Classes\Items\AbstractItem.cs" />
@@ -98,6 +99,9 @@
     </Content>
     <Content Include="libsndfile-1.dll" />
     <Content Include="openal32.dll" />
+    <Content Include="Pictures\BarBackground.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Pictures\ControlsTextBild.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -114,6 +118,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Pictures\Enemy\Enemy1\Enemy1SeiteRechts.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\FusionBar.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Pictures\InGameMenu\ContinueNotSelected.png">
@@ -153,9 +160,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Pictures\Life\LifeHeartZero.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pictures\Life\LifePetBackground.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Pictures\Life\LifePetBar.png">
