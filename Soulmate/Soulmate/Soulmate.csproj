@@ -78,6 +78,7 @@
     <Compile Include="Classes\GameStates\Options.cs" />
     <Compile Include="Classes\Player\Pet.cs" />
     <Compile Include="Classes\Player\Player.cs" />
+    <Compile Include="Classes\Player\PlayerPetFusion.cs" />
     <Compile Include="Classes\Program.cs" />
     <Compile Include="Classes\Enemy\TestEnemy.cs" />
     <Compile Include="Classes\Items\TestItem.cs" />

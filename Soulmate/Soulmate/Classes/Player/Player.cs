@@ -24,6 +24,8 @@ namespace Soulmate.Classes
         int def;
         int maxHearts;
 
+        bool isPressed = false;
+
         Texture[] playerTextures = { new Texture("Pictures/Player/SpielerFront.png"), new Texture("Pictures/Player/SpielerRueckTest.png"), 
                                      new Texture("Pictures/Player/SpielerSeiteRechtsSchwert.png"), new Texture("Pictures/Player/SpielerSeiteLinksSchwert.png") };
 
@@ -194,12 +196,17 @@ namespace Soulmate.Classes
 
         public bool pressedKeyForAttack()
         {
-            if (Keyboard.IsKeyPressed(Keyboard.Key.A))
+            if (Keyboard.IsKeyPressed(Keyboard.Key.A)&& !isPressed)
             {
+                isPressed = true;
                 return true;
             }
-            else
-                return false;
+
+            if (isPressed && !Keyboard.IsKeyPressed(Keyboard.Key.A))
+            {
+                isPressed = false;
+            }
+            return false;
         }
 
         public override void animate(Texture[] textureArray)
