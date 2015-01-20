@@ -14,8 +14,8 @@ namespace Soulmate.Classes
         Player fusionedPlayer;
         int duration;   // in milliSec
 
-        Texture[] werwolfTexture = {new Texture("Pictures/Player/PlayerWerwolf/WerwolfFront.png"), new Texture("Pictures/Player/PlayerWerwolf/WerwolfRueck.png"),
-                                   new Texture("Pictures/Player/PlayerWerwolf/WerwolfSeiteRechts.png"), new Texture("Pictures/Player/PlayerWerwolf/WerwolfSeiteLinks.png")};
+        Texture[] werwolfTexture = {new Texture("Pictures/Player/PlayerWerewolf/WerwolfFront.png"), new Texture("Pictures/Player/PlayerWerewolf/WerwolfRueck.png"),
+                                   new Texture("Pictures/Player/PlayerWerewolf/WerwolfSeiteRechts.png"), new Texture("Pictures/Player/PlayerWerewolf/WerwolfSeiteLinks.png")};
 
         public PlayerPetFusion(Pet pet, Player player, int durationInSec)
         {
@@ -35,8 +35,7 @@ namespace Soulmate.Classes
             def = player.getDef();
 
             ObjectHandler.player = this;
-            ObjectHandler.IsPlayerPetFusion = true;
-            transform.Start();
+            transformWatch.Start();
         }
     }
 }

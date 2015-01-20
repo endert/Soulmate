@@ -15,7 +15,7 @@ namespace Soulmate.Classes
 
         protected int numFacingDirection; // nach RECHTS
 
-        protected Stopwatch transform = new Stopwatch();
+        protected Stopwatch transformWatch = new Stopwatch();
 
         protected Map map;
         protected Vector2f movement;
@@ -120,13 +120,14 @@ namespace Soulmate.Classes
             moreHP();
             makeHeile();
             //====================
-            
+            transform();
+
             movementSpeed = 0.4f * (float)gameTime.EllapsedTime.TotalMilliseconds;
 
             takeDamage();
             animate(playerTextures);
 
-            facingDirection();
+            spritePositionUpdate();
 
             hitBox.setPosition(position);
 
@@ -140,7 +141,7 @@ namespace Soulmate.Classes
             hitFromDirections.Clear();   
         }
 
-        public void facingDirection()
+        public void spritePositionUpdate()
         {
             switch (numFacingDirection)
             {
@@ -225,6 +226,14 @@ namespace Soulmate.Classes
                 }
             }
             return hitByEnemy;
+        }
+
+        public void transform()
+        {
+            if (currentFusionValue>= maxFusionValue&&Keyboard.IsKeyPressed(Keyboard.Key.Space))
+            {
+                new PlayerPetFusion(ObjectHandler.pet, this,durationFusion);
+            }
         }
 
         public bool pressedKeyForAttack()

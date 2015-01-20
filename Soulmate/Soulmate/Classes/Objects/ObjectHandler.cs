@@ -12,7 +12,7 @@ namespace Soulmate.Classes
         public static List<GameObjects> gObjs { get; set; }
         public static Map lvlMap { get; set; }
         public static Player player { get; set; }
-
+        public static Pet pet { get; set; }
         public static bool IsPlayerPetFusion
         {
             get
@@ -26,10 +26,6 @@ namespace Soulmate.Classes
                     return true;
                 }
             }
-            set
-            {
-                IsPlayerPetFusion = value;
-            }
         }
 
         public ObjectHandler(Map _lvlMap,Player _player)
@@ -42,12 +38,20 @@ namespace Soulmate.Classes
         public void add(GameObjects obj)
         {
             gObjs.Add(obj);
+            if (obj.getType().Equals("pet"))
+            {
+                pet = (Pet)obj;
+            }
         }
 
         public void add(List<GameObjects> objs)
         {
             foreach (GameObjects obj in objs)
             {
+                if (obj.getType().Equals("pet"))
+                {
+                    pet = (Pet)obj;
+                }
                 gObjs.Add(obj);
             }
         }
