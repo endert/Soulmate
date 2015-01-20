@@ -33,6 +33,10 @@ namespace Soulmate.Classes
             currentHP = player.getCurrentHP();
             att = player.getAtt();
             def = player.getDef();
+
+            ObjectHandler.PPF = this;
+            ObjectHandler.IsPlayerPetFusion = true;
+            transform.Start();
         }
     }
 }

@@ -11,22 +11,23 @@ namespace Soulmate.Classes
     {
         public static List<GameObjects> gObjs { get; set; }
         public static Map lvlMap { get; set; }
-        public static Player player { get; set; }
-        public static Pet pet
+        public static Player player
+        {
+            get;
+            set;
+        }
+        public static PlayerPetFusion PPF { get; set; }
+        public static bool IsPlayerPetFusion
         {
             get
             {
-                for (int i = 0; i < gObjs.Count; i++)
-                {
-                    if (gObjs[i].getType().Equals("pet"))
-                    {
-                        return (Pet)gObjs[i];
-                    }
-                }
-                return null;
+                return false;
+            }
+            set
+            {
+                IsPlayerPetFusion = value;
             }
         }
-
 
         public ObjectHandler(Map _lvlMap,Player _player)
         {
@@ -54,6 +55,10 @@ namespace Soulmate.Classes
             {
                 if (!gObjs[i].getIsAlive())
                 {
+                    if (gObjs[i].getType().Equals("enemy"))
+                    {
+                        //player.setCurrentFusionValue();
+                    }
                     gObjs[i].drop();
                     gObjs.RemoveAt(i);
                     i--;
