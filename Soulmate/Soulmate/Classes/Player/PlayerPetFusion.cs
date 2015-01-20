@@ -12,8 +12,7 @@ namespace Soulmate.Classes
     {
         Pet fusionedPet;
         Player fusionedPlayer;
-        int 
-
+        
         Texture[] werwolfTexture = {new Texture("Pictures/Player/PlayerWerwolf/WerwolfFront.png"), new Texture("Pictures/Player/PlayerWerwolf/WerwolfRueck.png"),
                                    new Texture("Pictures/Player/PlayerWerwolf/WerwolfSeiteRechts.png"), new Texture("Pictures/Player/PlayerWerwolf/WerwolfSeiteLinks.png")};
 
