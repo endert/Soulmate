@@ -164,21 +164,13 @@ namespace Soulmate.Classes
 
 
         //Testweise==============================================================
-        bool keyPressed = false;
-
         public void getMoreHP()
         {
-            if (Keyboard.IsKeyPressed(Keyboard.Key.H) && !keyPressed)
+            if (Keyboard.IsKeyPressed(Keyboard.Key.H))
             {
                 maxHP += 4;
                 currentHP += 4;
                 LifePlayer.addHeart();
-                keyPressed = true;
-            }
-
-            if (!Keyboard.IsKeyPressed(Keyboard.Key.H) && keyPressed)
-            {
-                keyPressed = false;
             }
         }
         //Testweise==============================================================
