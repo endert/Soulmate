@@ -12,7 +12,7 @@ namespace Soulmate.Classes
     {
         public TestEnemy(Vector2f spawnPos, int _lvl)
         {
-            drops = new AbstractItem[]{ new TestItem() };
+            drops = new AbstractItem[]{ new TestItem(), new Sword() };
             setEnemyTextures();
             sprite = new Sprite(enemyTextureArray[0]);
             position = spawnPos;

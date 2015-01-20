@@ -58,8 +58,10 @@
     <Compile Include="Classes\AbstractGame.cs" />
     <Compile Include="Classes\HUD\LifePlayer.cs" />
     <Compile Include="Classes\HUD\LifeBar.cs" />
+    <Compile Include="Classes\Items\AbstractEquipment.cs" />
     <Compile Include="Classes\Items\AbstractItem.cs" />
     <Compile Include="Classes\GameStates\Controls.cs" />
+    <Compile Include="Classes\Items\Sword.cs" />
     <Compile Include="Classes\Objects\GameObjects.cs" />
     <Compile Include="Classes\Objects\HitBox.cs" />
     <Compile Include="Classes\Map\Blocks.cs" />
@@ -136,6 +138,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Pictures\Inventory\Selected.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Items\Schwert.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Pictures\Items\TestItem%28Pete%29.png">
