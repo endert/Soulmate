@@ -29,7 +29,7 @@ namespace Soulmate.Classes
 
         public float getLastLifeHeartSpritePositionBottomY()
         {
-            return (ObjectHandler.player.getMaxHearts() / 10 + 1) * lifeHeartSprite[lifeHeartSprite.Count - 1].Texture.Size.Y;
+            return ((float)Math.Ceiling((float)(ObjectHandler.player.getMaxHearts() / 10f))) * lifeHeartSprite[lifeHeartSprite.Count - 1].Texture.Size.Y;
         }
 
         public List<Sprite> textureToSprite()
