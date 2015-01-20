@@ -10,7 +10,7 @@ namespace Soulmate.Classes
 {
     class BarFusionPlayerPet
     {
-        Texture barBackgroundTexture = new Texture("Pictures/BarBackground.png");
+        Texture barBackgroundTexture = new Texture("Pictures/FusionBarBackground.png");
         Texture barTexture = new Texture("Pictures/FusionBar.png");
         Sprite barBackgroundSprite;
         Sprite barSprite;
@@ -19,9 +19,6 @@ namespace Soulmate.Classes
         {
             barBackgroundSprite = new Sprite(barBackgroundTexture);
             barSprite = new Sprite(barTexture);
-
-            //Font font = new Font("Arial");
-            //Text text = new Text("hgnkhzlh", font);
         }
 
         public Sprite scale(GameObjects gameObject)
@@ -31,17 +28,16 @@ namespace Soulmate.Classes
             return barSprite;
         }
 
-        public void setPosition(float Y)
+        public void setPosition(float positionOfLifePlayer)
         {
-            //Console.WriteLine(LifePlayer.getLastLifeHeartSpritePositionBottomY());
             barBackgroundSprite.Position = new Vector2f((InGame.VIEW.Center.X - (Game.windowSizeX / 2) + 5),
-                                                        (InGame.VIEW.Center.Y - (Game.windowSizeY / 2) + Y + 5));
-            barSprite.Position = new Vector2f(barBackgroundSprite.Position.X + 2, barBackgroundSprite.Position.Y + 2);
+                                                        (InGame.VIEW.Center.Y - (Game.windowSizeY / 2) + positionOfLifePlayer + 5));
+            barSprite.Position = new Vector2f(barBackgroundSprite.Position.X + 5, barBackgroundSprite.Position.Y + 5);
         }
 
-        public void update(float Y)
+        public void update(float positionOfLifePlayer)
         {
-            setPosition(Y);
+            setPosition(positionOfLifePlayer);
             //scale(gameObject);
         }
 
