@@ -125,6 +125,7 @@ namespace Soulmate.Classes
             makeHeile();
             cheatDef();
             cheatAtt();
+            cheatFusionValue();
             //====================
             
             movementSpeed = 0.4f * (float)gameTime.EllapsedTime.TotalMilliseconds;
@@ -210,6 +211,14 @@ namespace Soulmate.Classes
             if (Keyboard.IsKeyPressed(Keyboard.Key.F))
             {
                 att += 1;
+            }
+        }
+
+        public void cheatFusionValue()
+        {
+            if (Keyboard.IsKeyPressed(Keyboard.Key.Q))
+            {
+                setCurrentFusionValue();
             }
         }
 
