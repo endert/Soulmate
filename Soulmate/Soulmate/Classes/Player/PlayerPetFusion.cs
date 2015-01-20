@@ -12,7 +12,8 @@ namespace Soulmate.Classes
     {
         Pet fusionedPet;
         Player fusionedPlayer;
-        
+        int duration;   // in milliSec
+
         Texture[] werwolfTexture = {new Texture("Pictures/Player/PlayerWerwolf/WerwolfFront.png"), new Texture("Pictures/Player/PlayerWerwolf/WerwolfRueck.png"),
                                    new Texture("Pictures/Player/PlayerWerwolf/WerwolfSeiteRechts.png"), new Texture("Pictures/Player/PlayerWerwolf/WerwolfSeiteLinks.png")};
 
@@ -20,7 +21,8 @@ namespace Soulmate.Classes
         {
             fusionedPet = pet;
             fusionedPlayer = player;
-            type = "player";
+            type = "werwolf";
+            duration = durationInSec * 1000;
             numFacingDirection = player.getNumFacingDirection();
             facingInDirection = player.getFacingDirection(); // RECHTS
             sprite = new Sprite(werwolfTexture[numFacingDirection]);
