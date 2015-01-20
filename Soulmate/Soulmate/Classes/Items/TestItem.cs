@@ -20,5 +20,10 @@ namespace Soulmate.Classes
             sprite = new Sprite(texture);
             ItemHandler.Items.Add(this);
         }
+
+        override public void cloneAndDrop(Vector2f dropPosition)
+        {
+            (new TestItem()).drop(dropPosition);
+        }
     }
 }
