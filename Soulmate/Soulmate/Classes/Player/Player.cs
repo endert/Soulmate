@@ -94,7 +94,7 @@ namespace Soulmate.Classes
 
             //InGame.HUD.update(gameTime);
             takeDamage();
-            //getMoreHP();
+            getMoreHP();
             animate(playerTextures);
 
             switch (numFacingDirection)
@@ -147,6 +147,7 @@ namespace Soulmate.Classes
             {
                 maxHP += 4;
                 currentHP += 4;
+                LifePlayer.addHeart();
                 keyPressed = true;
             }
 

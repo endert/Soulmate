@@ -10,9 +10,9 @@ namespace Soulmate.Classes
 {
     class LifePlayer
     {
-        Texture[] lifeHeartTexture = { new Texture("Pictures/Life/LifeHeartZero.png"), new Texture("Pictures/Life/LifeHeartOne-Quarter.png"), new Texture("Pictures/Life/LifeHeartHalf.png"), 
+        static Texture[] lifeHeartTexture = { new Texture("Pictures/Life/LifeHeartZero.png"), new Texture("Pictures/Life/LifeHeartOne-Quarter.png"), new Texture("Pictures/Life/LifeHeartHalf.png"), 
                                        new Texture("Pictures/Life/LifeHeartThree-Quarters.png"), new Texture("Pictures/Life/LifeHeartFull.png") };
-        List<Sprite> lifeHeartSprite = new List<Sprite>();
+        static List<Sprite> lifeHeartSprite = new List<Sprite>();
 
         public LifePlayer()
         {
@@ -20,6 +20,11 @@ namespace Soulmate.Classes
             {
                 lifeHeartSprite.Add(new Sprite(lifeHeartTexture[0]));
             }
+        }
+
+        public static void addHeart()
+        {
+            lifeHeartSprite.Add(new Sprite(lifeHeartTexture[0]));
         }
 
         public List<Sprite> textureToSprite()
@@ -42,7 +47,7 @@ namespace Soulmate.Classes
                 }
 
                 lifeHeartSprite[i].Position = new Vector2f((InGame.VIEW.Center.X - (Game.windowSizeX / 2) + 5 + ((i % 10) * lifeHeartSprite[i].Texture.Size.X)),
-                                                           (InGame.VIEW.Center.Y + (Game.windowSizeY / 2) - lifeHeartSprite[i].Texture.Size.Y * ((ObjectHandler.player.getMaxHearts()) / 10 - (i / 10)) - 5));
+                                                           (InGame.VIEW.Center.Y - (Game.windowSizeY / 2) + (lifeHeartSprite[i].Texture.Size.Y * ((i / 10)))) + 5);
                                                                                                                   //Berrechnung damit Herzen in die nächste Zeile rutschen und wie viele Zeilen benötigt werden
             }
             return lifeHeartSprite;
