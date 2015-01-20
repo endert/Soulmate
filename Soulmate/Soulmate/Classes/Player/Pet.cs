@@ -11,13 +11,14 @@ namespace Soulmate.Classes
     class Pet : GameObjects
     {
         Vector2f movement;
-
+        public String typeOfPet { get; set; }
         Texture[] petTexture = {new Texture("Pictures/Pet/WolfFront.png"), new Texture("Pictures/Pet/WolfRueckTest.png"), 
                                    new Texture("Pictures/Pet/WolfSeiteRechts.png"), new Texture("Pictures/Pet/WolfSeiteLinks.png")};
 
         public Pet(Sprite player)
         {
             type = "pet";
+            typeOfPet = "wolf";
             maxHP = 8;
             currentHP = maxHP;
             sprite = new Sprite(petTexture[0]);

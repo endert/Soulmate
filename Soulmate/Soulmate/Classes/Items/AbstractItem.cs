@@ -43,6 +43,8 @@ namespace Soulmate.Classes
             return isAlive;
         }
 
+        abstract public void cloneAndDrop(Vector2f dropPosition);
+
         public void setPositionMatrix(int x, int y)
         {
             position = new Vector2f(x * ItemHandler.playerInventory.FIELDSIZE + ItemHandler.playerInventory.inventory.Position.X, 
