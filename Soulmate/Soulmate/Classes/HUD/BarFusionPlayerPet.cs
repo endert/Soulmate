@@ -21,9 +21,9 @@ namespace Soulmate.Classes
             barSprite = new Sprite(barTexture);
         }
 
-        public Sprite scale(GameObjects gameObject)
+        public Sprite scale()
         {
-            barSprite.Scale = new Vector2f((float)gameObject.getCurrentHP() / (float)gameObject.getMaxHP(), 1);
+            barSprite.Scale = new Vector2f((float)ObjectHandler.player.currentFusionValue / (float)ObjectHandler.player.maxFusionValue, 1);
 
             return barSprite;
         }
@@ -38,7 +38,7 @@ namespace Soulmate.Classes
         public void update(float positionOfLifePlayer)
         {
             setPosition(positionOfLifePlayer);
-            //scale(gameObject);
+            scale();
         }
 
         public void draw(RenderWindow window)

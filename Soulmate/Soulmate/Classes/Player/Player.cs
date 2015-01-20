@@ -26,6 +26,9 @@ namespace Soulmate.Classes
         protected int att;
         protected int def;
         protected int maxHearts;
+        protected int durationFusion;
+        public float maxFusionValue { get; set; }
+        public float currentFusionValue { get; set; }
 
         protected bool isPressed = false;
 
@@ -42,9 +45,13 @@ namespace Soulmate.Classes
             position = spawnPosition;
             hitBox = new HitBox(sprite.Position, playerWithoutSwordTexture.Size.X, getHeight());
             maxHP = 11 * 4;
+            maxHearts = maxHP / 4;
             currentHP = maxHP;
             att = 1;
             def = 0;
+            durationFusion = 500;
+            maxFusionValue = 500f;
+            currentFusionValue = 0f;
 
             swordVector = getSwordVector();
             hitBoxSword = new HitBox(swordVector, playerTextures[2].Size.X - playerWithoutSwordTexture.Size.X, 85);
@@ -54,6 +61,11 @@ namespace Soulmate.Classes
 
         public Player() //needed for PlayerPetFusion why? I dont have any idea
         {
+        }
+
+        public void setCurrentFusionValue()
+        {
+            currentFusionValue += 50;
         }
 
         public int getDef()
@@ -106,11 +118,10 @@ namespace Soulmate.Classes
         {
             movementSpeed = 0.4f * (float)gameTime.EllapsedTime.TotalMilliseconds;
 
-            //InGame.HUD.update(gameTime);
             takeDamage();
             getMoreHP();
             animate(playerTextures);
-
+           
             switch (numFacingDirection)
             {
                 case 0:

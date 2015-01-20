@@ -57,7 +57,7 @@ namespace Soulmate.Classes
                 {
                     if (gObjs[i].getType().Equals("enemy"))
                     {
-                        //player.setCurrentFusionValue();
+                        player.setCurrentFusionValue();
                     }
                     gObjs[i].drop();
                     gObjs.RemoveAt(i);
