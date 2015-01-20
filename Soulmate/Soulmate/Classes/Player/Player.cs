@@ -116,12 +116,32 @@ namespace Soulmate.Classes
 
         override public void update(GameTime gameTime)
         {
+            //Cheats==============
+            moreHP();
+            makeHeile();
+            //====================
+            
             movementSpeed = 0.4f * (float)gameTime.EllapsedTime.TotalMilliseconds;
 
             takeDamage();
-            getMoreHP();
             animate(playerTextures);
-           
+
+            facingDirection();
+
+            hitBox.setPosition(position);
+
+            swordPosition = getSwordVector();
+            hitBoxSword.setPosition(swordPosition);
+            
+            movement = new Vector2f(0, 0);
+            movement = getKeyPressed(movementSpeed);
+            move(movement);
+            
+            hitFromDirections.Clear();   
+        }
+
+        public void facingDirection()
+        {
             switch (numFacingDirection)
             {
                 case 0:
@@ -149,27 +169,25 @@ namespace Soulmate.Classes
                         break;
                     }
             }
-
-            hitBox.setPosition(position);
-
-            swordPosition = getSwordVector();
-            hitBoxSword.setPosition(swordPosition);
-            
-            movement = new Vector2f(0, 0);
-            movement = getKeyPressed(movementSpeed);
-            move(movement);
-            
-            hitFromDirections.Clear();   
         }
 
 
-        //Testweise==============================================================
-        public void getMoreHP()
+        //Cheats==============================================================
+        public void moreHP()
         {
             if (Keyboard.IsKeyPressed(Keyboard.Key.H))
             {
                 maxHP += 4;
                 currentHP += 4;
+                LifePlayer.addHeart();
+            }
+        }
+
+        public void makeHeile()
+        {
+            if (Keyboard.IsKeyPressed(Keyboard.Key.B))
+            {
+                currentHP = maxHP;
                 LifePlayer.addHeart();
             }
         }
