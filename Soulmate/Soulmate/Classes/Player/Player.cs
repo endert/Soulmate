@@ -35,7 +35,7 @@ namespace Soulmate.Classes
             sprite.Position = spawnPosition;
             position = spawnPosition;
             hitBox = new HitBox(sprite.Position, playerWithoutSwordTexture.Size.X, getHeight());
-            maxHP = 10 * 4;
+            maxHP = 11 * 4;
             currentHP = maxHP;
             att = 1;
             def = 0;
