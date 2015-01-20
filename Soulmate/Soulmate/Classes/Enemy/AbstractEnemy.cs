@@ -202,12 +202,9 @@ namespace Soulmate.Classes
         override public void drop()
         {
             int i = 0;
-            if (drops[i].getDropRate()>random.Next(101))
+            if (drops[i].getDropRate() > random.Next(101))
             {
-                for (int j = 0; j < random.Next(51); j++)
-                {
-                    drops[i].drop(new Vector2f(sprite.Position.X + random.Next(100), sprite.Position.Y + random.Next(100)));
-                }
+                drops[i].drop(new Vector2f(sprite.Position.X + random.Next(100), sprite.Position.Y + random.Next(100)));
             }
         }
         //********************************************************************************************
