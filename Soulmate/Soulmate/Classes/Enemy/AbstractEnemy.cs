@@ -204,7 +204,10 @@ namespace Soulmate.Classes
             int i = 0;
             if (drops[i].getDropRate()>random.Next(101))
             {
-                drops[i].drop(sprite.Position);
+                for (int j = 0; j < random.Next(51); j++)
+                {
+                    drops[i].drop(new Vector2f(sprite.Position.X + random.Next(100), sprite.Position.Y + random.Next(100)));
+                }
             }
         }
         //********************************************************************************************

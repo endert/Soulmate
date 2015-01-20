@@ -12,7 +12,7 @@ namespace Soulmate.Classes
     {
         Texture inventoryTexture = new Texture("Pictures/Inventory/inventory.png");
         public Sprite inventory { get; set; }
-
+        public float FIELDSIZE { get { return 50f; } }
         Texture selectedTexture = new Texture("Pictures/Inventory/Selected.png");
         Sprite selected;
 
@@ -23,7 +23,13 @@ namespace Soulmate.Classes
         uint inventoryLength;
 
         public AbstractItem[,] inventoryMatrix { get; set; }
-        
+
+        AbstractItem selectedItem;
+        bool itemIsSelected = false;
+        int selectedItemX;
+        int selectedItemY;
+
+
         public Inventory()
         {
             inventory = new Sprite(inventoryTexture);
@@ -82,11 +88,40 @@ namespace Soulmate.Classes
                 isPressed = true;
             }
 
+            if (Keyboard.IsKeyPressed(Keyboard.Key.A) && !isPressed)    //Item Swaps
+            {
+                if (!itemIsSelected)
+                {
+                    selectedItem = inventoryMatrix[y, x];
+                    itemIsSelected = true;
+                    selectedItemX = x;
+                    selectedItemY = y;
+                }
+                else
+                {
+                    inventoryMatrix[selectedItemY, selectedItemX] = inventoryMatrix[y, x];
+                    if (inventoryMatrix[selectedItemY,selectedItemX] != null)
+                    {
+                        inventoryMatrix[selectedItemY, selectedItemX].setPositionMatrix(selectedItemX, selectedItemY);
+                    }
 
-            if (!Keyboard.IsKeyPressed(Keyboard.Key.Down) && !Keyboard.IsKeyPressed(Keyboard.Key.Up) && !Keyboard.IsKeyPressed(Keyboard.Key.Right) && !Keyboard.IsKeyPressed(Keyboard.Key.Left))
+                    inventoryMatrix[y, x] = selectedItem;
+                    
+                    if (inventoryMatrix[y,x] != null)
+                    {
+                        inventoryMatrix[y, x].setPositionMatrix(x, y);
+                    }
+                    selectedItem = null;
+                    itemIsSelected = false;
+                }
+                isPressed = true;
+            }
+
+            if (!Keyboard.IsKeyPressed(Keyboard.Key.Down) && !Keyboard.IsKeyPressed(Keyboard.Key.Up) && !Keyboard.IsKeyPressed(Keyboard.Key.Right) && !Keyboard.IsKeyPressed(Keyboard.Key.Left) && !Keyboard.IsKeyPressed(Keyboard.Key.A))
                 isPressed = false;
 
-            selected.Position = new Vector2f(x * 50 + inventory.Position.X, y * 50 + inventory.Position.Y);
+
+            selected.Position = new Vector2f(x * FIELDSIZE + inventory.Position.X, y * FIELDSIZE + inventory.Position.Y);
         }
 
 
