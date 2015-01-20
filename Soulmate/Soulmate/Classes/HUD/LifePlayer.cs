@@ -16,7 +16,7 @@ namespace Soulmate.Classes
 
         public LifePlayer()
         {
-            for (int i = 0; i < ObjectHandler.player.getMaxLife() / 4; i++)
+            for (int i = 0; i < ObjectHandler.player.getMaxHearts(); i++)
             {
                 lifeHeartSprite.Add(new Sprite(lifeHeartTexture[0]));
             }
@@ -24,16 +24,16 @@ namespace Soulmate.Classes
 
         public List<Sprite> textureToSprite()
         {
-            for (int i = 0; i < ObjectHandler.player.getMaxLife()/4; i++)
+            for (int i = 0; i < ObjectHandler.player.getMaxHearts(); i++)
             {
-                if((i+1)*4<=ObjectHandler.player.getCurrentLife())
+                if ((i + 1) * 4 <= ObjectHandler.player.getCurrentHP())
                 {
                     lifeHeartSprite[i] = new Sprite(lifeHeartTexture[4]);
                 }
 
-                else if((i*4)<=ObjectHandler.player.getCurrentLife())
+                else if ((i * 4) <= ObjectHandler.player.getCurrentHP())
                 {
-                    lifeHeartSprite[i] = new Sprite(lifeHeartTexture[(ObjectHandler.player.getCurrentLife() % 4)]);
+                    lifeHeartSprite[i] = new Sprite(lifeHeartTexture[(ObjectHandler.player.getCurrentHP() % 4)]);
                 }
 
                 else
@@ -41,8 +41,9 @@ namespace Soulmate.Classes
                     lifeHeartSprite[i] = new Sprite(lifeHeartTexture[0]);
                 }
 
-                lifeHeartSprite[i].Position = new Vector2f((InGame.VIEW.Center.X - (Game.windowSizeX / 2) + 5 + (i % 10 * lifeHeartSprite[i].Texture.Size.X)),
-                                                           (InGame.VIEW.Center.Y + (Game.windowSizeY / 2) - lifeHeartSprite[i].Texture.Size.Y * (2 - (i / 10)) - 5));
+                lifeHeartSprite[i].Position = new Vector2f((InGame.VIEW.Center.X - (Game.windowSizeX / 2) + 5 + ((i % 10) * lifeHeartSprite[i].Texture.Size.X)),
+                                                           (InGame.VIEW.Center.Y + (Game.windowSizeY / 2) - lifeHeartSprite[i].Texture.Size.Y * ((ObjectHandler.player.getMaxHearts()) / 10 - (i / 10)) - 5));
+                                                                                                                  //Berrechnung damit Herzen in die nächste Zeile rutschen und wie viele Zeilen benötigt werden
             }
             return lifeHeartSprite;
         }

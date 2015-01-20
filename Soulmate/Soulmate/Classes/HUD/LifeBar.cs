@@ -34,7 +34,7 @@ namespace Soulmate.Classes
             {
                 if (gameObject != null)
                 {
-                    lifeSpriteBackground.Position = new Vector2f(gameObject.getPosition().X, gameObject.getPosition().Y - 10);
+                    lifeSpriteBackground.Position = new Vector2f((gameObject.getPosition().X + gameObject.getSprite().Texture.Size.X / 2) - lifeTextureBackground.Size.X / 2, gameObject.getPosition().Y - 20);
                     lifeSpriteBar.Position = new Vector2f(lifeSpriteBackground.Position.X + 2, lifeSpriteBackground.Position.Y + 2);
                 }
             }

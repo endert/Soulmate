@@ -25,8 +25,8 @@ namespace Soulmate.Classes
         protected bool tookDmg { get; set; }
         protected int invulnerableFor = 500; //0.5s invulnerable
         protected float knockBack = 150f;
-        protected int currentHP;
-        protected int maxHP;
+        protected int currentHP { get; set; }
+        protected int maxHP { get; set; }
 
         public bool isMoving { get; set; }
 
