@@ -2,6 +2,7 @@
 using SFML.Window;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,23 +11,25 @@ namespace Soulmate.Classes
 {
     class Player : GameObjects
     {
-        Texture playerWithoutSwordTexture = new Texture("Pictures/Player/SpielerSeiteRechts.png");
+        protected Texture playerWithoutSwordTexture = new Texture("Pictures/Player/SpielerSeiteRechts.png");
 
-        int numFacingDirection; // nach RECHTS
+        protected int numFacingDirection; // nach RECHTS
 
-        Map map;
-        Vector2f movement;
-        HitBox hitBoxSword { get; set; }
-        Vector2f swordPosition;
-        Vector2f swordVector;
+        protected Stopwatch transform = new Stopwatch();
 
-        int att;
-        int def;
-        int maxHearts;
+        protected Map map;
+        protected Vector2f movement;
+        protected HitBox hitBoxSword { get; set; }
+        protected Vector2f swordPosition;
+        protected Vector2f swordVector;
 
-        bool isPressed = false;
+        protected int att;
+        protected int def;
+        protected int maxHearts;
 
-        Texture[] playerTextures = { new Texture("Pictures/Player/SpielerFront.png"), new Texture("Pictures/Player/SpielerRueckTest.png"), 
+        protected bool isPressed = false;
+
+        protected Texture[] playerTextures = { new Texture("Pictures/Player/SpielerFront.png"), new Texture("Pictures/Player/SpielerRueckTest.png"), 
                                      new Texture("Pictures/Player/SpielerSeiteRechtsSchwert.png"), new Texture("Pictures/Player/SpielerSeiteLinksSchwert.png") };
 
         public Player(Vector2f spawnPosition, Map levelMap, int spawnNumFacingDirection)
@@ -47,6 +50,15 @@ namespace Soulmate.Classes
             hitBoxSword = new HitBox(swordVector, playerTextures[2].Size.X - playerWithoutSwordTexture.Size.X, 85);
             
             map = levelMap;
+        }
+
+        public Player() //needed for PlayerPetFusion why? I dont have any idea
+        {
+        }
+
+        public int getDef()
+        {
+            return def;
         }
 
         public int getMaxHearts()
