@@ -43,6 +43,12 @@ namespace Soulmate.Classes
             return isAlive;
         }
 
+        public void setPositionMatrix(int x, int y)
+        {
+            position = new Vector2f(x * ItemHandler.playerInventory.FIELDSIZE + ItemHandler.playerInventory.inventory.Position.X, 
+                y * ItemHandler.playerInventory.FIELDSIZE + ItemHandler.playerInventory.inventory.Position.Y);
+        }
+
         public void pickUp()
         {
             

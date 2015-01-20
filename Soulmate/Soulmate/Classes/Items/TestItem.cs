@@ -15,7 +15,7 @@ namespace Soulmate.Classes
         public TestItem()
         {
             name = "Pete";
-            dropRate = 100;
+            dropRate = 50;
             texture = new Texture("Pictures/Items/TestItem(Pete).png");
             sprite = new Sprite(texture);
             ItemHandler.Items.Add(this);
