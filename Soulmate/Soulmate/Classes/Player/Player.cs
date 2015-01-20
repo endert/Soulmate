@@ -66,6 +66,10 @@ namespace Soulmate.Classes
         public void setCurrentFusionValue()
         {
             currentFusionValue += 50;
+            if(currentFusionValue>=maxFusionValue)
+            {
+                currentFusionValue = maxFusionValue;
+            }
         }
 
         public int getDef()
@@ -119,6 +123,8 @@ namespace Soulmate.Classes
             //Cheats==============
             moreHP();
             makeHeile();
+            cheatDef();
+            cheatAtt();
             //====================
             
             movementSpeed = 0.4f * (float)gameTime.EllapsedTime.TotalMilliseconds;
@@ -188,9 +194,25 @@ namespace Soulmate.Classes
             if (Keyboard.IsKeyPressed(Keyboard.Key.B))
             {
                 currentHP = maxHP;
-                LifePlayer.addHeart();
             }
         }
+
+        public void cheatDef()
+        {
+            if (Keyboard.IsKeyPressed(Keyboard.Key.D))
+            {
+                def += 1;
+            }
+        }
+
+        public void cheatAtt()
+        {
+            if (Keyboard.IsKeyPressed(Keyboard.Key.F))
+            {
+                att += 1;
+            }
+        }
+
         //Testweise==============================================================
 
         public void takeDamage()
