@@ -11,7 +11,7 @@ namespace Soulmate.Classes
     class LifePlayer
     {
         static Texture[] lifeHeartTexture = { new Texture("Pictures/Life/LifeHeartZero.png"), new Texture("Pictures/Life/LifeHeartOne-Quarter.png"), new Texture("Pictures/Life/LifeHeartHalf.png"), 
-                                       new Texture("Pictures/Life/LifeHeartThree-Quarters.png"), new Texture("Pictures/Life/LifeHeartFull.png") };
+                                              new Texture("Pictures/Life/LifeHeartThree-Quarters.png"), new Texture("Pictures/Life/LifeHeartFull.png") };
         static List<Sprite> lifeHeartSprite = new List<Sprite>();
 
         public LifePlayer()
@@ -25,6 +25,11 @@ namespace Soulmate.Classes
         public static void addHeart()
         {
             lifeHeartSprite.Add(new Sprite(lifeHeartTexture[0]));
+        }
+
+        public float getLastLifeHeartSpritePositionBottomY()
+        {
+            return (ObjectHandler.player.getMaxHearts() / 10 + 1) * lifeHeartSprite[lifeHeartSprite.Count - 1].Texture.Size.Y;
         }
 
         public List<Sprite> textureToSprite()

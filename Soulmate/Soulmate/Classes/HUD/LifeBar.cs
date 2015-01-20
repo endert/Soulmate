@@ -10,7 +10,7 @@ namespace Soulmate.Classes
 {
     class LifeBar
     {
-        Texture lifeTextureBackground = new Texture("Pictures/Life/LifePetBackground.png");
+        Texture lifeTextureBackground = new Texture("Pictures/BarBackground.png");
         Texture lifeTextureBar = new Texture("Pictures/Life/LifePetBar.png");
         Sprite lifeSpriteBackground;
         Sprite lifeSpriteBar;

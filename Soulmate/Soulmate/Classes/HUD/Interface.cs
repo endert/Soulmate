@@ -11,20 +11,28 @@ namespace Soulmate.Classes
     class Interface
     {
         LifePlayer lifePlayer;
+        BarFusionPlayerPet barFusionPlayerPet;
 
         public Interface()
         {
             lifePlayer = new LifePlayer();
+            barFusionPlayerPet = new BarFusionPlayerPet();
         }
 
         public void update(GameTime gameTime)
         {
             lifePlayer.update(gameTime);
+            barFusionPlayerPet.update(lifePlayer.getLastLifeHeartSpritePositionBottomY());
+        }
+        public static void makeItHeile()
+        {
+            //TODO
         }
 
         public void draw(RenderWindow window)
         {
             lifePlayer.draw(window);
+            barFusionPlayerPet.draw(window);
         }
     }
 }
