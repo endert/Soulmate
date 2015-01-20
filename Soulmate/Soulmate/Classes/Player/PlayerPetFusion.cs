@@ -34,7 +34,7 @@ namespace Soulmate.Classes
             att = player.getAtt();
             def = player.getDef();
 
-            ObjectHandler.PPF = this;
+            ObjectHandler.player = this;
             ObjectHandler.IsPlayerPetFusion = true;
             transform.Start();
         }

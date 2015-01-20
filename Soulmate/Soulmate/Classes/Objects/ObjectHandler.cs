@@ -11,17 +11,20 @@ namespace Soulmate.Classes
     {
         public static List<GameObjects> gObjs { get; set; }
         public static Map lvlMap { get; set; }
-        public static Player player
-        {
-            get;
-            set;
-        }
-        public static PlayerPetFusion PPF { get; set; }
+        public static Player player { get; set; }
+
         public static bool IsPlayerPetFusion
         {
             get
             {
-                return false;
+                if (!player.getType().Equals("player"))
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
             }
             set
             {
