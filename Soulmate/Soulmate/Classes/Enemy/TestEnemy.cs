@@ -20,7 +20,8 @@ namespace Soulmate.Classes
             isAlive = true;
             hitBox = new HitBox(sprite.Position, sprite.Texture.Size.X, sprite.Texture.Size.Y);
             lvl = _lvl;
-            currentHP = 5 + 1 * (lvl - 1);
+            maxHP = 5 + 1 * (lvl - 1);
+            currentHP = maxHP;
             mp = 1 + 1 * (lvl - 1);
             def = 0;
             attackDamage = 1 + 1 * (lvl -1);

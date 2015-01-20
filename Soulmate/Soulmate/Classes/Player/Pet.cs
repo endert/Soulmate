@@ -15,14 +15,11 @@ namespace Soulmate.Classes
         Texture[] petTexture = {new Texture("Pictures/Pet/WolfFront.png"), new Texture("Pictures/Pet/WolfRueckTest.png"), 
                                    new Texture("Pictures/Pet/WolfSeiteRechts.png"), new Texture("Pictures/Pet/WolfSeiteLinks.png")};
 
-        int maxLife;
-        int currentLife;
-
         public Pet(Sprite player)
         {
             type = "pet";
-            maxLife = 8;
-            currentLife = maxLife;
+            maxHP = 8;
+            currentHP = maxHP;
             sprite = new Sprite(petTexture[0]);
             sprite.Position = new Vector2f(player.Position.X - 150, player.Position.Y + player.Texture.Size.Y - petTexture[0].Size.Y);
             position = sprite.Position;

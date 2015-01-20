@@ -23,7 +23,7 @@ namespace Soulmate.Classes
 
         public Sprite scale(GameObjects gameObject)
         {
-            lifeSpriteBar.Scale = new Vector2f((float)gameObject.getCurrentHP() / (float)gameObject.getMaxHP(), 10);
+            lifeSpriteBar.Scale = new Vector2f((float)gameObject.getCurrentHP() / (float)gameObject.getMaxHP(), 1);
             
             return lifeSpriteBar;
         }
@@ -43,7 +43,7 @@ namespace Soulmate.Classes
         public void update(GameObjects gameObject)
         {
             setPosition(gameObject);
-            //scale(gameObject);
+            scale(gameObject);
         }
 
         public void draw(RenderWindow window)
