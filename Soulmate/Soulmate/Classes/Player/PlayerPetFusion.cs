@@ -20,8 +20,10 @@ namespace Soulmate.Classes
         public PlayerPetFusion(Pet pet, Player player, int durationInSec)
         {
             fusionedPet = pet;
-            fusionedPlayer = player;
-            type = "werwolf";
+            //fusionedPlayer = player;
+            type = "PlayerPetFusion";
+            playerTextures = new Texture[]{new Texture("Pictures/Player/PlayerWerewolf/WerwolfFront.png"), new Texture("Pictures/Player/PlayerWerewolf/WerwolfRueck.png"),
+                                   new Texture("Pictures/Player/PlayerWerewolf/WerwolfSeiteRechts.png"), new Texture("Pictures/Player/PlayerWerewolf/WerwolfSeiteLinks.png")};
             duration = durationInSec * 1000;
             numFacingDirection = player.getNumFacingDirection();
             facingInDirection = player.getFacingDirection(); // RECHTS

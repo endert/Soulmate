@@ -32,12 +32,13 @@ namespace Soulmate.Classes
 
         protected bool isPressed = false;
 
-        protected Texture[] playerTextures = { new Texture("Pictures/Player/SpielerFront.png"), new Texture("Pictures/Player/SpielerRueckTest.png"), 
-                                     new Texture("Pictures/Player/SpielerSeiteRechtsSchwert.png"), new Texture("Pictures/Player/SpielerSeiteLinksSchwert.png") };
+        protected Texture[] playerTextures; 
 
         public Player(Vector2f spawnPosition, Map levelMap, int spawnNumFacingDirection)
         {
             type = "player";
+            playerTextures = new Texture[]{ new Texture("Pictures/Player/SpielerFront.png"), new Texture("Pictures/Player/SpielerRueckTest.png"), 
+                                     new Texture("Pictures/Player/SpielerSeiteRechtsSchwert.png"), new Texture("Pictures/Player/SpielerSeiteLinksSchwert.png") };
             numFacingDirection = spawnNumFacingDirection;
             facingInDirection = new Vector2f(1, 0); // RECHTS
             sprite = new Sprite(playerTextures[0]);

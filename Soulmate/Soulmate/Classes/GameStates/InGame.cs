@@ -120,7 +120,7 @@ namespace Soulmate.Classes
         public EnumGameStates update(GameTime gameTime)
         {
             time.Update();
-
+            player = ObjectHandler.player;
             getInventoryOpen();
 
             if (inventoryOpen==true)
