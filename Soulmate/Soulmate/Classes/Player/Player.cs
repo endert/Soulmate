@@ -22,6 +22,7 @@ namespace Soulmate.Classes
 
         int att;
         int def;
+        int maxHearts;
 
         Texture[] playerTextures = { new Texture("Pictures/Player/SpielerFront.png"), new Texture("Pictures/Player/SpielerRueckTest.png"), 
                                      new Texture("Pictures/Player/SpielerSeiteRechtsSchwert.png"), new Texture("Pictures/Player/SpielerSeiteLinksSchwert.png") };
@@ -44,6 +45,11 @@ namespace Soulmate.Classes
             hitBoxSword = new HitBox(swordVector, playerTextures[2].Size.X - playerWithoutSwordTexture.Size.X, 85);
             
             map = levelMap;
+        }
+
+        public int getMaxHearts()
+        {
+            return getMaxHP() / 4;
         }
 
         override public float getWidth()
@@ -77,16 +83,6 @@ namespace Soulmate.Classes
             return att;
         }
 
-        public int getCurrentLife()
-        {
-            return currentHP;
-        }
-
-        public int getMaxLife()
-        {
-            return maxHP;
-        }
-
         public HitBox getHitBoxSword()
         {
             return hitBoxSword;
@@ -96,11 +92,9 @@ namespace Soulmate.Classes
         {
             movementSpeed = 0.4f * (float)gameTime.EllapsedTime.TotalMilliseconds;
 
-            //Console.Clear();
-            //Console.WriteLine(movementSpeed);
-            //Console.WriteLine((float)time.EllapsedTime.TotalMilliseconds);
             //InGame.HUD.update(gameTime);
             takeDamage();
+            //getMoreHP();
             animate(playerTextures);
 
             switch (numFacingDirection)
@@ -140,9 +134,28 @@ namespace Soulmate.Classes
             movement = getKeyPressed(movementSpeed);
             move(movement);
             
-            hitFromDirections.Clear();
-            
+            hitFromDirections.Clear();   
         }
+
+
+        //Testweise==============================================================
+        bool keyPressed = false;
+
+        public void getMoreHP()
+        {
+            if (Keyboard.IsKeyPressed(Keyboard.Key.H) && !keyPressed)
+            {
+                maxHP += 4;
+                currentHP += 4;
+                keyPressed = true;
+            }
+
+            if (!Keyboard.IsKeyPressed(Keyboard.Key.H) && keyPressed)
+            {
+                keyPressed = false;
+            }
+        }
+        //Testweise==============================================================
 
         public void takeDamage()
         {
