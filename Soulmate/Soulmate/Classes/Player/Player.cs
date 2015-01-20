@@ -126,6 +126,7 @@ namespace Soulmate.Classes
             makeHeile();
             cheatDef();
             cheatAtt();
+            cheatFusionValue();
             //====================
             transform();
 
@@ -212,6 +213,14 @@ namespace Soulmate.Classes
             if (Keyboard.IsKeyPressed(Keyboard.Key.F))
             {
                 att += 1;
+            }
+        }
+
+        public void cheatFusionValue()
+        {
+            if (Keyboard.IsKeyPressed(Keyboard.Key.Q))
+            {
+                setCurrentFusionValue();
             }
         }
 
