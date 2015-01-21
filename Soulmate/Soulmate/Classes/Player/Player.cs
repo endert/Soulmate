@@ -50,7 +50,7 @@ namespace Soulmate.Classes
             currentHP = maxHP;
             att = 1;
             def = 0;
-            durationFusion = 15;
+            durationFusion = 50;
             maxFusionValue = 500f;
             currentFusionValue = 0f;
 

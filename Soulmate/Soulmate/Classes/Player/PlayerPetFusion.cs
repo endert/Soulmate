@@ -30,6 +30,8 @@ namespace Soulmate.Classes
             sprite = new Sprite(werwolfTexture[numFacingDirection]);
             sprite.Position = player.getPosition();
             position = player.getPosition();
+            maxFusionValue = ObjectHandler.player.maxFusionValue;
+            currentFusionValue = maxFusionValue;
             hitBox = ObjectHandler.player.getHitBox();
             maxHP = player.getMaxHP();
             currentHP = player.getCurrentHP();
@@ -49,6 +51,7 @@ namespace Soulmate.Classes
             base.update(gameTime);
             fusionedPlayer.setPositon(position);
             fusionedPet.setPositon(position);
+            currentFusionValue = maxFusionValue - (transformWatch.ElapsedMilliseconds/100);
             if (transformWatch.ElapsedMilliseconds >= duration)
             {
                 deFuse();
@@ -57,6 +60,7 @@ namespace Soulmate.Classes
 
         public void deFuse()
         {
+            fusionedPlayer.currentFusionValue = currentFusionValue;
             ObjectHandler.player = fusionedPlayer;
             ObjectHandler.pet = fusionedPet;
             ObjectHandler.gObjs.Add(fusionedPlayer);
