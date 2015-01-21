@@ -20,7 +20,7 @@ namespace Soulmate.Classes
         public PlayerPetFusion(Pet pet, Player player, int durationInSec)
         {
             fusionedPet = pet;
-            //fusionedPlayer = player;
+            fusionedPlayer = player;
             type = "PlayerPetFusion";
             playerTextures = new Texture[]{new Texture("Pictures/Player/PlayerWerewolf/WerwolfFront.png"), new Texture("Pictures/Player/PlayerWerewolf/WerwolfRueck.png"),
                                    new Texture("Pictures/Player/PlayerWerewolf/WerwolfSeiteRechts.png"), new Texture("Pictures/Player/PlayerWerewolf/WerwolfSeiteLinks.png")};
@@ -36,7 +36,10 @@ namespace Soulmate.Classes
             att = player.getAtt();
             def = player.getDef();
 
+            ObjectHandler.deleateType("player");
+
             ObjectHandler.player = this;
+            ObjectHandler.gObjs.Add(this);
             transformWatch.Start();
         }
     }

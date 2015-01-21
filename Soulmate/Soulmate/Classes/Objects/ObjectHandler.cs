@@ -44,6 +44,18 @@ namespace Soulmate.Classes
             }
         }
 
+        public static void deleateType(String type)
+        {
+            for (int i = 0; i < gObjs.Count; i++)
+            {
+                if (gObjs[i].getType().Equals(type))
+                {
+                    gObjs.RemoveAt(i);
+                    i--;
+                }
+            }
+        }
+
         public void add(List<GameObjects> objs)
         {
             foreach (GameObjects obj in objs)

@@ -139,8 +139,11 @@ namespace Soulmate.Classes
 
             hitBox.setPosition(position);
 
-            swordPosition = getSwordVector();
-            hitBoxSword.setPosition(swordPosition);
+            if (type.Equals("player"))
+            {
+                swordPosition = getSwordVector();
+                hitBoxSword.setPosition(swordPosition);
+            }
             
             movement = new Vector2f(0, 0);
             movement = getKeyPressed(movementSpeed);
@@ -264,7 +267,7 @@ namespace Soulmate.Classes
         {
             if (currentFusionValue>= maxFusionValue&&Keyboard.IsKeyPressed(Keyboard.Key.Space))
             {
-                new PlayerPetFusion(ObjectHandler.pet, this,durationFusion);
+                new PlayerPetFusion(ObjectHandler.pet, this, durationFusion);
             }
         }
 

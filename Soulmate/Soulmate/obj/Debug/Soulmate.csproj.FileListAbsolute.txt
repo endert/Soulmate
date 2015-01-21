@@ -31,7 +31,6 @@ C:\Users\Joshua Endert\Documents\Uni\Introdruction to 2D Game Development\Soulma
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Soulmate.exe.config
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\obj\Debug\Soulmate.exe
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\obj\Debug\Soulmate.pdb
-C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\obj\Debug\Soulmate.csprojResolveAssemblyReference.cache
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Hintergrund.png
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\csfml-audio-2.dll
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\csfml-graphics-2.dll
