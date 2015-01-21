@@ -188,3 +188,4 @@ C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Life\BarBackground.png
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Life\LifeBar.png
 C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\bin\Debug\Pictures\Items\Gold.png
+C:\Users\Kedreals\Desktop\Intro2D\Soulmate\Soulmate\Soulmate\obj\Debug\Soulmate.csprojResolveAssemblyReference.cache

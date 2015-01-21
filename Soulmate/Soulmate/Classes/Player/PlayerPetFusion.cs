@@ -30,17 +30,39 @@ namespace Soulmate.Classes
             sprite = new Sprite(werwolfTexture[numFacingDirection]);
             sprite.Position = player.getPosition();
             position = player.getPosition();
-            hitBox = new HitBox(sprite.Position, playerWithoutSwordTexture.Size.X, getHeight());
+            hitBox = ObjectHandler.player.getHitBox();
             maxHP = player.getMaxHP();
             currentHP = player.getCurrentHP();
             att = player.getAtt();
             def = player.getDef();
 
-            ObjectHandler.deleateType("player");
-
             ObjectHandler.player = this;
             ObjectHandler.gObjs.Add(this);
+            ObjectHandler.deleateType("player");
+            ObjectHandler.deleateType("pet");
+
             transformWatch.Start();
+        }
+
+        public override void update(GameTime gameTime)
+        {
+            base.update(gameTime);
+            fusionedPlayer.setPositon(position);
+            fusionedPet.setPositon(position);
+            if (transformWatch.ElapsedMilliseconds >= duration)
+            {
+                deFuse();
+            }
+        }
+
+        public void deFuse()
+        {
+            ObjectHandler.player = fusionedPlayer;
+            ObjectHandler.pet = fusionedPet;
+            ObjectHandler.gObjs.Add(fusionedPlayer);
+            ObjectHandler.gObjs.Add(fusionedPet);
+
+            ObjectHandler.deleateType(type);
         }
     }
 }

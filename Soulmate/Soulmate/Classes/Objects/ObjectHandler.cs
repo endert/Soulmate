@@ -19,11 +19,11 @@ namespace Soulmate.Classes
             {
                 if (!player.getType().Equals("player"))
                 {
-                    return false;
+                    return true;
                 }
                 else
                 {
-                    return true;
+                    return false;
                 }
             }
         }

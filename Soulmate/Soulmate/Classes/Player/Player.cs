@@ -50,7 +50,7 @@ namespace Soulmate.Classes
             currentHP = maxHP;
             att = 1;
             def = 0;
-            durationFusion = 500;
+            durationFusion = 15;
             maxFusionValue = 500f;
             currentFusionValue = 0f;
 
@@ -128,7 +128,10 @@ namespace Soulmate.Classes
             cheatAtt();
             cheatFusionValue();
             //====================
-            transform();
+            if (!ObjectHandler.IsPlayerPetFusion)
+            {
+                transform();
+            }
 
             movementSpeed = 0.4f * (float)gameTime.EllapsedTime.TotalMilliseconds;
 
