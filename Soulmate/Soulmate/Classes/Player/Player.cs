@@ -15,7 +15,7 @@ namespace Soulmate.Classes
 
         protected int numFacingDirection; // nach RECHTS
 
-        protected Stopwatch transform = new Stopwatch();
+        protected Stopwatch transformWatch = new Stopwatch();
 
         protected Map map;
         protected Vector2f movement;
@@ -32,12 +32,13 @@ namespace Soulmate.Classes
 
         protected bool isPressed = false;
 
-        protected Texture[] playerTextures = { new Texture("Pictures/Player/SpielerFront.png"), new Texture("Pictures/Player/SpielerRueckTest.png"), 
-                                     new Texture("Pictures/Player/SpielerSeiteRechtsSchwert.png"), new Texture("Pictures/Player/SpielerSeiteLinksSchwert.png") };
+        protected Texture[] playerTextures; 
 
         public Player(Vector2f spawnPosition, Map levelMap, int spawnNumFacingDirection)
         {
             type = "player";
+            playerTextures = new Texture[]{ new Texture("Pictures/Player/SpielerFront.png"), new Texture("Pictures/Player/SpielerRueckTest.png"), 
+                                     new Texture("Pictures/Player/SpielerSeiteRechtsSchwert.png"), new Texture("Pictures/Player/SpielerSeiteLinksSchwert.png") };
             numFacingDirection = spawnNumFacingDirection;
             facingInDirection = new Vector2f(1, 0); // RECHTS
             sprite = new Sprite(playerTextures[0]);
@@ -49,7 +50,7 @@ namespace Soulmate.Classes
             currentHP = maxHP;
             att = 1;
             def = 0;
-            durationFusion = 500;
+            durationFusion = 50;
             maxFusionValue = 500f;
             currentFusionValue = 0f;
 
@@ -127,18 +128,25 @@ namespace Soulmate.Classes
             cheatAtt();
             cheatFusionValue();
             //====================
-            
+            if (!ObjectHandler.IsPlayerPetFusion)
+            {
+                transform();
+            }
+
             movementSpeed = 0.4f * (float)gameTime.EllapsedTime.TotalMilliseconds;
 
             takeDamage();
             animate(playerTextures);
 
-            facingDirection();
+            spritePositionUpdate();
 
             hitBox.setPosition(position);
 
-            swordPosition = getSwordVector();
-            hitBoxSword.setPosition(swordPosition);
+            if (type.Equals("player"))
+            {
+                swordPosition = getSwordVector();
+                hitBoxSword.setPosition(swordPosition);
+            }
             
             movement = new Vector2f(0, 0);
             movement = getKeyPressed(movementSpeed);
@@ -147,7 +155,7 @@ namespace Soulmate.Classes
             hitFromDirections.Clear();   
         }
 
-        public void facingDirection()
+        public void spritePositionUpdate()
         {
             switch (numFacingDirection)
             {
@@ -256,6 +264,14 @@ namespace Soulmate.Classes
                 }
             }
             return hitByEnemy;
+        }
+
+        public void transform()
+        {
+            if (currentFusionValue>= maxFusionValue&&Keyboard.IsKeyPressed(Keyboard.Key.Space))
+            {
+                new PlayerPetFusion(ObjectHandler.pet, this, durationFusion);
+            }
         }
 
         public bool pressedKeyForAttack()

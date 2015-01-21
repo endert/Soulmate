@@ -42,6 +42,11 @@ namespace Soulmate.Classes
             indexEntityList = index;
         }
 
+        public void setPositon(Vector2f _pos)
+        {
+            position = _pos;
+        }
+
         public Vector2f getFacingDirection()
         {
             return facingInDirection;

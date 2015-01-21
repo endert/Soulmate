@@ -11,21 +11,20 @@ namespace Soulmate.Classes
     {
         public static List<GameObjects> gObjs { get; set; }
         public static Map lvlMap { get; set; }
-        public static Player player
-        {
-            get;
-            set;
-        }
-        public static PlayerPetFusion PPF { get; set; }
+        public static Player player { get; set; }
+        public static Pet pet { get; set; }
         public static bool IsPlayerPetFusion
         {
             get
             {
-                return false;
-            }
-            set
-            {
-                IsPlayerPetFusion = value;
+                if (!player.getType().Equals("player"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
 
@@ -39,12 +38,32 @@ namespace Soulmate.Classes
         public void add(GameObjects obj)
         {
             gObjs.Add(obj);
+            if (obj.getType().Equals("pet"))
+            {
+                pet = (Pet)obj;
+            }
+        }
+
+        public static void deleateType(String type)
+        {
+            for (int i = 0; i < gObjs.Count; i++)
+            {
+                if (gObjs[i].getType().Equals(type))
+                {
+                    gObjs.RemoveAt(i);
+                    i--;
+                }
+            }
         }
 
         public void add(List<GameObjects> objs)
         {
             foreach (GameObjects obj in objs)
             {
+                if (obj.getType().Equals("pet"))
+                {
+                    pet = (Pet)obj;
+                }
                 gObjs.Add(obj);
             }
         }

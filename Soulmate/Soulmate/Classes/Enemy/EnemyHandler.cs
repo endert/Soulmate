@@ -41,7 +41,7 @@ namespace Soulmate.Classes
             return map;
         }
 
-        public EnemyHandler(Player p, int _lvlCount, Map _map)
+        public EnemyHandler(int _lvlCount, Map _map)
         {
             lvlCount = _lvlCount;
             map = _map;
@@ -49,7 +49,7 @@ namespace Soulmate.Classes
             switch (lvlCount)
             {
                 case 1:
-                    for (int i = 0; i < 10; i++)
+                    for (int i = 0; i < 2; i++)
                     {
                         float rX = 600 + random.Next(1000);
                         float rY = 400 + random.Next(400);
