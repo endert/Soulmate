@@ -14,7 +14,7 @@ namespace Soulmate.Classes
         public static uint windowSizeX = 1280;
         public static uint windowSizeY = 720;
 
-        EnumGameStates currentGameState = EnumGameStates.mainMenu;
+        EnumGameStates currentGameState = EnumGameStates.titleSreen;
         EnumGameStates prevGameState;
 
         GameStates gameState;
@@ -55,6 +55,9 @@ namespace Soulmate.Classes
                     break;
                 case EnumGameStates.options:
                     gameState = new Options();
+                    break;
+                case EnumGameStates.titleSreen:
+                    gameState = new TitleScreen();
                     break;
                 //case EGameStates.gameWon:
                 //    gameState = new GameWon();

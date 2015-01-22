@@ -119,6 +119,50 @@ namespace Soulmate.Classes
             return hitBoxSword;
         }
 
+        //Cheats==============================================================
+        public void moreHP()
+        {
+            if (Keyboard.IsKeyPressed(Keyboard.Key.H))
+            {
+                maxHP += 4;
+                currentHP += 4;
+                LifePlayer.addHeart();
+            }
+        }
+
+        public void makeHeile()
+        {
+            if (Keyboard.IsKeyPressed(Keyboard.Key.B))
+            {
+                currentHP = maxHP;
+            }
+        }
+
+        public void cheatDef()
+        {
+            if (Keyboard.IsKeyPressed(Keyboard.Key.D))
+            {
+                def += 1;
+            }
+        }
+
+        public void cheatAtt()
+        {
+            if (Keyboard.IsKeyPressed(Keyboard.Key.F))
+            {
+                att += 1;
+            }
+        }
+
+        public void cheatFusionValue()
+        {
+            if (Keyboard.IsKeyPressed(Keyboard.Key.Q))
+            {
+                setCurrentFusionValue();
+            }
+        }
+        //Testweise==============================================================
+
         override public void update(GameTime gameTime)
         {
             //Cheats==============
@@ -185,52 +229,6 @@ namespace Soulmate.Classes
                     }
             }
         }
-
-
-        //Cheats==============================================================
-        public void moreHP()
-        {
-            if (Keyboard.IsKeyPressed(Keyboard.Key.H))
-            {
-                maxHP += 4;
-                currentHP += 4;
-                LifePlayer.addHeart();
-            }
-        }
-
-        public void makeHeile()
-        {
-            if (Keyboard.IsKeyPressed(Keyboard.Key.B))
-            {
-                currentHP = maxHP;
-            }
-        }
-
-        public void cheatDef()
-        {
-            if (Keyboard.IsKeyPressed(Keyboard.Key.D))
-            {
-                def += 1;
-            }
-        }
-
-        public void cheatAtt()
-        {
-            if (Keyboard.IsKeyPressed(Keyboard.Key.F))
-            {
-                att += 1;
-            }
-        }
-
-        public void cheatFusionValue()
-        {
-            if (Keyboard.IsKeyPressed(Keyboard.Key.Q))
-            {
-                setCurrentFusionValue();
-            }
-        }
-
-        //Testweise==============================================================
 
         public void takeDamage()
         {
