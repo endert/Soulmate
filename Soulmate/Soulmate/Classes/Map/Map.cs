@@ -17,8 +17,8 @@ namespace Soulmate.Classes
 
         public int objectSize = 32;
         
-        public static String white = "ffffffff";//Boden
-        public static String black = "ff000000";//Wald
+        public static String white = "ffffffff"; //Boden
+        public static String black = "ff000000"; //Wald
 
         public bool getWalkable(HitBox hitBox, Vector2f vector)
         {

@@ -1,4 +1,5 @@
 ﻿using SFML.Graphics;
+using SFML.Window;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,25 +10,30 @@ namespace Soulmate.Classes
 {
     class TitleScreen : GameStates
     {
-        bool isPressed;
-
         Texture titleScreenTexture;
         Sprite titleScreen;
 
+        View view;
 
         public void initialize()
         {
-            isPressed = false;
             titleScreen = new Sprite(titleScreenTexture);
+
+            view = new View(new FloatRect(0, 0, 1280, 720));
         }
 
         public void loadContent()
-        {titleScreenTexture = new Texture("Pictures/")
-
+        {
+            titleScreenTexture = new Texture("Pictures/StartScreen Kopie.png");
         }
 
         public EnumGameStates update(GameTime gameTime)
         {
+            if (Keyboard.IsKeyPressed(Keyboard.Key.Return))
+            {
+                return EnumGameStates.mainMenu;
+            }
+            
             return EnumGameStates.titleSreen;
         }
 
