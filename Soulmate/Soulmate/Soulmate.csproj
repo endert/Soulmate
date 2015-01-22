@@ -106,19 +106,52 @@
     <Content Include="Pictures\ControlsTextBild.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Pictures\Enemy\Enemy1\Enemy1Front.png">
+    <Content Include="Pictures\Enemy\Blott\BlottBack.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Pictures\Enemy\Enemy1\Enemy1FrontInvulnerable.png">
+    <Content Include="Pictures\Enemy\Blott\BlottBackInvulnerable.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Pictures\Enemy\Enemy1\Enemy1Rueck.png">
+    <Content Include="Pictures\Enemy\Blott\BlottFront.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Pictures\Enemy\Enemy1\Enemy1SeiteLinks.png">
+    <Content Include="Pictures\Enemy\Blott\BlottFrontInvulnerable.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Pictures\Enemy\Enemy1\Enemy1SeiteRechts.png">
+    <Content Include="Pictures\Enemy\Blott\BlottLeft.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Enemy\Blott\BlottLeftInvulnerable.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Enemy\Blott\BlottRight.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Enemy\Blott\BlottRightInvulnerable.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Enemy\Drakoco\DrakocoBack.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Enemy\Drakoco\DrakocoBackInvulnerable.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Enemy\Drakoco\DrakocoFront.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Enemy\Drakoco\DrakocoFrontInvulnerable.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Enemy\Drakoco\DrakocoLeft.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Enemy\Drakoco\DrakocoLeftInvulnerable.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Enemy\Drakoco\DrakocoRight.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pictures\Enemy\Drakoco\DrakocoRightInvulnerable.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Pictures\FusionBar.png">

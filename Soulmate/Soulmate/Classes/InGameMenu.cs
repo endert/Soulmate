@@ -13,7 +13,7 @@ namespace Soulmate.Classes
         Texture inGameMenuBackGroundTexture = new Texture("Pictures/InGameMenu/InGameMenuHintergrund.png");
         Sprite inGameMenuBackGround;
 
-        Texture continueNotSelected = new Texture("Pictures/InGameMenu/ContinueNotSelected.png");
+        Texture continueNotSelected = new Texture("Pictures/InGameMenu/ContinueSelected.png");
         Texture continueSelected = new Texture("Pictures/InGameMenu/ContinueSelected.png");
         Sprite continueGame;
 
@@ -26,7 +26,7 @@ namespace Soulmate.Classes
 
         public Vector2f getInGameMenuBackGroundPosition()
         {
-            return new Vector2f((1280 - inGameMenuBackGroundTexture.Size.X) / 2, (720 - inGameMenuBackGroundTexture.Size.Y) / 2);
+            return new Vector2f((Game.windowSizeX - inGameMenuBackGroundTexture.Size.X) / 2, (Game.windowSizeY - inGameMenuBackGroundTexture.Size.Y) / 2);
         }
         
         public Vector2f getContinueGamePosition()
