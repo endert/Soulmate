@@ -28,7 +28,7 @@ namespace Soulmate.Classes
             }
         }
 
-        public ObjectHandler(Map _lvlMap,Player _player)
+        public ObjectHandler(Map _lvlMap, Player _player)
         {
             lvlMap = _lvlMap;
             gObjs = new List<GameObjects>();
