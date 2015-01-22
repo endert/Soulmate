@@ -26,7 +26,7 @@ namespace Soulmate.Classes
 
         public Vector2f getInGameMenuBackGroundPosition()
         {
-            return new Vector2f((1280 - inGameMenuBackGroundTexture.Size.X) / 2, (720 - inGameMenuBackGroundTexture.Size.Y) / 2);
+            return new Vector2f((Game.windowSizeX - inGameMenuBackGroundTexture.Size.X) / 2, (Game.windowSizeY - inGameMenuBackGroundTexture.Size.Y) / 2);
         }
         
         public Vector2f getContinueGamePosition()

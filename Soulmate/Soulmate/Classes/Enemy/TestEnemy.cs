@@ -33,12 +33,21 @@ namespace Soulmate.Classes
 
         private void setEnemyTextures()
         {
-            enemyTextureArray[0] = new Texture("Pictures/Enemy/Enemy1/Enemy1Front.png");
-            enemyTextureArray[1] = new Texture("Pictures/Enemy/Enemy1/Enemy1Rueck.png");
-            enemyTextureArray[2] = new Texture("Pictures/Enemy/Enemy1/Enemy1SeiteRechts.png");
-            enemyTextureArray[3] = new Texture("Pictures/Enemy/Enemy1/Enemy1SeiteLinks.png");
-            enemyTextureArray[4] = new Texture("Pictures/Enemy/Enemy1/Enemy1FrontInvulnerable.png");
+            enemyTextureArray[0] = new Texture("Pictures/Enemy/Blott/BlottFront.png");
+            enemyTextureArray[1] = new Texture("Pictures/Enemy/Blott/BlottBack.png");
+            enemyTextureArray[2] = new Texture("Pictures/Enemy/Blott/BlottRight.png");
+            enemyTextureArray[3] = new Texture("Pictures/Enemy/Blott/BlottLeft.png");
+            enemyTextureArray[4] = new Texture("Pictures/Enemy/Blott/BlottFrontInvulnerable.png");
         }
+
+        //private void setEnemyTextures()
+        //{
+        //    enemyTextureArray[0] = new Texture("Pictures/Enemy/Enemy1/Enemy1Front.png");
+        //    enemyTextureArray[1] = new Texture("Pictures/Enemy/Enemy1/Enemy1Rueck.png");
+        //    enemyTextureArray[2] = new Texture("Pictures/Enemy/Enemy1/Enemy1SeiteRechts.png");
+        //    enemyTextureArray[3] = new Texture("Pictures/Enemy/Enemy1/Enemy1SeiteLinks.png");
+        //    enemyTextureArray[4] = new Texture("Pictures/Enemy/Enemy1/Enemy1FrontInvulnerable.png");
+        //}
 
         public override void attack()
         {
