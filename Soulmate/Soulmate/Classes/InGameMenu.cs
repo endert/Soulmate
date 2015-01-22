@@ -13,7 +13,7 @@ namespace Soulmate.Classes
         Texture inGameMenuBackGroundTexture = new Texture("Pictures/InGameMenu/InGameMenuHintergrund.png");
         Sprite inGameMenuBackGround;
 
-        Texture continueNotSelected = new Texture("Pictures/InGameMenu/ContinueSelected.png");
+        Texture continueNotSelected = new Texture("Pictures/InGameMenu/ContinueNotSelected.png");
         Texture continueSelected = new Texture("Pictures/InGameMenu/ContinueSelected.png");
         Sprite continueGame;
 
