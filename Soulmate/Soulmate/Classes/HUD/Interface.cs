@@ -24,10 +24,6 @@ namespace Soulmate.Classes
             lifePlayer.update(gameTime);
             barFusionPlayerPet.update(lifePlayer.getLastLifeHeartSpritePositionBottomY());
         }
-        public static void makeItHeile()
-        {
-            //TODO
-        }
 
         public void draw(RenderWindow window)
         {
