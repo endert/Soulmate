@@ -56,6 +56,9 @@ namespace Soulmate.Classes
                 case EnumGameStates.options:
                     gameState = new Options();
                     break;
+                case EnumGameStates.titleSreen:
+                    gameState = new TitleScreen();
+                    break;
                 //case EGameStates.gameWon:
                 //    gameState = new GameWon();
                 //    break;
