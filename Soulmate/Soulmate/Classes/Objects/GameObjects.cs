@@ -384,7 +384,7 @@ namespace Soulmate.Classes
 
         public abstract void update(GameTime gameTime);
 
-        public void draw(RenderWindow window)
+        virtual public void draw(RenderWindow window)
         {
             window.Draw(sprite);
             if(lifeBar!=null)

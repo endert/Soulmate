@@ -23,6 +23,8 @@ namespace Soulmate.Classes
         protected Vector2f swordPosition;
         protected Vector2f swordVector;
 
+        Text test = new Text("test", new Font("arial_narrow_7.ttf"), 30);
+
         protected int att;
         protected int def;
         protected int maxHearts;
@@ -165,6 +167,8 @@ namespace Soulmate.Classes
 
         override public void update(GameTime gameTime)
         {
+            test.Position = position;
+            test.Color = Color.Black;
             //Cheats==============
             moreHP();
             makeHeile();
@@ -196,7 +200,7 @@ namespace Soulmate.Classes
             movement = getKeyPressed(movementSpeed);
             move(movement);
             
-            hitFromDirections.Clear();   
+            hitFromDirections.Clear();
         }
 
         public void spritePositionUpdate()
@@ -309,6 +313,12 @@ namespace Soulmate.Classes
                 sprite = new Sprite(textureArray[3]); // left
                 numFacingDirection = 3;
             }
+        }
+
+        public override void draw(RenderWindow window)
+        {
+            window.Draw(sprite);
+            window.Draw(test);
         }
     }
 }
